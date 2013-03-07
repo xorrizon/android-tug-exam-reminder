@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_category_integration"
+        android:key="pref_key_integration_settings">
+        <CheckBoxPreference
+            android:key="pref_show_exam_notifications"
+            android:summary="@string/pref_show_exam_notifications_description"
+            android:title="@string/pref_show_exam_notifications"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="pref_use_android_calendar"
+            android:summary="@string/pref_use_android_calendar_description"
+            android:title="@string/pref_use_android_calendar"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_category_update"
+        android:key="pref_key_update_settings">
+        <ListPreference
+            android:key="pref_update_frequency"
+            android:title="@string/pref_update_frequency"
+            android:dialogTitle="@string/pref_update_frequency"
+            android:entries="@array/pref_update_frequency_entries"
+            android:entryValues="@array/pref_update_frequency_values"
+            android:defaultValue="@string/once_a_day" />
+        <Preference
+            android:key="pref_update_now"
+            android:title="@string/pref_update_now"
+            android:summary="@string/pref_update_now_summery"/>
+    </PreferenceCategory>
+</PreferenceScreen>
