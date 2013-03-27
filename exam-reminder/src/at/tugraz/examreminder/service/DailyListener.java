@@ -16,10 +16,14 @@ import java.util.Calendar;
 public class DailyListener implements WakefulIntentService.AlarmListener {
 	private static final int HOUR_OF_DAY_TO_RUN = 12;
 
-	//@TODO Note to self: Schedule the alarm on app start with WakefulIntentService.scheduleAlarms(new DailyListener(), this, false);
+	//@TODO Note to self: Schedule the alarm on app start with scheduleMe()
 	//@TODO And don't forget to reset it if settings have changed!
 
 	private static PendingIntent currentPendingIntent;
+
+	public static void scheduleMe(Context context) {
+		WakefulIntentService.scheduleAlarms(new DailyListener(), context, false);
+	}
 
 	@Override
 	public void scheduleAlarms(AlarmManager alarmManager, PendingIntent pendingIntent, Context context) {
