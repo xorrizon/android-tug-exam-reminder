@@ -25,11 +25,12 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		context = getApplicationContext();
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 		addPreferencesFromResource(R.xml.preferences);
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
 		pref_updateNow = findPreference("pref_update_now");
 		update_updateFrequencySummery();
-		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		pref_updateNow.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {

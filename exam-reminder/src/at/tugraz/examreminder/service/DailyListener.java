@@ -17,7 +17,9 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 	private static final int HOUR_OF_DAY_TO_RUN = 12;
 
 	//@TODO Note to self: Schedule the alarm on app start with WakefulIntentService.scheduleAlarms(new DailyListener(), this, false);
-	//@TODO And don't forget to reset it if settings have changed!l
+	//@TODO And don't forget to reset it if settings have changed!
+
+	private static PendingIntent currentPendingIntent;
 
 	@Override
 	public void scheduleAlarms(AlarmManager alarmManager, PendingIntent pendingIntent, Context context) {
@@ -35,6 +37,8 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		calendar.set(Calendar.HOUR_OF_DAY, HOUR_OF_DAY_TO_RUN);
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
+
+		setNewPendingIntentAndCancelOld(context, pendingIntent);
 
 		alarmManager.setInexactRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
 				AlarmManager.INTERVAL_DAY, pendingIntent);
@@ -75,5 +79,13 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 	@Override
 	public long getMaxAge() {
 		return (AlarmManager.INTERVAL_DAY + 60 * 1000);
+	}
+
+	private synchronized static void setNewPendingIntentAndCancelOld(Context context, PendingIntent pendingIntent) {
+		AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+		if(currentPendingIntent != null) {
+			alarmManager.cancel(currentPendingIntent);
+		}
+		currentPendingIntent = pendingIntent;
 	}
 }
