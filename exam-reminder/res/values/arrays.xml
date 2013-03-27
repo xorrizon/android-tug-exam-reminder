@@ -5,11 +5,13 @@
         <item>@string/every_2_days</item>
         <item>@string/every_3_days</item>
         <item>@string/once_a_week</item>
+        <item>@string/never</item>
     </string-array>
     <string-array name="pref_update_frequency_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>7</item>
+        <item>-1</item>
     </string-array>
 </resources>
