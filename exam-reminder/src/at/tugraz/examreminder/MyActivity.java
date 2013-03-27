@@ -1,13 +1,14 @@
 package at.tugraz.examreminder;
 
-import android.app.Activity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import at.tugraz.examreminder.ui.SettingsActivity;
 
-public class MyActivity extends Activity {
+public class MyActivity extends SherlockFragmentActivity{
 	/**
 	 * Called when the activity is first created.
 	 */
@@ -19,7 +20,7 @@ public class MyActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main_menu, menu);
+		getSupportMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
 
