@@ -43,7 +43,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 				Log.d("ConnectivityReceiver", "We have internet, start update check and disable receiver!");
 
 				// Start service with wakelock by using WakefulIntentService
-				Intent backgroundIntent = new Intent(context, BackgroundService.class);
+				Intent backgroundIntent = new Intent(context, UpdateService.class);
 				WakefulIntentService.sendWakefulWork(context, backgroundIntent);
 
 				// disable receiver after we started the service

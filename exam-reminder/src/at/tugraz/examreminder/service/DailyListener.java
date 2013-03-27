@@ -16,6 +16,9 @@ import java.util.Calendar;
 public class DailyListener implements WakefulIntentService.AlarmListener {
 	private static final int HOUR_OF_DAY_TO_RUN = 12;
 
+	//@TODO Note to self: Schedule the alarm on app start with WakefulIntentService.scheduleAlarms(new DailyListener(), this, false);
+	//@TODO And don't forget to reset it if settings have changed!l
+
 	@Override
 	public void scheduleAlarms(AlarmManager alarmManager, PendingIntent pendingIntent, Context context) {
 		PreferenceManager.setDefaultValues(context, R.xml.preferences, false);
@@ -53,7 +56,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 					|| (netInfo.getType() == ConnectivityManager.TYPE_WIFI)) {
 				Log.d("DailyListener", "We have internet, start update check directly now!");
 
-				Intent backgroundIntent = new Intent(context, BackgroundService.class);
+				Intent backgroundIntent = new Intent(context, UpdateService.class);
 				WakefulIntentService.sendWakefulWork(context, backgroundIntent);
 			} else {
 				Log.d("DailyListener", "We have no internet, enable ConnectivityReceiver!");
