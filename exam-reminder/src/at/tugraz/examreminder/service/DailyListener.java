@@ -19,7 +19,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 	//@TODO Note to self: Schedule the alarm on app start with scheduleMe()
 	//@TODO And don't forget to reset it if settings have changed!
 
-	private static PendingIntent currentPendingIntent;
+	public static PendingIntent currentPendingIntent;
 
 	public static void scheduleMe(Context context) {
 		WakefulIntentService.scheduleAlarms(new DailyListener(), context, false);
@@ -85,7 +85,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		return (AlarmManager.INTERVAL_DAY + 60 * 1000);
 	}
 
-	private synchronized static void setNewPendingIntentAndCancelOld(Context context, PendingIntent pendingIntent) {
+	public synchronized static void setNewPendingIntentAndCancelOld(Context context, PendingIntent pendingIntent) {
 		AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 		if(currentPendingIntent != null) {
 			alarmManager.cancel(currentPendingIntent);
