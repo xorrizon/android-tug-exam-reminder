@@ -5,7 +5,7 @@ public class CourseContainer {
 
 	private CourseContainer(){}
 
-	public synchronized CourseContainer instance() {
+	public static synchronized CourseContainer instance() {
 		if(instance == null)
 			instance = new CourseContainer();
 		return instance;
