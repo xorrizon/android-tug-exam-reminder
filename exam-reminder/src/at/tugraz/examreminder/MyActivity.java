@@ -6,6 +6,8 @@ import com.actionbarsherlock.view.MenuItem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import at.tugraz.examreminder.crawler.TuGrazSearchCrawler;
 import at.tugraz.examreminder.ui.SettingsActivity;
 
 public class MyActivity extends SherlockFragmentActivity{
@@ -15,6 +17,8 @@ public class MyActivity extends SherlockFragmentActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
+		Log.v("debug", crawler.generateSearchUrl());
 		setContentView(R.layout.main);
 	}
 
