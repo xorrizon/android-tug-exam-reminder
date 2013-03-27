@@ -45,7 +45,9 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		setNewPendingIntentAndCancelOld(context, pendingIntent);
 
 		alarmManager.setInexactRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
-				AlarmManager.INTERVAL_DAY, pendingIntent);
+				AlarmManager.INTERVAL_DAY * update_interval, pendingIntent);
+
+
 	}
 
 	@Override
