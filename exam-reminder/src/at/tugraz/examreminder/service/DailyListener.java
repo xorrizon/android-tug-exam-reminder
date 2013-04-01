@@ -53,15 +53,19 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		ConnectivityManager cm = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
+		boolean isConnectedOrConnecting = netInfo == null ? false : netInfo.isConnectedOrConnecting();
+		sendWakefulWork(context, isConnectedOrConnecting, netInfo.getType());
+	}
 
+	public void sendWakefulWork(Context context, boolean isConnectedOrConnecting, int connectionType) {
 		// only when connected or while connecting...
-		if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+		if (isConnectedOrConnecting) {
 
 			boolean updateOnlyOnWifi = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_update_wifi_only", false);
 
 			// if we have mobile or wifi connectivity...
-			if (((netInfo.getType() == ConnectivityManager.TYPE_MOBILE) && updateOnlyOnWifi == false)
-					|| (netInfo.getType() == ConnectivityManager.TYPE_WIFI)) {
+			if (((connectionType == ConnectivityManager.TYPE_MOBILE) && updateOnlyOnWifi == false)
+					|| (connectionType == ConnectivityManager.TYPE_WIFI)) {
 				Log.d("DailyListener", "We have internet, start update check directly now!");
 
 				Intent backgroundIntent = new Intent(context, UpdateService.class);
@@ -93,4 +97,6 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		WakefulIntentService.cancelAlarms(context);
 		currentPendingIntent = pendingIntent;
 	}
+
+
 }

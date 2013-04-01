@@ -76,4 +76,5 @@ public class ConnectivityReceiver extends BroadcastReceiver {
 		context.getPackageManager().setComponentEnabledSetting(component,
 				PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 	}
+
 }
