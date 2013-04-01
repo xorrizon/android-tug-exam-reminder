@@ -90,6 +90,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		if(currentPendingIntent != null) {
 			alarmManager.cancel(currentPendingIntent);
 		}
+		WakefulIntentService.cancelAlarms(context);
 		currentPendingIntent = pendingIntent;
 	}
 }
