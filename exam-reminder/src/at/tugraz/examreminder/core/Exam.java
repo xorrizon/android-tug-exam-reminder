@@ -2,7 +2,7 @@ package at.tugraz.examreminder.core;
 
 import java.util.Date;
 
-public class Exam {
+public class Exam implements Comparable<Exam> {
 	public Date from;
 	public Date to;
 	public String place;
@@ -14,4 +14,14 @@ public class Exam {
 	public int participants;
 	public int participants_max;
 	public Date updated_at;
+
+    @Override
+    public int compareTo(Exam exam) {
+        return from.compareTo(exam.from);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o); //@TODO
+    }
 }
