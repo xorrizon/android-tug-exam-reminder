@@ -1,5 +1,8 @@
 package at.tugraz.examreminder;
 
+import android.app.Notification;
+import android.view.View;
+import at.tugraz.examreminder.ui.NotificationFactory;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -8,7 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import at.tugraz.examreminder.ui.SettingsActivity;
 
-public class MyActivity extends SherlockFragmentActivity{
+public class MyActivity extends SherlockFragmentActivity implements View.OnClickListener {
 	/**
 	 * Called when the activity is first created.
 	 */
@@ -16,6 +19,9 @@ public class MyActivity extends SherlockFragmentActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+        findViewById(R.id.btn_test_notification).setOnClickListener(this);
+
 	}
 
 	@Override
@@ -34,4 +40,15 @@ public class MyActivity extends SherlockFragmentActivity{
 				return super.onOptionsItemSelected(item);
 		}
 	}
+
+    @Override
+    public void onClick(View v) {
+       switch (v.getId()){
+           case R.id.btn_test_notification:
+               NotificationFactory notificationFactory = new NotificationFactory(this);
+               Notification notification = notificationFactory.createNewOrChangedExamsNotification();
+               notificationFactory.sendNotification(notification);
+               break;
+       }
+    }
 }

@@ -43,4 +43,8 @@ public class CourseContainer extends Observable {
         return courses.size();
     }
 
+    @Override
+    public void setChanged() {
+        super.setChanged();
+    }
 }
