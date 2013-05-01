@@ -1,13 +1,13 @@
 package at.tugraz.examreminder.crawler;
 
-import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.SortedSet;
+import java.util.*;
 
-import android.os.AsyncTask;
 import android.util.Log;
+import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.Exam;
 import org.apache.http.HttpResponse;
@@ -39,9 +39,11 @@ public class TuGrazSearchCrawler implements Crawler {
             put("hl", "de"); // Language
         }};
 
-    final static String FieldStartTagCourseName = "<Field name=\"courseName\">";
-    final static String FieldStartTagCourseCode = "<Field name=\"courseCode\">";
-    final static String FieldEndTag = "</Field>";
+    final static String fieldStartTagCourseName = "<Field name=\"courseName\">";
+    final static String fieldStartTagCourseCode = "<Field name=\"courseCode\">";
+    final static String fieldEndTag = "</Field>";
+
+    final static String tempFilename = "examreminder.tmp";
 
 	public String generateSearchUrl(String SearchTerm) {
 		String urlstring = searchmachineUrl;
@@ -57,7 +59,7 @@ public class TuGrazSearchCrawler implements Crawler {
 		return urlstring;
 	}
 
-    public String getResponseString(String searchUrl) {
+    public void getResponseAndWriteToFile(String searchUrl) {
         String uri = generateSearchUrl(searchUrl);
         HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
@@ -66,9 +68,9 @@ public class TuGrazSearchCrawler implements Crawler {
             response = httpclient.execute(new HttpGet(uri));
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                File file = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempFilename);
+                FileOutputStream out = new FileOutputStream(file);
                 response.getEntity().writeTo(out);
-                responseString = out.toString();
                 out.close();
             } else{
                 //Closes the connection.
@@ -80,43 +82,72 @@ public class TuGrazSearchCrawler implements Crawler {
         } catch (IOException e) {
             Log.v("SPAM", e.toString());
         }
-        return responseString;
+        return;
     }
 
 	@Override
 	public List<Course> getCourseList(String searchTerm) {
+        List<Course> foundCourse = new ArrayList<Course>();
+        getResponseAndWriteToFile("");
         Map<String, String> coursemap = new HashMap<String, String>();
-        String response = getResponseString(searchTerm);
-        String lines[] = response.split("\\r?\\n");
+        Map<String, String> currentModuleMap = new HashMap<String, String>();
+        File tempfile = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempFilename);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(tempfile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         int i = 0;
-        String currentCourseName = "";
-        String currentCourseID = "";
-        Log.v("SPAM", ""+lines.length);
-        for(String line :lines) {
+        String currentTagValue = "";
+        String currentTagAttribute = "";
+        String line;
+        Course currentCourse = null;
+        while (scanner.hasNextLine()) {
+            line = scanner.nextLine();
             if(line.contains("<MODULE_RESULT>")) {
-                i++;
-            }
+                currentModuleMap.clear();
+                while(scanner.hasNextLine()) {
+                    line = scanner.nextLine();
+                    if(line.contains("</MODULE_RESULT>")) {
+                        if(currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("CBO"))) {
+                            currentCourse = new Course();
+                            currentCourse.name = currentModuleMap.get("courseName");
+                            currentCourse.number = currentModuleMap.get("courseCode");
+                            currentCourse.term = currentModuleMap.get("teachingTerm");
+                            currentCourse.type = currentModuleMap.get("teachingActivityID");
+                            if(currentModuleMap.containsKey("persons_name")) {
+                                currentCourse.lecturer = currentModuleMap.get("persons_name");
+                            }
+                            else if(currentModuleMap.containsKey("persons_name1")) {
+                                currentCourse.lecturer = currentModuleMap.get("persons_name1");
+                            }
+                            Log.v("TuGrazSearchCrawler", foundCourse.size()+" courses added");
 
-            if(line.contains(FieldStartTagCourseName)) {
-                currentCourseName = line.substring(line.indexOf(FieldStartTagCourseName)+FieldStartTagCourseName.length(), line.indexOf(FieldEndTag));
+                            foundCourse.add(currentCourse);
 
-            }
-            if(line.contains(FieldStartTagCourseCode)) {
-                currentCourseID = line.substring(line.indexOf(FieldStartTagCourseCode)+FieldStartTagCourseCode.length(), line.indexOf(FieldEndTag));
-                if(!coursemap.containsKey(currentCourseID)) {
-                    coursemap.put(currentCourseID, currentCourseName);
-                }
-                Log.v("SPAM", i + ": " + currentCourseID + ", " + currentCourseName);
+                        }
+                        currentModuleMap.clear();
+                    }
+                    if(line.contains("<Field") && line.contains("</Field>")) {
+                        currentTagAttribute = line.substring(line.indexOf("=\"")+ 2, line.indexOf("\">"));
+                        currentTagValue = line.substring(line.indexOf("\">")+ 2, line.indexOf("</Field>"));
+                        currentModuleMap.put(currentTagAttribute, currentTagValue);
+
+                    }
+                    else if(line.contains("<Field>")) {
+                        // TODO: for very very long descriptions;
+                    }
+               }
             }
         }
-        Log.v("courseName", ""+i);
-        return null;
+
+        return foundCourse;
 	}
 
 	@Override
 	public SortedSet<Exam> getExams(Course course) {
-		// TODO Auto-generated method stub
-		return null;
+        return null;
 	}
 
 
