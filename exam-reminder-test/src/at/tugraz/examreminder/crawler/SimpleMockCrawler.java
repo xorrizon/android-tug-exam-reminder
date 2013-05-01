@@ -36,8 +36,8 @@ public class SimpleMockCrawler implements Crawler {
         return courses;
     }
 
-    public static List<Exam> createExams(){
-        List<Exam> exams = new ArrayList<Exam>();
+    public static SortedSet<Exam> createExams(){
+        SortedSet<Exam> exams = new TreeSet<Exam>();
         Calendar calender = new GregorianCalendar();
         Exam exam = new Exam();
         exam.lecturer = "Mr. Professor";
