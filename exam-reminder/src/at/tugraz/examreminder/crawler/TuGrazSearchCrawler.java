@@ -24,25 +24,29 @@ public class TuGrazSearchCrawler implements Crawler {
 		final static String searchmachineUrl = "http://search.tugraz.at/search";
 		HashMap<String, String> attributeList = new HashMap<String, String>() {{
 			put("q", "analysis"); // Searchstring
-			put("site", "Alle");  
-			put("btnG", "Suchen");  
-			put("client", "tug_portal");    
-			put("output", "xml_no_dtd");     
-			put("sort", "date%3AD%3AL%3Ad1");    
-			put("entqr", "3");    
-			put("entqrm", "0");    
-			put("entsp", "a");    
-			put("oe", "UTF-8");    
-			put("ie", "UTF-8");    
-			put("ud", "1");    
+			put("site", "Alle");
+			put("btnG", "Suchen");
+			put("client", "tug_portal");
+			put("output", "xml_no_dtd");
+			put("sort", "date%3AD%3AL%3Ad1");
+			put("entqr", "3");
+			put("entqrm", "0");
+			put("entsp", "a");
+			put("oe", "UTF-8");
+			put("ie", "UTF-8");
+			put("ud", "1");
 			put("filter", "1");
-            put("hl", "en"); // Language
+            put("hl", "de"); // Language
         }};
-		
-	public String generateSearchUrl() {
+
+    final static String FieldStartTagCourseName = "<Field name=\"courseName\">";
+    final static String FieldStartTagCourseCode = "<Field name=\"courseCode\">";
+    final static String FieldEndTag = "</Field>";
+
+	public String generateSearchUrl(String SearchTerm) {
 		String urlstring = searchmachineUrl;
 		//Set entrySet= attributeList.entrySet();
-		boolean isFirstAttribute = true; 
+		boolean isFirstAttribute = true;
 		for (Map.Entry<String, String> entry : attributeList.entrySet()) {
 			if(isFirstAttribute) {
 				urlstring += "?" + entry.getKey() + "=" + entry.getValue();
@@ -50,38 +54,63 @@ public class TuGrazSearchCrawler implements Crawler {
 			}
 			urlstring +=  "&" + entry.getKey() + "=" + entry.getValue();
 		}
-    
-		RequestTask reqtask = new RequestTask();
-	    Log.v("url", urlstring);
-		reqtask.execute(urlstring);
-		return "0";
-    
+		return urlstring;
 	}
 
-	@Override
-	public List<Course> getCourseList(String searchTerm) {
+    public String getResponseString(String searchUrl) {
+        String uri = generateSearchUrl(searchUrl);
         HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
         String responseString = null;
         try {
-            response = httpclient.execute(new HttpGet(uri[0]));
+            response = httpclient.execute(new HttpGet(uri));
             StatusLine statusLine = response.getStatusLine();
             if(statusLine.getStatusCode() == HttpStatus.SC_OK){
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 response.getEntity().writeTo(out);
+                responseString = out.toString();
                 out.close();
-            responseString = out.toString();
             } else{
                 //Closes the connection.
                 response.getEntity().getContent().close();
                 throw new IOException(statusLine.getReasonPhrase());
             }
         } catch (ClientProtocolException e) {
-                //TODO Handle problems..
+            Log.v("SPAM", e.toString());
         } catch (IOException e) {
-                //TODO Handle problems..
+            Log.v("SPAM", e.toString());
         }
-		return null;
+        return responseString;
+    }
+
+	@Override
+	public List<Course> getCourseList(String searchTerm) {
+        Map<String, String> coursemap = new HashMap<String, String>();
+        String response = getResponseString(searchTerm);
+        String lines[] = response.split("\\r?\\n");
+        int i = 0;
+        String currentCourseName = "";
+        String currentCourseID = "";
+        Log.v("SPAM", ""+lines.length);
+        for(String line :lines) {
+            if(line.contains("<MODULE_RESULT>")) {
+                i++;
+            }
+
+            if(line.contains(FieldStartTagCourseName)) {
+                currentCourseName = line.substring(line.indexOf(FieldStartTagCourseName)+FieldStartTagCourseName.length(), line.indexOf(FieldEndTag));
+
+            }
+            if(line.contains(FieldStartTagCourseCode)) {
+                currentCourseID = line.substring(line.indexOf(FieldStartTagCourseCode)+FieldStartTagCourseCode.length(), line.indexOf(FieldEndTag));
+                if(!coursemap.containsKey(currentCourseID)) {
+                    coursemap.put(currentCourseID, currentCourseName);
+                }
+                Log.v("SPAM", i + ": " + currentCourseID + ", " + currentCourseName);
+            }
+        }
+        Log.v("courseName", ""+i);
+        return null;
 	}
 
 	@Override
@@ -90,22 +119,5 @@ public class TuGrazSearchCrawler implements Crawler {
 		return null;
 	}
 
-	private List<String> getResultXml(String searchterm) {
-		System.out.println(generateSearchUrl());
-		return null;
-	}
-	
-	class RequestTask extends AsyncTask<String, String, String> {
-		@Override
 
-      return responseString;
-    } 
-
-    @Override
-    protected void onPostExecute(String result) {
-      super.onPostExecute(result);
-     Log.v("SPAM SPAM SPAM", ""+result.substring(1000, result.length()));
-    	}
-
-	}	
 }
