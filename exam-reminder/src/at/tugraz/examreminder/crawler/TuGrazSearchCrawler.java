@@ -147,7 +147,67 @@ public class TuGrazSearchCrawler implements Crawler {
 
 	@Override
 	public SortedSet<Exam> getExams(Course course) {
-        return null;
+        SortedSet<Exam> foundExams = new TreeSet<Exam>();
+        getResponseAndWriteToFile("");
+        Map<String, String> coursemap = new HashMap<String, String>();
+        Map<String, String> currentModuleMap = new HashMap<String, String>();
+        File tempfile = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempFilename);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(tempfile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        int i = 0;
+        String currentTagValue = "";
+        String currentTagAttribute = "";
+        String line;
+        Exam currentExam = null;
+        while (scanner.hasNextLine()) {
+            line = scanner.nextLine();
+            if(line.contains("<MODULE_RESULT>")) {
+                currentModuleMap.clear();
+                while(scanner.hasNextLine()) {
+                    line = scanner.nextLine();
+                    if(line.contains("</MODULE_RESULT>")) {
+                        if(currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("EBO"))) {
+                            currentExam = new Exam();
+
+                            //currentExam.from = new Date(currentModuleMap.get("examStart"));
+                            //currentExam.to = new Date(currentModuleMap.get("examEnd"));
+                            currentExam.place = currentModuleMap.get("examLocation");
+                            currentExam.term = currentModuleMap.get("teachingTerm");
+                            currentExam.lecturer = currentModuleMap.get("lecturer");
+                            currentExam.examinar = currentModuleMap.get("examinerName");
+                            currentExam.registrationStart = null;
+                            //currentExam.registrationEnd = new Date(currentModuleMap.get("examStart"));
+                            currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
+                            currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
+                            currentExam.updated_at = null;
+                            foundExams.add(currentExam);
+
+                        }
+                        currentModuleMap.clear();
+                    }
+                    if(line.contains("<Field") && line.contains("</Field>")) {
+                        currentTagAttribute = line.substring(line.indexOf("=\"")+ 2, line.indexOf("\">"));
+                        currentTagValue = line.substring(line.indexOf("\">")+ 2, line.indexOf("</Field>"));
+                        currentModuleMap.put(currentTagAttribute, currentTagValue);
+
+                    }
+                    else if(line.contains("<Field>")) {
+                        // TODO: for very very long descriptions;
+                    }
+                }
+            }
+        }
+
+        for(Exam exam : foundExams) {
+            Log.v("SPAM", "=================");
+            Log.v("SPAM", "exam.lecturer = " + exam.lecturer);
+            Log.v("SPAM", "exam.from = " + exam.from);
+        }
+        return foundExams;
 	}
 
 
