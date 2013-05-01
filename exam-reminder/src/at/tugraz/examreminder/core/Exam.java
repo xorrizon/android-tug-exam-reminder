@@ -15,6 +15,14 @@ public class Exam implements Comparable<Exam> {
 	public int participants_max;
 	public Date updated_at;
 
+    public Exam(){
+        from = new Date();
+        to = new Date();
+        registrationEnd = new Date();
+        registrationStart = new Date();
+        updated_at = new Date();
+    }
+
     @Override
     public int compareTo(Exam exam) {
         return from.compareTo(exam.from);
@@ -38,5 +46,22 @@ public class Exam implements Comparable<Exam> {
         equal &= participants_max == e.participants_max;
         equal &= updated_at.equals(e.updated_at);
         return equal;
+    }
+
+    @Override
+    public Exam clone() {
+        Exam exam = new Exam();
+        exam.from = from;
+        exam.to = to;
+        exam.place = place;
+        exam.term = term;
+        exam.lecturer = lecturer;
+        exam.examinar = examinar;
+        exam.registrationStart = registrationStart;
+        exam.registrationEnd = registrationEnd;
+        exam.participants = participants;
+        exam.participants_max = participants_max;
+        exam.updated_at = updated_at;
+        return exam;
     }
 }
