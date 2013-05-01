@@ -39,4 +39,21 @@ public class Exam implements Comparable<Exam> {
         equal &= updated_at.equals(e.updated_at);
         return equal;
     }
+
+    @Override
+    public Exam clone() {
+        Exam exam = new Exam();
+        exam.from = from;
+        exam.to = to;
+        exam.place = place;
+        exam.term = term;
+        exam.lecturer = lecturer;
+        exam.examinar = examinar;
+        exam.registrationStart = registrationStart;
+        exam.registrationEnd = registrationEnd;
+        exam.participants = participants;
+        exam.participants_max = participants_max;
+        exam.updated_at = updated_at;
+        return exam;
+    }
 }
