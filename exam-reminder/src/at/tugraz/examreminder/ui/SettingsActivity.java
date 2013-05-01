@@ -1,9 +1,8 @@
 package at.tugraz.examreminder.ui;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import android.content.Intent;
 import at.tugraz.examreminder.service.DailyListener;
+import at.tugraz.examreminder.service.UpdateService;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
 import android.content.Context;
@@ -13,6 +12,9 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import at.tugraz.examreminder.R;
+import com.commonsware.cwac.wakeful.WakefulIntentService;
+
+import java.util.Date;
 
 public class SettingsActivity extends SherlockPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 	
@@ -30,7 +32,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		addPreferencesFromResource(R.xml.preferences);
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
 		pref_updateNow = findPreference("pref_update_now");
-		update_updateFrequencySummery();
+		updateSummaries();
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -48,6 +50,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	public void onResume() {
 		super.onResume();
 		PreferenceManager.getDefaultSharedPreferences(context).registerOnSharedPreferenceChangeListener(this);
+        updateSummaries();
 	}
 
 	@Override
@@ -58,19 +61,24 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		if(key.equals("pref_update_frequency")) {
-			update_updateFrequencySummery();
+			updateSummaries();
 		}
         DailyListener.scheduleMe(context); //Always reschedule since most preferences affect this
 	}
 
-	private void update_updateFrequencySummery() {
+	private void updateSummaries() {
 		pref_updateFrequency.setSummary(pref_updateFrequency.getEntry());
+        Date time = new Date(PreferenceManager.getDefaultSharedPreferences(context).getLong("pref_last_update",0));
+        pref_updateNow.setSummary(getString(R.string.pref_update_now_summery) + time.toString());
 	}
 
 	private void handleUpdateNow() {
-		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-		String datetime = format.format(new Date());
-		String prefix = getString(R.string.pref_update_now_summery);
-		pref_updateNow.setSummary(prefix + datetime + " (didn't actually do anything)");
+		//SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
+		//String datetime = format.format(new Date());
+		//String prefix = getString(R.string.pref_update_now_summery);
+		//pref_updateNow.setSummary(prefix + datetime + " (didn't actually do anything)");
+        Intent intent = new Intent(getApplicationContext(), UpdateService.class);
+        intent.setAction("Blub");
+        WakefulIntentService.sendWakefulWork(getApplicationContext(), UpdateService.class);
 	}
 }

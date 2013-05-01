@@ -21,7 +21,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 	public static PendingIntent currentPendingIntent;
 
 	public static void scheduleMe(Context context) {
-		WakefulIntentService.scheduleAlarms(new DailyListener(), context, false);
+		WakefulIntentService.scheduleAlarms(new DailyListener(), context, true);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		Calendar calendar = Calendar.getInstance();
 
 		// if it's already after the target time, schedule first run for the next day
-		if(calendar.get(Calendar.HOUR_OF_DAY) >= update_hour){
+		if(calendar.get(Calendar.HOUR_OF_DAY) >= update_hour && calendar.get(Calendar.MINUTE) >= update_minute) {
 			calendar.add(Calendar.DAY_OF_YEAR, 1);
 		}
 		calendar.set(Calendar.HOUR_OF_DAY, update_hour);
@@ -51,6 +51,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		alarmManager.setInexactRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
 				AlarmManager.INTERVAL_DAY * update_interval, pendingIntent);
 
+        Log.i("DailyListener", "New schedule: " + calendar.getTime().toString());
 
 	}
 

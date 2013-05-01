@@ -15,5 +15,11 @@
         android:layout_height="wrap_content"
         android:text="Test notification"
     />
+    <Button
+            android:id="@+id/btn_change_crawler"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Change crawler"
+            />
 </LinearLayout>
 
