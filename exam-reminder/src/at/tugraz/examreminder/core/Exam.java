@@ -15,6 +15,14 @@ public class Exam implements Comparable<Exam> {
 	public int participants_max;
 	public Date updated_at;
 
+    public Exam(){
+        from = new Date();
+        to = new Date();
+        registrationEnd = new Date();
+        registrationStart = new Date();
+        updated_at = new Date();
+    }
+
     @Override
     public int compareTo(Exam exam) {
         return from.compareTo(exam.from);
