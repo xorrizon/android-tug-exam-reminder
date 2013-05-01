@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+import android.os.AsyncTask;
+import android.util.Log;
+import at.tugraz.examreminder.core.Course;
+import at.tugraz.examreminder.core.Exam;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -15,16 +18,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import android.os.AsyncTask;
-import android.util.Log;
-import at.tugraz.examreminder.core.Course;
-import at.tugraz.examreminder.core.Exam;
 
 public class TuGrazSearchCrawler implements Crawler {
 
 		final static String searchmachineUrl = "http://search.tugraz.at/search";
 		HashMap<String, String> attributeList = new HashMap<String, String>() {{
-			put("q", "hello");    
+			put("q", "analysis"); // Searchstring
 			put("site", "Alle");  
 			put("btnG", "Suchen");  
 			put("client", "tug_portal");    
@@ -36,12 +35,13 @@ public class TuGrazSearchCrawler implements Crawler {
 			put("oe", "UTF-8");    
 			put("ie", "UTF-8");    
 			put("ud", "1");    
-			put("filter", "1");    
-		}};
+			put("filter", "1");
+            put("hl", "en"); // Language
+        }};
 		
 	public String generateSearchUrl() {
 		String urlstring = searchmachineUrl;
-		Set entrySet= attributeList.entrySet();
+		//Set entrySet= attributeList.entrySet();
 		boolean isFirstAttribute = true; 
 		for (Map.Entry<String, String> entry : attributeList.entrySet()) {
 			if(isFirstAttribute) {
@@ -57,12 +57,30 @@ public class TuGrazSearchCrawler implements Crawler {
 		return "0";
     
 	}
-		
-		
 
 	@Override
 	public List<Course> getCourseList(String searchTerm) {
-		// TODO Auto-generated method stub
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpResponse response;
+        String responseString = null;
+        try {
+            response = httpclient.execute(new HttpGet(uri[0]));
+            StatusLine statusLine = response.getStatusLine();
+            if(statusLine.getStatusCode() == HttpStatus.SC_OK){
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                response.getEntity().writeTo(out);
+                out.close();
+            responseString = out.toString();
+            } else{
+                //Closes the connection.
+                response.getEntity().getContent().close();
+                throw new IOException(statusLine.getReasonPhrase());
+            }
+        } catch (ClientProtocolException e) {
+                //TODO Handle problems..
+        } catch (IOException e) {
+                //TODO Handle problems..
+        }
 		return null;
 	}
 
@@ -79,35 +97,14 @@ public class TuGrazSearchCrawler implements Crawler {
 	
 	class RequestTask extends AsyncTask<String, String, String> {
 		@Override
-		protected String doInBackground(String... uri) {
-    	HttpClient httpclient = new DefaultHttpClient();
-			HttpResponse response;
-			String responseString = null;
-      try {
-        response = httpclient.execute(new HttpGet(uri[0]));
-        StatusLine statusLine = response.getStatusLine();
-        if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        response.getEntity().writeTo(out);
-        out.close();
-        responseString = out.toString();
-        } else{
-        //Closes the connection.
-        response.getEntity().getContent().close();
-                                      throw new IOException(statusLine.getReasonPhrase());
-        }
-      } catch (ClientProtocolException e) {
-        //TODO Handle problems..
-      } catch (IOException e) {
-        //TODO Handle problems..
-      }
+
       return responseString;
     } 
 
     @Override
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
-     Log.v("SPAM SPAM SPAM", result);
+     Log.v("SPAM SPAM SPAM", ""+result.substring(1000, result.length()));
     	}
 
 	}	

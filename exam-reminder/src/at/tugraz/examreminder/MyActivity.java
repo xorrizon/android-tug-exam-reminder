@@ -17,9 +17,7 @@ public class MyActivity extends SherlockFragmentActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
-		Log.v("debug", crawler.generateSearchUrl());
-		setContentView(R.layout.main);
+        setContentView(R.layout.main);
 	}
 
 	@Override
