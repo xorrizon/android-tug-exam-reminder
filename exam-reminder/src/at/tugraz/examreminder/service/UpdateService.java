@@ -2,6 +2,7 @@ package at.tugraz.examreminder.service;
 
 
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import at.tugraz.examreminder.crawler.Crawler;
 import at.tugraz.examreminder.crawler.TuGrazSearchCrawler;
 import com.commonsware.cwac.wakeful.WakefulIntentService;
@@ -26,5 +27,6 @@ public class UpdateService extends WakefulIntentService {
 	@Override
 	protected void doWakefulWork(Intent intent) {
 		//@TODO
+		PreferenceManager.getDefaultSharedPreferences(this).edit().putLong("pref_last_update", System.currentTimeMillis()).commit();
 	}
 }
