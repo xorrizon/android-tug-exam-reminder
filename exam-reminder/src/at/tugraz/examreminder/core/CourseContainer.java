@@ -16,6 +16,10 @@ public class CourseContainer extends Observable {
 		return instance;
 	}
 
+    public Course get(int location) {
+        return courses.get(location);
+    }
+
     public void add(Course course) {
         courses.add(course);
         setChanged();
@@ -23,6 +27,11 @@ public class CourseContainer extends Observable {
 
     public void remove(Course course) {
         courses.remove(course);
+        setChanged();
+    }
+
+    public void clear() {
+        courses.clear();
         setChanged();
     }
 

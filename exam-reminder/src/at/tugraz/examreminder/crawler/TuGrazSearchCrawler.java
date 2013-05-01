@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.SortedSet;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -114,7 +114,7 @@ public class TuGrazSearchCrawler implements Crawler {
 	}
 
 	@Override
-	public List<Exam> getExams(Course course) {
+	public SortedSet<Exam> getExams(Course course) {
 		// TODO Auto-generated method stub
 		return null;
 	}
