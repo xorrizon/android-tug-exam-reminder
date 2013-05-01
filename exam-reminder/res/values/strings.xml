@@ -18,4 +18,8 @@
     <string name="pref_update_now_summery">Last update:</string>
     <string name="never">Never</string>
     <string name="pref_update_wifi_only">Update on Wifi only</string>
+    <string name="pref_update_time">Time to run update</string>
+    <string name="set">Set</string>
+    <string name="cancel">Cancel</string>
+    <string name="pref_update_time_summery">When to update</string>
 </resources>
