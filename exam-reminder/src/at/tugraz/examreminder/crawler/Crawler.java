@@ -7,6 +7,6 @@ import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.Exam;
 
 public interface Crawler {
-	public SortedSet<Course> getCourseList(String searchTerm);
-	public List<Exam> getExams(Course course);
+	public List<Course> getCourseList(String searchTerm);
+	public SortedSet<Exam> getExams(Course course);
 }

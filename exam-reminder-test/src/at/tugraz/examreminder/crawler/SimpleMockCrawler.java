@@ -13,12 +13,12 @@ public class SimpleMockCrawler implements Crawler {
     }
 
     @Override
-    public SortedSet<Course> getCourseList(String searchTerm) {
+    public List<Course> getCourseList(String searchTerm) {
         return createCourses();
     }
 
     @Override
-    public List<Exam> getExams(Course course) {
+    public SortedSet<Exam> getExams(Course course) {
         return createExams();
     }
 
