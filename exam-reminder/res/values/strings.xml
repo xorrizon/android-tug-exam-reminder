@@ -16,4 +16,6 @@
     <string name="settings">Settings</string>
     <string name="pref_update_now">Update Now</string>
     <string name="pref_update_now_summery">Last update:</string>
+    <string name="never">Never</string>
+    <string name="pref_update_wifi_only">Update on Wifi only</string>
 </resources>

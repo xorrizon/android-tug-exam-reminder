@@ -24,7 +24,11 @@
             android:dialogTitle="@string/pref_update_frequency"
             android:entries="@array/pref_update_frequency_entries"
             android:entryValues="@array/pref_update_frequency_values"
-            android:defaultValue="@string/once_a_day" />
+            android:defaultValue="1" />
+        <CheckBoxPreference
+            android:key="pref_update_wifi_only"
+            android:title="@string/pref_update_wifi_only"
+            android:defaultValue="false" />
         <Preference
             android:key="pref_update_now"
             android:title="@string/pref_update_now"

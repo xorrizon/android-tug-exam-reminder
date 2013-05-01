@@ -3,6 +3,7 @@ package at.tugraz.examreminder.ui;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import at.tugraz.examreminder.service.DailyListener;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
 import android.content.Context;
@@ -25,11 +26,12 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		context = getApplicationContext();
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 		addPreferencesFromResource(R.xml.preferences);
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
 		pref_updateNow = findPreference("pref_update_now");
 		update_updateFrequencySummery();
-		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		pref_updateNow.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -57,6 +59,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		if(key.equals("pref_update_frequency")) {
 			update_updateFrequencySummery();
+			DailyListener.scheduleMe(context);
 		}
 	}
 
