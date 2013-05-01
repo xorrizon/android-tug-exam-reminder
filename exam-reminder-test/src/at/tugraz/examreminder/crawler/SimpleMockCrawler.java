@@ -6,9 +6,38 @@ import at.tugraz.examreminder.core.Exam;
 import java.util.*;
 
 public class SimpleMockCrawler implements Crawler {
-    List<Exam> exams = new ArrayList<Exam>();
 
     public SimpleMockCrawler() {
+
+
+    }
+
+    @Override
+    public List<Course> getCourseList(String searchTerm) {
+        return createCourses();
+    }
+
+    @Override
+    public List<Exam> getExams(Course course) {
+        return createExams();
+    }
+
+    public static List<Course> createCourses() {
+        List<Course> courses = new ArrayList<Course>();
+        Course course = new Course();
+        course.name = "THE COURSE";
+        course.exams = new TreeSet<Exam>(createExams());
+        course.lecturer = "Our leader";
+        course.number = "course.101";
+        course.term = "SS";
+        course.type = "VO";
+
+        courses.add(course);
+        return courses;
+    }
+
+    public static List<Exam> createExams(){
+        List<Exam> exams = new ArrayList<Exam>();
         Calendar calender = new GregorianCalendar();
         Exam exam = new Exam();
         exam.lecturer = "Mr. Professor";
@@ -26,24 +55,6 @@ public class SimpleMockCrawler implements Crawler {
         exam.to = calender.getTime();
         exams.add(exam.clone());
 
-    }
-
-    @Override
-    public List<Course> getCourseList(String searchTerm) {
-        Course course = new Course();
-        course.name = "THE COURSE";
-        course.exams = new TreeSet<Exam>(exams);
-        course.lecturer = "Our leader";
-        course.number = "course.101";
-        course.term = "SS";
-        course.type = "VO";
-        List<Course> courses = new ArrayList<Course>();
-        courses.add(course);
-        return courses;
-    }
-
-    @Override
-    public List<Exam> getExams(Course course) {
         return exams;
     }
 }
