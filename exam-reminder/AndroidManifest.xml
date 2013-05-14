@@ -45,8 +45,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.SettingsActivity"
             android:label="@string/settings">
+        </activity>
+
+        <activity android:name=".ui.MainActivity"
+                  android:theme="@style/Theme.PageIndicatorDefaults">
+         <!--  @TODO Make own theme: http://droidista.blogspot.co.at/2012/08/making-actionbarsherlock-and.html -->
         </activity>
     </application>
 </manifest>

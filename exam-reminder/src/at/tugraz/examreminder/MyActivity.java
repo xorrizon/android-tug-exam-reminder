@@ -8,6 +8,7 @@ import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.crawler.SimpleMockCrawler;
 import at.tugraz.examreminder.crawler.TuGrazSearchCrawler;
 import at.tugraz.examreminder.service.UpdateService;
+import at.tugraz.examreminder.ui.MainActivity;
 import at.tugraz.examreminder.ui.NotificationFactory;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -26,6 +27,7 @@ public class MyActivity extends SherlockFragmentActivity implements View.OnClick
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+        findViewById(R.id.btn_start_main_activity).setOnClickListener(this);
         findViewById(R.id.btn_test_notification).setOnClickListener(this);
         findViewById(R.id.btn_change_crawler).setOnClickListener(this);
 
@@ -51,6 +53,10 @@ public class MyActivity extends SherlockFragmentActivity implements View.OnClick
     @Override
     public void onClick(View v) {
        switch (v.getId()){
+           case R.id.btn_start_main_activity:
+               Intent intent = new Intent(this, MainActivity.class);
+               startActivity(intent);
+               break;
            case R.id.btn_test_notification:
                NotificationFactory notificationFactory = new NotificationFactory(this);
                Notification notification = notificationFactory.createNewOrChangedExamsNotification();
