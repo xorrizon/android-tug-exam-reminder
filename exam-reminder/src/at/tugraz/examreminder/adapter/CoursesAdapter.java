@@ -14,6 +14,11 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.manuelpeinado.multichoiceadapter.MultiChoiceBaseAdapter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 public class CoursesAdapter extends MultiChoiceBaseAdapter {
 
     public CoursesAdapter(Bundle savedInstanceState) {
@@ -49,6 +54,21 @@ public class CoursesAdapter extends MultiChoiceBaseAdapter {
         return group;
     }
 
+    private void discardSelectedItems() {
+        Set<Long> selection = getCheckedItems();
+        Course[] courses = new Course[selection.size()];
+        int i = 0;
+        for (long position : selection) {
+            courses[i++] = getItem((int)position);
+        }
+        for (Course course : courses) {
+            CourseContainer.instance().remove(course);
+        }
+        CourseContainer.instance().notifyObservers();
+        notifyDataSetChanged();
+        finishActionMode();
+    }
+
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         mode.getMenuInflater().inflate(R.menu.courses_action_menu, menu);
@@ -59,6 +79,7 @@ public class CoursesAdapter extends MultiChoiceBaseAdapter {
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         if(item.getItemId() == R.id.delete){
             Toast.makeText(getContext(), "Delete", Toast.LENGTH_SHORT).show();
+            discardSelectedItems();
             return true;
         }
         return false;

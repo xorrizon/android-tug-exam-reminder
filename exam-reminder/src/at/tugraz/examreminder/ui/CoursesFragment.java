@@ -12,11 +12,14 @@ import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.adapter.CoursesAdapter;
 import at.tugraz.examreminder.core.CourseContainer;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class CoursesFragment extends SherlockFragment implements Observer {
+public class CoursesFragment extends SherlockFragment{
 
     private ListView courses_list_view;
     private CoursesAdapter adapter;
@@ -24,13 +27,27 @@ public class CoursesFragment extends SherlockFragment implements Observer {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CourseContainer.instance().addObserver(this);
+        setHasOptionsMenu(true);
     }
 
     @Override
     public void onDestroy() {
-        CourseContainer.instance().deleteObserver(this);
         super.onDestroy();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.courses_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.add){
+            Toast.makeText(getActivity(), "Add Course", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -47,9 +64,4 @@ public class CoursesFragment extends SherlockFragment implements Observer {
         return layout;
     }
 
-    @Override
-    public void update(Observable observable, Object data) {
-        if(adapter != null)
-            adapter.notifyDataSetChanged();
-    }
 }
