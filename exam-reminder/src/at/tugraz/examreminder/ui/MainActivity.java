@@ -25,7 +25,7 @@ public class MainActivity extends SherlockFragmentActivity {
     }
 
     class FragmentAdapter extends FragmentPagerAdapter {
-        private final String[] CONTENT = new String[] { "Test1", "Test2", "Test3" };
+        private final String[] CONTENT = new String[] { "Courses", "Test2", "Test3" };
 
         public FragmentAdapter(FragmentManager fm) {
             super(fm);
@@ -33,7 +33,10 @@ public class MainActivity extends SherlockFragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+            if(position == 0)
+                return new CoursesFragment();
+            else
+                return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
         }
 
         @Override
