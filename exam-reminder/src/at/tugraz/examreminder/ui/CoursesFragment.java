@@ -11,12 +11,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.adapter.CheckableCoursesAdapter;
+import at.tugraz.examreminder.core.CourseContainer;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-public class CoursesFragment extends SherlockFragment{
+import java.util.Observable;
+import java.util.Observer;
+
+public class CoursesFragment extends SherlockFragment implements Observer{
 
     private ListView courses_list_view;
     private CheckableCoursesAdapter adapter;
@@ -25,11 +29,18 @@ public class CoursesFragment extends SherlockFragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        CourseContainer.instance().addObserver(this);
     }
 
     @Override
     public void onDestroy() {
+        CourseContainer.instance().deleteObserver(this);
         super.onDestroy();
+    }
+
+    @Override
+    public void update(Observable observable, Object data) {
+        adapter.notifyDataSetChanged();
     }
 
     @Override

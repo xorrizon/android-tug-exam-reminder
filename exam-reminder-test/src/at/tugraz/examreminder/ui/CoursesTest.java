@@ -5,7 +5,9 @@ import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
+import at.tugraz.examreminder.crawler.SimpleMockCrawler;
 import at.tugraz.examreminder.service.DailyListener;
+import at.tugraz.examreminder.service.UpdateService;
 import com.jayway.android.robotium.solo.Solo;
 
 import java.util.TreeSet;
@@ -23,6 +25,7 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         super.setUp();
         populateCourseList();
         DailyListener.setNewPendingIntentAndCancelOld(getActivity(), null); //Cancel schedule
+        UpdateService.setCrawlerToUse(SimpleMockCrawler.class);
         solo = new Solo(getInstrumentation(), getActivity());
     }
 
@@ -44,6 +47,19 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
                 assertFalse(solo.searchText("Course #"+i));
             }
         }
+    }
+
+    public void testAddCourse() {
+        solo.clickOnView(getActivity().findViewById(R.id.add));
+        int oldsize = CourseContainer.instance().size();
+        solo.enterText(0, "Course");
+        solo.clickOnEditText(0);
+        solo.sendKey(Solo.ENTER);
+        solo.waitForText("THE COURSE #2", 1, 5);
+        solo.clickOnText("THE COURSE #2");
+        solo.waitForText("Courses", 1, 5);
+        assertEquals(oldsize+1, CourseContainer.instance().size());
+        assertTrue(solo.searchText("THE COURSE #2", 1, true));
     }
 
 

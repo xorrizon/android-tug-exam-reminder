@@ -36,7 +36,7 @@ public class UpdateService extends WakefulIntentService {
         return crawler_to_use;
     }
 
-    protected static Crawler getCrawlerInstance(){
+    public static Crawler getCrawlerInstance(){
         Crawler crawler = null;
         try {
             if(crawler_to_use != null)
