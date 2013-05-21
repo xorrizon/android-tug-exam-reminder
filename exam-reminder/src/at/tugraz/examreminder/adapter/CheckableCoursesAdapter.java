@@ -19,9 +19,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class CoursesAdapter extends MultiChoiceBaseAdapter {
+public class CheckableCoursesAdapter extends MultiChoiceBaseAdapter {
 
-    public CoursesAdapter(Bundle savedInstanceState) {
+    public CheckableCoursesAdapter(Bundle savedInstanceState) {
         super(savedInstanceState);
     }
 

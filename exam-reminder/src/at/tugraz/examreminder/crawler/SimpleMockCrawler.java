@@ -24,15 +24,25 @@ public class SimpleMockCrawler implements Crawler {
 
     public static List<Course> createCourses() {
         List<Course> courses = new ArrayList<Course>();
+
         Course course = new Course();
-        course.name = "THE COURSE";
+        course.name = "THE COURSE #1";
         course.exams = new TreeSet<Exam>(createExams());
         course.lecturer = "Our leader";
         course.number = "course.101";
         course.term = "SS";
         course.type = "VO";
-
         courses.add(course);
+
+        Course course2 = new Course();
+        course2.name = "THE COURSE #2";
+        course2.exams = new TreeSet<Exam>(createExams());
+        course2.lecturer = "Our leader";
+        course2.number = "course.102";
+        course2.term = "SS";
+        course2.type = "VO";
+        courses.add(course2);
+
         return courses;
     }
 

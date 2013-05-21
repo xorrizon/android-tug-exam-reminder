@@ -52,5 +52,6 @@
         <activity android:name=".ui.MainActivity">
          <!--  @TODO Make own theme: http://droidista.blogspot.co.at/2012/08/making-actionbarsherlock-and.html -->
         </activity>
+        <activity android:name=".ui.AddCourseActivity"/>
     </application>
 </manifest>
