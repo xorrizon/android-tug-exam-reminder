@@ -20,6 +20,10 @@ public class CourseContainer extends Observable {
         return courses.get(location);
     }
 
+    public boolean contains(Course course){
+        return courses.contains(course);
+    }
+
     public void add(Course course) {
         courses.add(course);
         setChanged();
@@ -43,4 +47,8 @@ public class CourseContainer extends Observable {
         return courses.size();
     }
 
+    @Override
+    public void setChanged() {
+        super.setChanged();
+    }
 }

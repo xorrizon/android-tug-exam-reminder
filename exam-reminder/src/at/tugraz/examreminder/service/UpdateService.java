@@ -1,11 +1,15 @@
 package at.tugraz.examreminder.service;
 
 
+import android.app.Notification;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import at.tugraz.examreminder.core.Course;
+import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
 import at.tugraz.examreminder.crawler.Crawler;
 import at.tugraz.examreminder.crawler.TuGrazSearchCrawler;
+import at.tugraz.examreminder.ui.NotificationFactory;
 import com.commonsware.cwac.wakeful.WakefulIntentService;
 
 import java.util.Set;
@@ -28,7 +32,11 @@ public class UpdateService extends WakefulIntentService {
         crawler_to_use = crawler;
 	}
 
-    protected static Crawler getCrawlerInstance(){
+    public static Class<? extends Crawler> getCrawlerToUse() {
+        return crawler_to_use;
+    }
+
+    public static Crawler getCrawlerInstance(){
         Crawler crawler = null;
         try {
             if(crawler_to_use != null)
@@ -60,6 +68,22 @@ public class UpdateService extends WakefulIntentService {
 	@Override
 	protected void doWakefulWork(Intent intent) {
         Crawler crawler = getCrawlerInstance();
+        boolean new_exams = false;
+        for(int i = 0; i < CourseContainer.instance().size(); i++) {
+            Course course = CourseContainer.instance().get(i);
+            SortedSet<Exam> exams = crawler.getExams(course);
+            if(!new_exams && compareExamList(course.exams, exams)){
+                new_exams = true;
+            }
+            course.exams = exams;
+        }
+        CourseContainer.instance().setChanged();
+        CourseContainer.instance().notifyObservers();
+        if(new_exams) {
+            NotificationFactory notificationFactory = new NotificationFactory(this);
+            Notification notification = notificationFactory.createNewOrChangedExamsNotification();
+            notificationFactory.sendNotification(notification);
+        }
 		PreferenceManager.getDefaultSharedPreferences(this).edit().putLong("pref_last_update", System.currentTimeMillis()).commit();
 	}
 }

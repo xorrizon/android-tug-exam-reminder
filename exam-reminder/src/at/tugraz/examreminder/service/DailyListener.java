@@ -14,7 +14,6 @@ import com.commonsware.cwac.wakeful.WakefulIntentService;
 import java.util.Calendar;
 
 public class DailyListener implements WakefulIntentService.AlarmListener {
-	private static final int HOUR_OF_DAY_TO_RUN = 12;
 
 	//@TODO Note to self: Schedule the alarm on app start with scheduleMe()
 	//@TODO And don't forget to reset it if settings have changed!
@@ -22,7 +21,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 	public static PendingIntent currentPendingIntent;
 
 	public static void scheduleMe(Context context) {
-		WakefulIntentService.scheduleAlarms(new DailyListener(), context, false);
+		WakefulIntentService.scheduleAlarms(new DailyListener(), context, true);
 	}
 
 	@Override
@@ -32,14 +31,19 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		if(update_interval <= 0)
 			return;
 
+        String update_time = PreferenceManager.getDefaultSharedPreferences(context).getString("pref_update_time", "12:00");
+        String[] update_time_parts = update_time.split(":");
+        int update_hour = Integer.parseInt(update_time_parts[0]);
+        int update_minute = Integer.parseInt(update_time_parts[1]);
+
 		Calendar calendar = Calendar.getInstance();
 
 		// if it's already after the target time, schedule first run for the next day
-		if(calendar.get(Calendar.HOUR_OF_DAY) >= HOUR_OF_DAY_TO_RUN){
+		if(calendar.get(Calendar.HOUR_OF_DAY) >= update_hour && calendar.get(Calendar.MINUTE) >= update_minute) {
 			calendar.add(Calendar.DAY_OF_YEAR, 1);
 		}
-		calendar.set(Calendar.HOUR_OF_DAY, HOUR_OF_DAY_TO_RUN);
-		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.HOUR_OF_DAY, update_hour);
+		calendar.set(Calendar.MINUTE, update_minute);
 		calendar.set(Calendar.SECOND, 0);
 
 		setNewPendingIntentAndCancelOld(context, pendingIntent);
@@ -47,6 +51,7 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		alarmManager.setInexactRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
 				AlarmManager.INTERVAL_DAY * update_interval, pendingIntent);
 
+        Log.i("DailyListener", "New schedule: " + calendar.getTime().toString());
 
 	}
 

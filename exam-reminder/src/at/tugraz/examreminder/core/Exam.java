@@ -36,15 +36,15 @@ public class Exam implements Comparable<Exam> {
         boolean equal = true;
         equal &= from.equals(e.from);
         equal &= to.equals(e.to);
-        equal &= place.equals(e.place);
-        equal &= term.equals(e.term);
-        equal &= lecturer.equals(e.lecturer);
-        equal &= examinar.equals(e.examinar);
-        equal &= registrationStart.equals(e.registrationStart);
-        equal &= registrationEnd.equals(e.registrationEnd);
-        equal &= participants == e.participants;
-        equal &= participants_max == e.participants_max;
-        equal &= updated_at.equals(e.updated_at);
+//        equal &= place.equals(e.place);
+//        equal &= term.equals(e.term);
+//        equal &= lecturer.equals(e.lecturer);
+//        equal &= examinar.equals(e.examinar);
+//        equal &= registrationStart.equals(e.registrationStart);
+//        equal &= registrationEnd.equals(e.registrationEnd);
+//        equal &= participants == e.participants;
+//        equal &= participants_max == e.participants_max;
+//        equal &= updated_at.equals(e.updated_at);
         return equal;
     }
 

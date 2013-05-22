@@ -38,7 +38,7 @@ public class UpdateServiceTest extends InstrumentationTestCase {
     public void testCompareExamList() {
 
         CourseContainer.instance().add(SimpleMockCrawler.createCourses().get(0));
-        SortedSet<Exam> exams = new TreeSet<Exam>(SimpleMockCrawler.createExams());
+        SortedSet<Exam> exams = SimpleMockCrawler.createExams();
         boolean new_exams;
 
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);
@@ -49,7 +49,7 @@ public class UpdateServiceTest extends InstrumentationTestCase {
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);
         assertTrue("After changing the times compareExamList should return true", new_exams);
 
-        exams = new TreeSet<Exam>(SimpleMockCrawler.createExams());
+        exams = SimpleMockCrawler.createExams();
         Exam another_exam = exams.first().clone();
         another_exam.from = (new GregorianCalendar(2014,1,3,13,0)).getTime();
         another_exam.to = (new GregorianCalendar(2014,1,3,14,0)).getTime();
