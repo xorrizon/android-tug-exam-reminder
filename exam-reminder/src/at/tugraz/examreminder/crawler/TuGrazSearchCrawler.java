@@ -23,8 +23,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 public class TuGrazSearchCrawler implements Crawler {
 
-    final static String SEARCH_MACHINE_URI = "http://search.tugraz.at/search";
-    HashMap<String, String> SEARCH_MACHINE_URLI_ATTRIBUTES = new HashMap<String, String>() {{
+    private final static String SEARCH_MACHINE_URI = "http://search.tugraz.at/search";
+    private HashMap<String, String> SEARCH_MACHINE_URLI_ATTRIBUTES = new HashMap<String, String>() {{
         put("q", ""); // Searchstring
         put("site", "Alle");
         put("btnG", "Suchen");
@@ -41,12 +41,13 @@ public class TuGrazSearchCrawler implements Crawler {
         put("hl", "de"); // Language
     }};
 
-    final static SimpleDateFormat SEARCH_MACHINE_RESULTS_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    private final static SimpleDateFormat SEARCH_MACHINE_RESULTS_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
-    final static String tempSearchDataXmlFilename = "examreminder.tmp";
+    private final static String tempCoursesSearchDataXmlFilename = "examreminder.courses.tmp";
+    private final static String tempExamsSearchDataXmlFilename = "examreminder.exams.tmp";
 
 
-    public String generateSearchUrl(String searchTerm) {
+    private String generateSearchUrl(String searchTerm) {
         String searchUrl = "";
         searchUrl += SEARCH_MACHINE_URI;
         SEARCH_MACHINE_URLI_ATTRIBUTES.remove("q");
@@ -63,7 +64,7 @@ public class TuGrazSearchCrawler implements Crawler {
         return searchUrl;
     }
 
-    public void getResponseXmlAndWriteToFile(String searchTerm) {
+    private void getResponseXmlAndWriteToFile(String searchTerm, File file) {
         String searchUrl = generateSearchUrl(searchTerm);
         HttpClient httpClient = new DefaultHttpClient();
         HttpResponse httpResponse;
@@ -71,7 +72,6 @@ public class TuGrazSearchCrawler implements Crawler {
             httpResponse = httpClient.execute(new HttpGet(searchUrl));
             StatusLine statusLine = httpResponse.getStatusLine();
             if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
-                File file = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempSearchDataXmlFilename);
                 FileOutputStream fileOutputStream = new FileOutputStream(file);
                 httpResponse.getEntity().writeTo(fileOutputStream);
                 fileOutputStream.close();
@@ -87,15 +87,40 @@ public class TuGrazSearchCrawler implements Crawler {
     }
 
     @Override
-    public List<Course> getCourseList(String searchTerm) {
+    public synchronized List<Course> getCourseList(String searchTerm) {
+        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempCoursesSearchDataXmlFilename);
+        getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
         List<Course> foundCourse = new ArrayList<Course>();
-        getResponseXmlAndWriteToFile("");
+
+        try {
+            foundCourse = getCourseListFromFile(tempFileOnDevice);
+        } catch (IOException e) {
+            Log.v("TuGrazSearchCrawler", e.toString());
+        }
+        return foundCourse;
+    }
+
+    @Override
+    public synchronized SortedSet<Exam> getExams(Course course) {
+        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempExamsSearchDataXmlFilename);
+        getResponseXmlAndWriteToFile(course.number, tempFileOnDevice);
+        SortedSet<Exam> foundExams = new TreeSet<Exam>();
+
+        try {
+            foundExams = getExamsFromFile(tempFileOnDevice);
+        } catch (IOException e) {
+            Log.v("TuGrazSearchCrawler", e.toString());
+        }
+        return foundExams;
+    }
+
+    public List<Course> getCourseListFromFile(File file) throws IOException {
+        List<Course> foundCourse = new ArrayList<Course>();
         Map<String, String> currentModuleMap = new HashMap<String, String>();
-        File tempfile = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempSearchDataXmlFilename);
         Scanner scanner = null;
 
         try {
-            scanner = new Scanner(tempfile);
+            scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             Log.v("TuGrazSearchCrawler", e.toString());
         }
@@ -114,7 +139,7 @@ public class TuGrazSearchCrawler implements Crawler {
                     currentLine = scanner.nextLine();
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("CBO"))) {
-                            currentCourse = new Course();
+                            currentCourse = new at.tugraz.examreminder.core.Course();
                             currentCourse.name = currentModuleMap.get("courseName");
                             currentCourse.number = currentModuleMap.get("courseCode");
                             currentCourse.term = currentModuleMap.get("teachingTerm");
@@ -124,9 +149,7 @@ public class TuGrazSearchCrawler implements Crawler {
                             } else if (currentModuleMap.containsKey("persons_name1")) {
                                 currentCourse.lecturer = currentModuleMap.get("persons_name1");
                             }
-
                             foundCourse.add(currentCourse);
-
                         }
                         currentModuleMap.clear();
                     }
@@ -134,29 +157,25 @@ public class TuGrazSearchCrawler implements Crawler {
                         currentTagAttribute = currentLine.substring(currentLine.indexOf("=\"") + 2, currentLine.indexOf("\">"));
                         currentTagValue = currentLine.substring(currentLine.indexOf("\">") + 2, currentLine.indexOf("</Field>"));
                         currentModuleMap.put(currentTagAttribute, currentTagValue);
-
                     } else if (currentLine.contains("<Field>")) {
-                        // TODO: for very very long descriptions;
+                        throw new IOException("Format of returned data not recognized!");
                     }
                 }
             }
         }
-
         return foundCourse;
     }
 
-    @Override
-    public SortedSet<Exam> getExams(Course course) {
+    public SortedSet<Exam> getExamsFromFile(File file) throws IOException{
         SortedSet<Exam> foundExams = new TreeSet<Exam>();
-        getResponseXmlAndWriteToFile("");
         Map<String, String> currentModuleMap = new HashMap<String, String>();
-        File tempfile = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempSearchDataXmlFilename);
-        Scanner scanner = null;
+        Scanner scanner;
 
         try {
-            scanner = new Scanner(tempfile);
+            scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             Log.v("TuGrazSearchCrawler", e.toString());
+            throw new IOException("File Not Found!");
         }
 
         String currentTagValue;
@@ -173,17 +192,11 @@ public class TuGrazSearchCrawler implements Crawler {
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("EBO"))) {
                             currentExam = new Exam();
-
                             try {
                                 currentExam.from = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
-                            } catch (ParseException e) {
-                                currentExam.from = null;
-                            }
-
-                            try {
                                 currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd"));
                             } catch (ParseException e) {
-                                currentExam.to = null;
+                                throw new IOException("Dateformat of returned data not recognized!");
                             }
                             currentExam.place = currentModuleMap.get("examLocation");
                             currentExam.term = currentModuleMap.get("teachingTerm");
@@ -193,13 +206,12 @@ public class TuGrazSearchCrawler implements Crawler {
                             try {
                                 currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
                             } catch (ParseException e) {
-                                currentExam.to = null;
+                                throw new IOException("Dateformat of returned data not recognized!");
                             }
                             currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
                             currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
                             currentExam.updated_at = null;
                             foundExams.add(currentExam);
-
                         }
                         currentModuleMap.clear();
                     }
@@ -207,14 +219,12 @@ public class TuGrazSearchCrawler implements Crawler {
                         currentTagAttribute = currentLine.substring(currentLine.indexOf("=\"") + 2, currentLine.indexOf("\">"));
                         currentTagValue = currentLine.substring(currentLine.indexOf("\">") + 2, currentLine.indexOf("</Field>"));
                         currentModuleMap.put(currentTagAttribute, currentTagValue);
-
                     } else if (currentLine.contains("<Field>")) {
-                        // TODO: for very very long descriptions;
+                        throw new IOException("Format of returned data not recognized!");
                     }
                 }
             }
         }
-
         return foundExams;
     }
 }
