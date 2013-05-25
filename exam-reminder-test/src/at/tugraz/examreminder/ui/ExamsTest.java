@@ -40,12 +40,6 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
         solo.clickOnText("Exams");
         View exam_view;
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-
         exam_view = solo.getView(R.id.exam_item, 0);
         assertEquals("Course #1", ((TextView)exam_view.findViewById(R.id.course_text)).getText());
         assertEquals("0", ((TextView)exam_view.findViewById(R.id.days_text)).getText());
