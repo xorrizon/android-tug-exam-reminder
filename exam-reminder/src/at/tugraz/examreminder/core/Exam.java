@@ -1,8 +1,11 @@
 package at.tugraz.examreminder.core;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Exam implements Comparable<Exam> {
+    public static transient String DATE_FORMAT = "dd.MM.yyyy HH:mm";
+    public transient Course course;
 	public Date from;
 	public Date to;
 	public String place;
@@ -15,12 +18,29 @@ public class Exam implements Comparable<Exam> {
 	public int participants_max;
 	public Date updated_at;
 
-    public Exam(){
+    public Exam(Course course){
+        this.course = course;
         from = new Date();
         to = new Date();
         registrationEnd = new Date();
         registrationStart = new Date();
         updated_at = new Date();
+    }
+
+    public String getFrom() {
+        return new SimpleDateFormat(DATE_FORMAT).format(from);
+    }
+
+    public String getTo() {
+        return new SimpleDateFormat(DATE_FORMAT).format(to);
+    }
+
+    public String getRegistrationStart() {
+        return new SimpleDateFormat(DATE_FORMAT).format(registrationStart);
+    }
+
+    public String getRegistrationEnd() {
+        return new SimpleDateFormat(DATE_FORMAT).format(registrationEnd);
     }
 
     @Override
@@ -50,7 +70,7 @@ public class Exam implements Comparable<Exam> {
 
     @Override
     public Exam clone() {
-        Exam exam = new Exam();
+        Exam exam = new Exam(course);
         exam.from = from;
         exam.to = to;
         exam.place = place;

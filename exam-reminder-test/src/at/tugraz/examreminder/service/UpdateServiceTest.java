@@ -5,14 +5,13 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 import android.test.InstrumentationTestCase;
 import at.tugraz.examreminder.R;
+import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
 import at.tugraz.examreminder.crawler.SimpleMockCrawler;
 
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 public class UpdateServiceTest extends InstrumentationTestCase {
     private Context context;
@@ -37,8 +36,9 @@ public class UpdateServiceTest extends InstrumentationTestCase {
 
     public void testCompareExamList() {
 
-        CourseContainer.instance().add(SimpleMockCrawler.createCourses().get(0));
-        SortedSet<Exam> exams = SimpleMockCrawler.createExams();
+        Course course = SimpleMockCrawler.createCourses().get(0);
+        CourseContainer.instance().add(course);
+        SortedSet<Exam> exams = SimpleMockCrawler.createExams(course);
         boolean new_exams;
 
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);
@@ -49,7 +49,7 @@ public class UpdateServiceTest extends InstrumentationTestCase {
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);
         assertTrue("After changing the times compareExamList should return true", new_exams);
 
-        exams = SimpleMockCrawler.createExams();
+        exams = SimpleMockCrawler.createExams(course);
         Exam another_exam = exams.first().clone();
         another_exam.from = (new GregorianCalendar(2014,1,3,13,0)).getTime();
         another_exam.to = (new GregorianCalendar(2014,1,3,14,0)).getTime();

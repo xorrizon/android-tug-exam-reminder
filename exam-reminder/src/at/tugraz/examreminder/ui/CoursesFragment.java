@@ -20,7 +20,7 @@ import com.actionbarsherlock.view.MenuItem;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CoursesFragment extends SherlockFragment implements Observer{
+public class CoursesFragment extends SherlockFragment {
 
     private ListView courses_list_view;
     private CheckableCoursesAdapter adapter;
@@ -29,17 +29,16 @@ public class CoursesFragment extends SherlockFragment implements Observer{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        CourseContainer.instance().addObserver(this);
     }
 
     @Override
     public void onDestroy() {
-        CourseContainer.instance().deleteObserver(this);
         super.onDestroy();
     }
 
     @Override
-    public void update(Observable observable, Object data) {
+    public void onResume() {
+        super.onResume();
         adapter.notifyDataSetChanged();
     }
 
