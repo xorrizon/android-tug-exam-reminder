@@ -86,6 +86,7 @@ public class TuGrazSearchCrawler implements Crawler {
     @Override
     public List<Course> getCourseList(String searchTerm) {
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempCoursesSearchDataXmlFilename);
+        searchTerm.replaceAll(" ","%20");
         getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
         List<Course> foundCourse;
         try {
