@@ -1,23 +1,23 @@
 package at.tugraz.examreminder.crawler;
 
-import android.test.AndroidTestCase;
+import android.test.InstrumentationTestCase;
 import at.tugraz.examreminder.core.Course;
-import java.util.ArrayList;
+import at.tugraz.examreminder.core.Exam;
+
+import java.io.IOException;
 import java.util.List;
+import java.util.SortedSet;
 
-public class TuGrazSearchCrawlerTest extends AndroidTestCase {
-  public void testCourseSearchDefault() {
+public class TuGrazSearchCrawlerTest extends InstrumentationTestCase {
+
+  public void testCourseSearchDefault() throws IOException {
     TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
-    int numberOfCoursesWithoutCrawl = -1;
-    int numberOfCoursesWithCrawl = -1;
-    List<Course> courses = new ArrayList<Course>();
-    numberOfCoursesWithoutCrawl = courses.size();
-
-    crawler.getCourseList("Analysis");
-
-    numberOfCoursesWithCrawl = courses.size();
-
-    assertTrue("No valid data returned with this crawl!", numberOfCoursesWithCrawl != numberOfCoursesWithoutCrawl);
+    List<Course> courses;
+    SortedSet<Exam> exams;
+    courses = crawler.getCourseListFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"));
+    exams = crawler.getExamsFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"));
+    assertTrue("No valid data returned with this crawl!", courses.size() == 130);
+    assertTrue(exams.size() != 0);
   }
 
 
