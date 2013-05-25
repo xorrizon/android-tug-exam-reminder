@@ -19,7 +19,7 @@ public class SimpleMockCrawler implements Crawler {
 
     @Override
     public SortedSet<Exam> getExams(Course course) {
-        return createExams();
+        return createExams(course);
     }
 
     public static List<Course> createCourses() {
@@ -27,7 +27,7 @@ public class SimpleMockCrawler implements Crawler {
 
         Course course = new Course();
         course.name = "THE COURSE #1";
-        course.exams = new TreeSet<Exam>(createExams());
+        course.exams = new TreeSet<Exam>(createExams(course));
         course.lecturer = "Our leader";
         course.number = "course.101";
         course.term = "SS";
@@ -36,7 +36,7 @@ public class SimpleMockCrawler implements Crawler {
 
         Course course2 = new Course();
         course2.name = "THE COURSE #2";
-        course2.exams = new TreeSet<Exam>(createExams());
+        course2.exams = new TreeSet<Exam>(createExams(course2));
         course2.lecturer = "Our leader";
         course2.number = "course.102";
         course2.term = "SS";
@@ -46,10 +46,10 @@ public class SimpleMockCrawler implements Crawler {
         return courses;
     }
 
-    public static SortedSet<Exam> createExams(){
+    public static SortedSet<Exam> createExams(Course course){
         SortedSet<Exam> exams = new TreeSet<Exam>();
         Calendar calender = new GregorianCalendar();
-        Exam exam = new Exam();
+        Exam exam = new Exam(course);
         exam.lecturer = "Mr. Professor";
         exam.examinar = "Mr. Aufsicht";
         exam.place = "Der Höhrsaal";

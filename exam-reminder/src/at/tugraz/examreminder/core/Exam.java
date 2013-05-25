@@ -3,6 +3,7 @@ package at.tugraz.examreminder.core;
 import java.util.Date;
 
 public class Exam implements Comparable<Exam> {
+    public transient Course course;
 	public Date from;
 	public Date to;
 	public String place;
@@ -15,7 +16,8 @@ public class Exam implements Comparable<Exam> {
 	public int participants_max;
 	public Date updated_at;
 
-    public Exam(){
+    public Exam(Course course){
+        this.course = course;
         from = new Date();
         to = new Date();
         registrationEnd = new Date();
@@ -50,7 +52,7 @@ public class Exam implements Comparable<Exam> {
 
     @Override
     public Exam clone() {
-        Exam exam = new Exam();
+        Exam exam = new Exam(course);
         exam.from = from;
         exam.to = to;
         exam.place = place;
