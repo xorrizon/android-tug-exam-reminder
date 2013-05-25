@@ -11,25 +11,22 @@ import android.widget.ListView;
 import android.widget.Toast;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.adapter.CheckableCoursesAdapter;
+import at.tugraz.examreminder.adapter.ExamsAdapter;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-public class ExamsFragment extends SherlockFragment {
-
-    private ListView courses_list_view;
-    private CheckableCoursesAdapter adapter;
+public class ExamsFragment extends SherlockListFragment {
+    private ExamsAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+        adapter = new ExamsAdapter(getActivity());
+        setListAdapter(adapter);
     }
 
     @Override
@@ -39,32 +36,8 @@ public class ExamsFragment extends SherlockFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.courses_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.add){
-            Intent intent = new Intent(getActivity(), AddCourseActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.courses_fragment, container, false);
-        courses_list_view = (ListView) layout.findViewById(R.id.courses_list);
-        adapter = new CheckableCoursesAdapter(savedInstanceState);
-        adapter.setAdapterView(courses_list_view);
-        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getActivity(), "Item click: " + adapter.getItem(position).name, Toast.LENGTH_SHORT).show();
-            }
-        });
+        View layout = inflater.inflate(R.layout.exams_fragment, container, false);
         return layout;
     }
 

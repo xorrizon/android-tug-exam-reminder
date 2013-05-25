@@ -24,4 +24,5 @@
     <string name="pref_update_time_summery">When to update</string>
     <string name="delete">Delete</string>
     <string name="add">Add</string>
+    <string name="days">days</string>
 </resources>
