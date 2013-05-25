@@ -1,15 +1,12 @@
 package at.tugraz.examreminder.crawler;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import android.os.Environment;
 import android.util.Log;
-import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.Exam;
 import org.apache.http.HttpResponse;
@@ -43,8 +40,8 @@ public class TuGrazSearchCrawler implements Crawler {
 
     private final static SimpleDateFormat SEARCH_MACHINE_RESULTS_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
-    private final static String tempCoursesSearchDataXmlFilename = "examreminder.courses.tmp";
-    private final static String tempExamsSearchDataXmlFilename = "examreminder.exams.tmp";
+    private final static String tempCoursesSearchDataXmlFilename = "courses.tmp";
+    private final static String tempExamsSearchDataXmlFilename = "exams.tmp";
 
 
     private String generateSearchUrl(String searchTerm) {
@@ -87,56 +84,47 @@ public class TuGrazSearchCrawler implements Crawler {
     }
 
     @Override
-    public synchronized List<Course> getCourseList(String searchTerm) {
-        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempCoursesSearchDataXmlFilename);
+    public List<Course> getCourseList(String searchTerm) {
+        File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempCoursesSearchDataXmlFilename);
         getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
-        List<Course> foundCourse = new ArrayList<Course>();
-
+        List<Course> foundCourse;
         try {
-            foundCourse = getCourseListFromFile(tempFileOnDevice);
+            foundCourse = getCourseListFromFile(new FileInputStream(tempFileOnDevice));
         } catch (IOException e) {
             Log.v("TuGrazSearchCrawler", e.toString());
+            return null;
         }
         return foundCourse;
     }
 
     @Override
-    public synchronized SortedSet<Exam> getExams(Course course) {
-        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempExamsSearchDataXmlFilename);
+    public SortedSet<Exam> getExams(Course course) {
+        File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempExamsSearchDataXmlFilename);
         getResponseXmlAndWriteToFile(course.number, tempFileOnDevice);
-        SortedSet<Exam> foundExams = new TreeSet<Exam>();
+        SortedSet<Exam> foundExams;
 
         try {
-            foundExams = getExamsFromFile(tempFileOnDevice);
+            foundExams = getExamsFromFile(new FileInputStream(tempFileOnDevice));
         } catch (IOException e) {
             Log.v("TuGrazSearchCrawler", e.toString());
+            return null;
         }
         return foundExams;
     }
 
-    public List<Course> getCourseListFromFile(File file) throws IOException {
+    public List<Course> getCourseListFromFile(InputStream inputstream) throws IOException {
         List<Course> foundCourse = new ArrayList<Course>();
         Map<String, String> currentModuleMap = new HashMap<String, String>();
-        Scanner scanner = null;
-
-        try {
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            Log.v("TuGrazSearchCrawler", e.toString());
-        }
-
+        DataInputStream in = new DataInputStream(inputstream);
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
         String currentTagValue;
         String currentTagAttribute;
         String currentLine;
         Course currentCourse;
-
-        assert scanner != null;
-        while (scanner.hasNextLine()) {
-            currentLine = scanner.nextLine();
+        while ((currentLine = br.readLine()) != null) {
             if (currentLine.contains("<MODULE_RESULT>")) {
                 currentModuleMap.clear();
-                while (scanner.hasNextLine()) {
-                    currentLine = scanner.nextLine();
+                while ((currentLine = br.readLine()) != null) {
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("CBO"))) {
                             currentCourse = new at.tugraz.examreminder.core.Course();
@@ -163,32 +151,25 @@ public class TuGrazSearchCrawler implements Crawler {
                 }
             }
         }
+        in.close();
         return foundCourse;
     }
 
-    public SortedSet<Exam> getExamsFromFile(File file) throws IOException{
+    public SortedSet<Exam> getExamsFromFile(InputStream inputstream) throws IOException{
         SortedSet<Exam> foundExams = new TreeSet<Exam>();
         Map<String, String> currentModuleMap = new HashMap<String, String>();
-        Scanner scanner;
-
-        try {
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            Log.v("TuGrazSearchCrawler", e.toString());
-            throw new IOException("File Not Found!");
-        }
+        DataInputStream in = new DataInputStream(inputstream);
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
         String currentTagValue;
         String currentTagAttribute;
         String currentLine;
         Exam currentExam;
 
-        while (scanner.hasNextLine()) {
-            currentLine = scanner.nextLine();
+        while (((currentLine = br.readLine()) != null)) {
             if (currentLine.contains("<MODULE_RESULT>")) {
                 currentModuleMap.clear();
-                while (scanner.hasNextLine()) {
-                    currentLine = scanner.nextLine();
+                while (((currentLine = br.readLine()) != null)) {
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("EBO"))) {
                             currentExam = new Exam();
