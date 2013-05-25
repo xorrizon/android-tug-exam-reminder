@@ -104,7 +104,7 @@ public class TuGrazSearchCrawler implements Crawler {
         SortedSet<Exam> foundExams;
 
         try {
-            foundExams = getExamsFromFile(new FileInputStream(tempFileOnDevice));
+            foundExams = getExamsFromFile(new FileInputStream(tempFileOnDevice), course);
         } catch (IOException e) {
             Log.v("TuGrazSearchCrawler", e.toString());
             return null;
@@ -155,7 +155,7 @@ public class TuGrazSearchCrawler implements Crawler {
         return foundCourse;
     }
 
-    public SortedSet<Exam> getExamsFromFile(InputStream inputstream) throws IOException{
+    public SortedSet<Exam> getExamsFromFile(InputStream inputstream, Course course) throws IOException{
         SortedSet<Exam> foundExams = new TreeSet<Exam>();
         Map<String, String> currentModuleMap = new HashMap<String, String>();
         DataInputStream in = new DataInputStream(inputstream);
@@ -172,7 +172,7 @@ public class TuGrazSearchCrawler implements Crawler {
                 while (((currentLine = br.readLine()) != null)) {
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("EBO"))) {
-                            currentExam = new Exam();
+                            currentExam = new Exam(course);
                             try {
                                 currentExam.from = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
                                 currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd"));
@@ -206,6 +206,7 @@ public class TuGrazSearchCrawler implements Crawler {
                 }
             }
         }
+        in.close();
         return foundExams;
     }
 }
