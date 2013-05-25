@@ -18,4 +18,6 @@
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="at.tugraz.examreminder"
         android:label="Tests for at.tugraz.examreminder" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
