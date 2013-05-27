@@ -60,7 +60,7 @@ public class MainActivity extends SherlockFragmentActivity {
     }
 
     class FragmentAdapter extends FragmentPagerAdapter {
-        private final String[] CONTENT = new String[] { "Courses", "Exams", "Test3" };
+        private final String[] CONTENT = new String[] { "Courses", "Exams"};
 
         public FragmentAdapter(FragmentManager fm) {
             super(fm);
@@ -71,7 +71,7 @@ public class MainActivity extends SherlockFragmentActivity {
             switch (position) {
                 case 0: return new CoursesFragment();
                 case 1: return new ExamsFragment();
-                default: return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+                default: return null;
             }
         }
 
