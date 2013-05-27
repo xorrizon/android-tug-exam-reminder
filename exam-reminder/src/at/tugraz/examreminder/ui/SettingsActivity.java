@@ -62,9 +62,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	}
 
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		if(key.equals("pref_update_frequency")) {
-			updateSummaries();
-		}
+		updateSummaries();
         DailyListener.scheduleMe(context); //Always reschedule since most preferences affect this
 	}
 
