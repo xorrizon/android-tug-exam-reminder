@@ -30,16 +30,22 @@ public class CourseDetailsFragment extends SherlockFragment {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(course != null && course_name != null) {
+            course_name.setText(course.name);
+            course_id.setText(course.number);
+            course_type.setText(course.type);
+            course_term.setText(course.term);
+            course_lecturer.setText(course.lecturer);
+            adapter = new ExamsAdapter(getActivity(), course);
+            exams_list.setAdapter(adapter);
+        }
+    }
+
     public void setValuesFromCourse(Course course) {
         this.course = course;
-        course_name.setText(course.name);
-        course_id.setText(course.number);
-        course_type.setText(course.type);
-        course_term.setText(course.term);
-        course_lecturer.setText(course.lecturer);
-
-        adapter = new ExamsAdapter(getActivity(), course);
-        exams_list.setAdapter(adapter);
 
         //@TODO Open URL Button
     }
@@ -54,6 +60,8 @@ public class CourseDetailsFragment extends SherlockFragment {
         course_lecturer = (TextView) layout.findViewById(R.id.course_lecturer);
         btn_open_in_browser = (Button) layout.findViewById(R.id.btn_open_in_browser);
         exams_list = (ListView) layout.findViewById(android.R.id.list);
+
+
         return layout;
     }
 }

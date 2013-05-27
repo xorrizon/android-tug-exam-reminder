@@ -32,4 +32,8 @@
     <string name="lecturer">Lecturer</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="exams">Exams</string>
+    <string name="pref_use_tablet_layout">Use tablet layout</string>
+    <string name="automatic">Automatic</string>
+    <string name="always">Always</string>
+    <string name="always_landscape">When in landscape</string>
 </resources>

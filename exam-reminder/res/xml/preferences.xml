@@ -14,6 +14,13 @@
             android:summary="@string/pref_use_android_calendar_description"
             android:title="@string/pref_use_android_calendar"
             android:defaultValue="true" />
+        <ListPreference
+                android:key="pref_use_tablet_layout"
+                android:title="@string/pref_use_tablet_layout"
+                android:dialogTitle="@string/pref_use_tablet_layout"
+                android:entries="@array/pref_use_tablet_layout_entries"
+                android:entryValues="@array/pref_use_tablet_layout_values"
+                android:defaultValue="0" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/pref_category_update"
