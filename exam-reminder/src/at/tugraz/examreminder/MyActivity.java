@@ -16,6 +16,8 @@ import com.actionbarsherlock.view.MenuItem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import at.tugraz.examreminder.crawler.TuGrazSearchCrawler;
 import at.tugraz.examreminder.ui.SettingsActivity;
 
 public class MyActivity extends SherlockFragmentActivity implements View.OnClickListener {
