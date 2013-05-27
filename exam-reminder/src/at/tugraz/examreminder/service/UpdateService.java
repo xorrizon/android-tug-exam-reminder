@@ -72,6 +72,8 @@ public class UpdateService extends WakefulIntentService {
         for(int i = 0; i < CourseContainer.instance().size(); i++) {
             Course course = CourseContainer.instance().get(i);
             SortedSet<Exam> exams = crawler.getExams(course);
+            if(exams == null)
+                continue;
             if(!new_exams && compareExamList(course.exams, exams)){
                 new_exams = true;
             }

@@ -95,7 +95,8 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         @Override
         protected void onPostExecute(List<Course> courses) {
             AddCourseActivity.this.courses.clear();
-            AddCourseActivity.this.courses.addAll(courses);
+            if(courses != null)
+                AddCourseActivity.this.courses.addAll(courses);
             AddCourseActivity.this.adapter.notifyDataSetChanged();
             AddCourseActivity.this.searchView.setEnabled(true);
             AddCourseActivity.this.progressBar.setVisibility(View.GONE);
