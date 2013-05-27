@@ -66,7 +66,9 @@ public class CoursesFragment extends SherlockFragment {
         adapter.setAdapterView(courses_list_view);
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getActivity(), "Item click: " + adapter.getItem(position).name, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), CourseDetailsActivity.class);
+                intent.putExtra(CourseDetailsActivity.INTENT_COURSE_ID, position);
+                startActivity(intent);
             }
         });
         return layout;
