@@ -10,16 +10,14 @@ import java.util.SortedSet;
 
 public class TuGrazSearchCrawlerTest extends InstrumentationTestCase {
 
-  public void testCourseSearchDefault() throws IOException {
-    TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
-    List<Course> courses;
-    SortedSet<Exam> exams;
-    courses = crawler.getCourseListFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"));
-    exams = crawler.getExamsFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"), courses.get(0));
-    assertTrue("No valid data returned with this crawl!", courses.size() == 130);
-    assertTrue(exams.size() != 0);
-  }
-
-
+    public void testCourseSearchDefault() throws IOException {
+        TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
+        List<Course> courses;
+        SortedSet<Exam> exams;
+        courses = crawler.getCourseListFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"));
+        exams = crawler.getExamsFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"), courses.get(0));
+        assertTrue("No valid data returned with this crawl!", courses.size() == 130);
+        assertTrue(exams.size() != 0);
+    }
 
 }
