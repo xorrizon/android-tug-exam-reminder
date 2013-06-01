@@ -1,12 +1,12 @@
 package at.tugraz.examreminder.ui;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
 import at.tugraz.examreminder.adapter.SimpleCoursesAdapter;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
@@ -61,6 +61,12 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        if(getCurrentFocus()!=null){
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+            getListView().requestFocus();
+        }
+
         Crawler crawler = UpdateService.getCrawlerInstance();
         new SearchCoursesTask(query, crawler).execute();
         return true;
@@ -94,12 +100,21 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
 
         @Override
         protected void onPostExecute(List<Course> courses) {
+            Log.d("Debug", "Post Execute");
+            Log.d("Debug", "Crawler: " + crawler.getClass().getName());
+            Log.d("Debug", "Courses is null: " + (courses == null));
             AddCourseActivity.this.courses.clear();
             if(courses != null)
                 AddCourseActivity.this.courses.addAll(courses);
             AddCourseActivity.this.adapter.notifyDataSetChanged();
             AddCourseActivity.this.searchView.setEnabled(true);
             AddCourseActivity.this.progressBar.setVisibility(View.GONE);
+            if(courses==null) {
+                Log.d("Debug", "Crawler returned null, showing error");
+                String error_title = getString(R.string.error);
+                String error_message = getString(R.string.search_error);
+                DialogHelper.showErrorDialog(AddCourseActivity.this, error_title, error_message);
+            }
         }
     }
 }
