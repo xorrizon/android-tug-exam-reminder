@@ -92,6 +92,7 @@ public class TuGrazSearchCrawler implements Crawler {
 
     @Override
     public List<Course> getCourseList(String searchTerm) {
+        Log.d(LOGCAT_TAG, "- get courses for searchterm "+ searchTerm);
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempCoursesSearchDataXmlFilename);
         List<Course> foundCourse;
         try {
@@ -101,11 +102,13 @@ public class TuGrazSearchCrawler implements Crawler {
             Log.v(LOGCAT_TAG, e.toString());
             return null;
         }
+        Log.d(LOGCAT_TAG, "- get courses for searchterm "+ searchTerm);
         return foundCourse;
     }
 
     @Override
     public SortedSet<Exam> getExams(Course course) {
+        Log.d(LOGCAT_TAG, "- get exams for course "+ course.name);
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempExamsSearchDataXmlFilename);
         SortedSet<Exam> foundExams;
 
