@@ -4,6 +4,7 @@ import android.os.Environment;
 import android.util.Log;
 import at.tugraz.examreminder.core.Course;
 
+import at.tugraz.examreminder.core.Exam;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -45,13 +46,10 @@ public class CourseListSerializer implements Observer {
         saveCourseContainerTask.execute();
     }
 
-    public List<Course> loadCourseListFromFile(File file) {
-        if(file == null || !file.exists()) {
-            return new ArrayList<Course>();
-        }
+    public List<Course> loadCourseListFromFile(InputStream inputStream) {
         String json = null;
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader((file)));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuffer stringBuffer = new StringBuffer();
             String line = bufferedReader.readLine();
             while (line != null) {
@@ -70,11 +68,21 @@ public class CourseListSerializer implements Observer {
     }
 
     public List<Course> loadCourseListFromFile() {
-        return loadCourseListFromFile(new File(Environment.getExternalStorageDirectory(), FILENAME));
+        try {
+            return loadCourseListFromFile(new FileInputStream(new File(Environment.getExternalStorageDirectory(), FILENAME)));
+        } catch (FileNotFoundException e) {
+            return new ArrayList<Course>();
+        }
     }
 
     public static List<Course> jsonToCourseList(String json) {
         Type collectionType = new TypeToken<ArrayList<Course>>(){}.getType();
-        return new Gson().fromJson(json, collectionType);
+        List<Course> courseList = new Gson().fromJson(json, collectionType);
+        for(Course course : courseList) {
+            for(Exam exam : course.exams) {
+                exam.course = course;
+            }
+        }
+        return courseList;
     }
 }
