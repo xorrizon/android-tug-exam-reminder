@@ -21,6 +21,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 public class TuGrazSearchCrawler implements Crawler {
 
+    private final static String LOGCAT_TAG = "TuGrazSearchCrawler";
+
     private final static String SEARCH_MACHINE_URI = "http://search.tugraz.at/search";
     private HashMap<String, String> SEARCH_MACHINE_URLI_ATTRIBUTES = new HashMap<String, String>() {{
         put("q", ""); // Searchstring
@@ -63,11 +65,11 @@ public class TuGrazSearchCrawler implements Crawler {
     }
 
     private void getResponseXmlAndWriteToFile(String searchTerm, File file) {
-        String searchUrl = null;
+        String searchUrl;
         try {
             searchUrl = generateSearchUrl(searchTerm);
         } catch (UnsupportedEncodingException e) {
-            Log.v("TuGrazSearchCrawler", "UnsupportedEncodingException");
+            Log.v(LOGCAT_TAG, "UnsupportedEncodingException");
             return;
         }
         HttpClient httpClient = new DefaultHttpClient();
@@ -84,22 +86,21 @@ public class TuGrazSearchCrawler implements Crawler {
                 throw new IOException(statusLine.getReasonPhrase());
             }
         } catch (ClientProtocolException e) {
-            Log.v("TuGrazSearchCrawler", e.toString());
+            Log.v(LOGCAT_TAG, e.toString());
         } catch (IOException e) {
-            Log.v("TuGrazSearchCrawler", e.toString());
+            Log.v(LOGCAT_TAG, e.toString());
         }
     }
 
     @Override
     public List<Course> getCourseList(String searchTerm) {
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempCoursesSearchDataXmlFilename);
-        searchTerm.replaceAll(" ","%20");
         getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
         List<Course> foundCourse;
         try {
             foundCourse = getCourseListFromFile(new FileInputStream(tempFileOnDevice));
         } catch (IOException e) {
-            Log.v("TuGrazSearchCrawler", e.toString());
+            Log.v(LOGCAT_TAG, e.toString());
             return null;
         }
         return foundCourse;
@@ -113,10 +114,8 @@ public class TuGrazSearchCrawler implements Crawler {
 
         try {
             foundExams = getExamsFromFile(new FileInputStream(tempFileOnDevice), course);
-            //TODO: filter Exams method
-
             } catch (IOException e) {
-            Log.v("TuGrazSearchCrawler", e.toString());
+            Log.v(LOGCAT_TAG, e.toString());
             return null;
         }
         return foundExams;
