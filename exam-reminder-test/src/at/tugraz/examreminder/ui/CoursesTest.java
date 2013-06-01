@@ -3,6 +3,7 @@ package at.tugraz.examreminder.ui;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
@@ -31,9 +32,10 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
     protected void setUp() throws Exception {
         super.setUp();
         populateCourseList();
-        DailyListener.setNewPendingIntentAndCancelOld(getActivity(), null); //Cancel schedule
         UpdateService.setCrawlerToUse(SimpleMockCrawler.class);
         solo = new Solo(getInstrumentation(), getActivity());
+        DailyListener.setNewPendingIntentAndCancelOld(getActivity(), null); //Cancel schedule
+        CourseContainer.instance().deleteObservers();
     }
 
     @Override
@@ -82,6 +84,24 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.clickOnButton(0);
         assertFalse("Error shows even after clicking ok", solo.searchText(solo.getString(R.string.error)));
         solo.goBack();
+        solo.goBack();
+    }
+
+    public void testAddCourseScreenOriantationChange() {
+        ListView listView;
+        solo.clickOnView(getActivity().findViewById(R.id.add));
+        solo.enterText(0, "Course");
+        solo.clickOnEditText(0);
+        solo.sendKey(Solo.ENTER);
+        solo.waitForText("THE COURSE #2", 1, 5);
+        listView = (ListView) solo.getView(android.R.id.list);
+        assertEquals("List view should contain 2 items before doing anything", 2, listView.getCount());
+        solo.setActivityOrientation(Solo.LANDSCAPE);
+        solo.sleep(500);
+        listView = (ListView) solo.getView(android.R.id.list);
+        solo.sleep(3000);
+        assertEquals("List view should't change size after oriantation change", 2, listView.getCount());
+        assertEquals("SearchView should not reset.", "Course", solo.getEditText(0).getText().toString());
         solo.goBack();
     }
 

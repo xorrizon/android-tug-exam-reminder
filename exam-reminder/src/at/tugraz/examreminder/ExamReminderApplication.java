@@ -9,6 +9,7 @@ import android.view.Surface;
 import android.view.WindowManager;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.service.CourseListSerializer;
+import at.tugraz.examreminder.service.DailyListener;
 
 public class ExamReminderApplication extends Application{
 
@@ -36,6 +37,7 @@ public class ExamReminderApplication extends Application{
             CourseContainer.instance().getCourseList().addAll(courseListSerializer.loadCourseListFromFile());
         }
         CourseContainer.instance().addObserver(new CourseListSerializer());
+        DailyListener.scheduleMe(context);
         Log.v("EXAM_REMINDER_APPLICATION", "ONCREATED");
     }
 

@@ -24,9 +24,9 @@ public class NotificationFactory {
                 .setContentTitle("Exam Reminder")
                 .setContentText("There are new or changed exams!");
 
-        Intent resultIntent = new Intent(context, MyActivity.class); //@TODO this should take you directly to the exams list!
+        Intent resultIntent = new Intent(context, MainActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(MyActivity.class); //@TODO change with above
+        stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(

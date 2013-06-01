@@ -15,9 +15,6 @@ import java.util.Calendar;
 
 public class DailyListener implements WakefulIntentService.AlarmListener {
 
-	//@TODO Note to self: Schedule the alarm on app start with scheduleMe()
-	//@TODO And don't forget to reset it if settings have changed!
-
 	public static PendingIntent currentPendingIntent;
 
 	public static void scheduleMe(Context context) {

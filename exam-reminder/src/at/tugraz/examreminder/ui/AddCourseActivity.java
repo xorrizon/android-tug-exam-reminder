@@ -12,6 +12,7 @@ import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.crawler.Crawler;
 import at.tugraz.examreminder.crawler.SimpleMockCrawler;
+import at.tugraz.examreminder.service.CourseListSerializer;
 import at.tugraz.examreminder.service.UpdateService;
 import com.actionbarsherlock.view.Menu;
 import at.tugraz.examreminder.R;
@@ -24,11 +25,16 @@ import java.util.List;
 
 
 public class AddCourseActivity extends SherlockListActivity implements SearchView.OnQueryTextListener, AdapterView.OnItemClickListener {
+    private static String BUNDLE_COURSES_KEY="COURSES_KEY";
+    private static String BUNDLE_SEARCH_TERM_KEY="SEARCH_TERM_KEY";
+
     MenuItem searchViewItem;
     SearchView searchView;
     ProgressBar progressBar;
     List<Course> courses = new ArrayList<Course>();
     SimpleCoursesAdapter adapter;
+
+    String restored_search_term = null;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +47,33 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        List<Course> tmp_courses = CourseListSerializer.jsonToCourseList(savedInstanceState.getString(BUNDLE_COURSES_KEY));
+        if(tmp_courses != null) {
+            courses.addAll(tmp_courses);
+            adapter.notifyDataSetChanged();
+        }
+        restored_search_term = savedInstanceState.getString(BUNDLE_SEARCH_TERM_KEY);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(BUNDLE_COURSES_KEY, CourseListSerializer.courseListToJson(courses));
+        outState.putString(BUNDLE_SEARCH_TERM_KEY, searchView.getQuery().toString());
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getSupportMenuInflater().inflate(R.menu.add_course_menu, menu);
         searchViewItem = menu.findItem(R.id.menu_search);
         searchView = (SearchView) searchViewItem.getActionView();
         searchView.setIconifiedByDefault(false);
+        if(restored_search_term != null){
+            searchView.setQuery(restored_search_term, false);
+            restored_search_term = null;
+        }
 //        searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(this);
         return true;
@@ -100,9 +128,6 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
 
         @Override
         protected void onPostExecute(List<Course> courses) {
-            Log.d("Debug", "Post Execute");
-            Log.d("Debug", "Crawler: " + crawler.getClass().getName());
-            Log.d("Debug", "Courses is null: " + (courses == null));
             AddCourseActivity.this.courses.clear();
             if(courses != null)
                 AddCourseActivity.this.courses.addAll(courses);
