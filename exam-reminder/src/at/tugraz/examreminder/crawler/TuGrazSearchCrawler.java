@@ -64,7 +64,7 @@ public class TuGrazSearchCrawler implements Crawler {
         return searchUrl;
     }
 
-    private void getResponseXmlAndWriteToFile(String searchTerm, File file) {
+    private void getResponseXmlAndWriteToFile(String searchTerm, File file) throws IOException{
         String searchUrl;
         try {
             searchUrl = generateSearchUrl(searchTerm);
@@ -87,17 +87,15 @@ public class TuGrazSearchCrawler implements Crawler {
             }
         } catch (ClientProtocolException e) {
             Log.v(LOGCAT_TAG, e.toString());
-        } catch (IOException e) {
-            Log.v(LOGCAT_TAG, e.toString());
         }
     }
 
     @Override
     public List<Course> getCourseList(String searchTerm) {
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempCoursesSearchDataXmlFilename);
-        getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
         List<Course> foundCourse;
         try {
+            getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
             foundCourse = getCourseListFromFile(new FileInputStream(tempFileOnDevice));
         } catch (IOException e) {
             Log.v(LOGCAT_TAG, e.toString());
@@ -109,13 +107,14 @@ public class TuGrazSearchCrawler implements Crawler {
     @Override
     public SortedSet<Exam> getExams(Course course) {
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempExamsSearchDataXmlFilename);
-        getResponseXmlAndWriteToFile(course.name, tempFileOnDevice);
         SortedSet<Exam> foundExams;
 
         try {
+            getResponseXmlAndWriteToFile(course.name, tempFileOnDevice);
             foundExams = getExamsFromFile(new FileInputStream(tempFileOnDevice), course);
-            } catch (IOException e) {
-            Log.v(LOGCAT_TAG, e.toString());
+            }
+        catch (IOException e) {
+                Log.v(LOGCAT_TAG, e.toString());
             return null;
         }
         return foundExams;
