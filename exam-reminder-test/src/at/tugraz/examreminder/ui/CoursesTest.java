@@ -32,9 +32,9 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
     protected void setUp() throws Exception {
         super.setUp();
         populateCourseList();
-        DailyListener.setNewPendingIntentAndCancelOld(getActivity(), null); //Cancel schedule
         UpdateService.setCrawlerToUse(SimpleMockCrawler.class);
         solo = new Solo(getInstrumentation(), getActivity());
+        DailyListener.setNewPendingIntentAndCancelOld(getActivity(), null); //Cancel schedule
         CourseContainer.instance().deleteObservers();
     }
 
