@@ -1,6 +1,7 @@
 package at.tugraz.examreminder.crawler;
 
 import java.io.*;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -44,7 +45,7 @@ public class TuGrazSearchCrawler implements Crawler {
     private final static String tempExamsSearchDataXmlFilename = "exams.tmp";
 
 
-    private String generateSearchUrl(String searchTerm) {
+    private String generateSearchUrl(String searchTerm) throws UnsupportedEncodingException {
         String searchUrl = "";
         searchUrl += SEARCH_MACHINE_URI;
         SEARCH_MACHINE_URLI_ATTRIBUTES.remove("q");
@@ -53,16 +54,22 @@ public class TuGrazSearchCrawler implements Crawler {
         boolean isFirstAttribute = true;
         for (Map.Entry<String, String> entry : SEARCH_MACHINE_URLI_ATTRIBUTES.entrySet()) {
             if (isFirstAttribute) {
-                searchUrl += "?" + entry.getKey() + "=" + entry.getValue();
+                searchUrl += "?" + entry.getKey() + "=" + URLEncoder.encode(entry.getValue(), "UTF8");
                 isFirstAttribute = false;
             }
-            searchUrl += "&" + entry.getKey() + "=" + entry.getValue();
+            searchUrl += "&" + entry.getKey() + "=" + URLEncoder.encode(entry.getValue(), "UTF8");
         }
         return searchUrl;
     }
 
     private void getResponseXmlAndWriteToFile(String searchTerm, File file) {
-        String searchUrl = generateSearchUrl(searchTerm);
+        String searchUrl = null;
+        try {
+            searchUrl = generateSearchUrl(searchTerm);
+        } catch (UnsupportedEncodingException e) {
+            Log.v("TuGrazSearchCrawler", "UnsupportedEncodingException");
+            return;
+        }
         HttpClient httpClient = new DefaultHttpClient();
         HttpResponse httpResponse;
         try {
