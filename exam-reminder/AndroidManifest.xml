@@ -12,7 +12,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:theme="@style/Theme.ViewPageIndicator">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:theme="@style/Theme.ViewPageIndicator"
+            android:name=".ExamReminderApplication">
         <WakefulIntentService listener="at.tugraz.examreminder.service.DailyListener" />
 
         <receiver android:name="com.commonsware.cwac.wakeful.AlarmReceiver" >
@@ -53,6 +54,7 @@
          <!--  @TODO Make own theme: http://droidista.blogspot.co.at/2012/08/making-actionbarsherlock-and.html -->
         </activity>
         <activity android:name=".ui.AddCourseActivity"/>
+        <activity android:name=".ui.CourseDetailsActivity"/>
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

@@ -21,6 +21,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	private Context context;
 
 	private ListPreference pref_updateFrequency;
+    private ListPreference pref_useTabletLayout;
 	private Preference pref_updateNow;	
 	
 	
@@ -31,6 +32,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 		addPreferencesFromResource(R.xml.preferences);
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
+        pref_useTabletLayout = (ListPreference) findPreference("pref_use_tablet_layout");
 		pref_updateNow = findPreference("pref_update_now");
 		updateSummaries();
 
@@ -60,14 +62,13 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	}
 
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		if(key.equals("pref_update_frequency")) {
-			updateSummaries();
-		}
+		updateSummaries();
         DailyListener.scheduleMe(context); //Always reschedule since most preferences affect this
 	}
 
 	private void updateSummaries() {
 		pref_updateFrequency.setSummary(pref_updateFrequency.getEntry());
+        pref_useTabletLayout.setSummary(pref_useTabletLayout.getEntry());
         Date time = new Date(PreferenceManager.getDefaultSharedPreferences(context).getLong("pref_last_update",0));
         pref_updateNow.setSummary(getString(R.string.pref_update_now_summery) + time.toString());
 	}

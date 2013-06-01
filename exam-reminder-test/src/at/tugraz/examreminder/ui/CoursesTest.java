@@ -1,6 +1,8 @@
 package at.tugraz.examreminder.ui;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
+import android.widget.TextView;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
@@ -60,6 +62,21 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.waitForText("Courses", 1, 5);
         assertEquals(oldsize+1, CourseContainer.instance().size());
         assertTrue(solo.searchText("THE COURSE #2", 1, true));
+    }
+
+    public void testCourseDetails() {
+        Course course = CourseContainer.instance().get(0);
+        course.exams = SimpleMockCrawler.createExams(course);
+        solo.clickOnText("Course #0");
+
+        assertEquals(course.name, ((TextView)solo.getView(R.id.course_name,0)).getText());
+
+        View exam_view;
+
+        exam_view = solo.getView(R.id.exam_item, 0);
+        assertEquals("Course #0", ((TextView)exam_view.findViewById(R.id.course_text)).getText());
+
+        solo.goBack();
     }
 
 
