@@ -36,4 +36,9 @@
     <string name="automatic">Automatic</string>
     <string name="always">Always</string>
     <string name="always_landscape">When in landscape</string>
+    <string name="OK">OK</string>
+    <string name="error">Error</string>
+    <string name="search_error">An error occured while searching. Please make sure that you are connected to the
+        internet.
+    </string>
 </resources>

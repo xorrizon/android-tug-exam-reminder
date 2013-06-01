@@ -4,6 +4,7 @@ package at.tugraz.examreminder.service;
 import android.app.Notification;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
@@ -43,6 +44,7 @@ public class UpdateService extends WakefulIntentService {
                 crawler = crawler_to_use.newInstance();
         } catch (Exception e) {
             // Damn you java reflection
+            Log.wtf("UpdateService", "Exception while creating crawler instance: " + e);
         }
         if(crawler == null)
             crawler = new TuGrazSearchCrawler();

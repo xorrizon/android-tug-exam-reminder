@@ -1,17 +1,22 @@
 package at.tugraz.examreminder.ui;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
+import at.tugraz.examreminder.crawler.Crawler;
+import at.tugraz.examreminder.crawler.NullCrawler;
 import at.tugraz.examreminder.crawler.SimpleMockCrawler;
 import at.tugraz.examreminder.service.DailyListener;
 import at.tugraz.examreminder.service.UpdateService;
 import com.jayway.android.robotium.solo.Solo;
 
+import java.util.List;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 
@@ -62,11 +67,28 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.waitForText("Courses", 1, 5);
         assertEquals(oldsize+1, CourseContainer.instance().size());
         assertTrue(solo.searchText("THE COURSE #2", 1, true));
+
+        solo.goBack();
+    }
+
+    public void testAddCourseCrawlerError() {
+        UpdateService.setCrawlerToUse(NullCrawler.class);
+        solo.clickOnView(getActivity().findViewById(R.id.add));
+        solo.enterText(0, "Course");
+        solo.clickOnEditText(0);
+        solo.sendKey(Solo.ENTER);
+        assertTrue("Error dialog not shown", solo.searchText(solo.getString(R.string.error)));
+        assertTrue("Error message not shown", solo.searchText(solo.getString(R.string.search_error)));
+        solo.clickOnButton(0);
+        assertFalse("Error shows even after clicking ok", solo.searchText(solo.getString(R.string.error)));
+        solo.goBack();
+        solo.goBack();
     }
 
     public void testCourseDetails() {
         Course course = CourseContainer.instance().get(0);
         course.exams = SimpleMockCrawler.createExams(course);
+
         solo.clickOnText("Course #0");
 
         assertEquals(course.name, ((TextView)solo.getView(R.id.course_name,0)).getText());
