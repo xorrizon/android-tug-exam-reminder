@@ -1,12 +1,11 @@
 package at.tugraz.examreminder.ui;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
 import at.tugraz.examreminder.adapter.SimpleCoursesAdapter;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
@@ -61,6 +60,12 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        if(getCurrentFocus()!=null){
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+            getListView().requestFocus();
+        }
+
         Crawler crawler = UpdateService.getCrawlerInstance();
         new SearchCoursesTask(query, crawler).execute();
         return true;
