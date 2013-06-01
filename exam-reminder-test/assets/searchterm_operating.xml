@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE GSP SYSTEM "google.dtd">
+<GSP VER="3.2">
+<TM>0.887778</TM><Q>operating</Q>
+<PARAM name="q" value="operating" original_value="operating"/>
+<PARAM name="site" value="Alle" original_value="Alle"/>
+<PARAM name="btnG" value="Suchen" original_value="Suchen"/>
+<PARAM name="client" value="tug_portal" original_value="tug_portal"/>
+<PARAM name="ulang" value="" original_value=""/>
+<PARAM name="sort" value="date:D:L:d1" original_value="date:D:L:d1"/>
+<PARAM name="entqr" value="3" original_value="3"/>
+<PARAM name="entqrm" value="0" original_value="0"/>
+<PARAM name="entsp" value="a" original_value="a"/>
+<PARAM name="oe" value="UTF-8" original_value="UTF-8"/>
+<PARAM name="ie" value="UTF-8" original_value="UTF-8"/>
+<PARAM name="ud" value="1" original_value="1"/>
+<PARAM name="filter" value="1" original_value="1"/>
+<PARAM name="ip" value="129.27.202.103" original_value="129.27.202.103"/>
+<PARAM name="access" value="p" original_value="p"/>
+<ENTOBRESULTS><OBRES module_name="TUG_v3">
+<description></description>
+<resultCode>success</resultCode>
+<provider>http://search-proxy.tugraz.at/search/</provider>
+<searchTerm>operating</searchTerm>
+<totalResults>61</totalResults>
+<MODULE_RESULT>
+<Title>1</Title>
+<Field name="name">Institute of Applied Information Processing and Communications</Field>
+<Field name="orgUnitCode">7050</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=983</Field>
+<Field name="id_c">164433</Field>
+<Field name="courseName">Operating Systems</Field>
+<Field name="courseCode">705047</Field>
+<Field name="teachingTerm">Wintersemester 2012/13</Field>
+<Field name="hoursPerWeek">2</Field>
+<Field name="courseCAMPUSonlineURL">https://online.tugraz.at/tug_online/LV_TX.wbLvInfotypen?pStpSpNr=164433</Field>
+<Field name="examCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cstp_sp_nr=164433&amp;cheader=J</Field>
+<Field name="teachingActivityID">KU</Field>
+<Field name="teachingActivityNameText">Design practical</Field>
+<Field name="TACAMPUSonlineURL">https://online.tugraz.at/tug_online/wbTvw_List.lehrveranstaltung?pStpSpNr=164433</Field>
+<Field name="persons_name1">Markus Eger</Field>
+<Field name="persons_name2">Florian Achleitner</Field>
+<Field name="persons_name3">Badhan Talukder</Field>
+<Field name="persons_name4">Christopher Andreas Walles</Field>
+<Field name="persons_name5">Herwig Stütz</Field>
+<Field name="persons_name6">Peter Lipp</Field>
+<Field name="persons_name7">Manuel Weber</Field>
+<Field name="persons_name8">Daniel Gruß</Field>
+<Field name="lvDetailCAMPUSonlineURL">https://online.tugraz.at/tug_online/lv.detail?clvnr=164433</Field>
+<Field name="lvAnmeldungCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbsession.redirectSSO?pUrl=sa.gruppen_einteilung%3Fclvnr=164433%26corg=983</Field>
+<Field name="WEB SERVICE">CBO</Field>
+<Field name="wb_result_cnt">1/6</Field>
+<Field name="count_all_results">6</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>2</Title>
+<Field name="name">Institute of Applied Information Processing and Communications</Field>
+<Field name="orgUnitCode">7050</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=983</Field>
+<Field name="id_c">164938</Field>
+<Field name="courseName">Selected chapter operating system</Field>
+<Field name="courseCode">705303</Field>
+<Field name="teachingTerm">Wintersemester 2012/13</Field>
+<Field name="hoursPerWeek">1</Field>
+<Field name="courseCAMPUSonlineURL">https://online.tugraz.at/tug_online/LV_TX.wbLvInfotypen?pStpSpNr=164938</Field>
+<Field name="examCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cstp_sp_nr=164938&amp;cheader=J</Field>
+<Field name="teachingActivityID">KU</Field>
+<Field name="teachingActivityNameText">Design practical</Field>
+<Field name="TACAMPUSonlineURL">https://online.tugraz.at/tug_online/wbTvw_List.lehrveranstaltung?pStpSpNr=164938</Field>
+<Field name="persons_name">Reinhard Posch</Field>
+<Field name="lvDetailCAMPUSonlineURL">https://online.tugraz.at/tug_online/lv.detail?clvnr=164938</Field>
+<Field name="lvAnmeldungCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbsession.redirectSSO?pUrl=sa.gruppen_einteilung%3Fclvnr=164938%26corg=983</Field>
+<Field name="WEB SERVICE">CBO</Field>
+<Field name="wb_result_cnt">2/6</Field>
+<Field name="count_all_results">6</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>3</Title>
+<Field name="name">Institute of Applied Information Processing and Communications</Field>
+<Field name="orgUnitCode">7050</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=983</Field>
+<Field name="id_c">166647</Field>
+<Field name="courseName">Fundamentals of operating systems programming</Field>
+<Field name="courseCode">705049</Field>
+<Field name="teachingTerm">Sommersemester 2013</Field>
+<Field name="hoursPerWeek">1</Field>
+<Field name="courseCAMPUSonlineURL">https://online.tugraz.at/tug_online/LV_TX.wbLvInfotypen?pStpSpNr=166647</Field>
+<Field name="examCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cstp_sp_nr=166647&amp;cheader=J</Field>
+<Field name="teachingActivityID">KU</Field>
+<Field name="teachingActivityNameText">Design practical</Field>
+<Field name="TACAMPUSonlineURL">https://online.tugraz.at/tug_online/wbTvw_List.lehrveranstaltung?pStpSpNr=166647</Field>
+<Field name="persons_name1">Peter Lipp</Field>
+<Field name="persons_name2">Thomas Malcher</Field>
+<Field name="persons_name3">Jakob Girstmair</Field>
+<Field name="persons_name4">Daniel Gruß</Field>
+<Field name="persons_name5">Manuel Weber</Field>
+<Field name="persons_name6">Markus Eger</Field>
+<Field name="persons_name7">Christopher Andreas Walles</Field>
+<Field name="persons_name8">Christian Hanser</Field>
+<Field name="persons_name9">Florian Achleitner</Field>
+<Field name="persons_name10">Badhan Talukder</Field>
+<Field name="lvDetailCAMPUSonlineURL">https://online.tugraz.at/tug_online/lv.detail?clvnr=166647</Field>
+<Field name="lvAnmeldungCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbsession.redirectSSO?pUrl=sa.gruppen_einteilung%3Fclvnr=166647%26corg=983</Field>
+<Field name="WEB SERVICE">CBO</Field>
+<Field name="wb_result_cnt">3/6</Field>
+<Field name="count_all_results">6</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>4</Title>
+<Field name="name">Institute of Applied Information Processing and Communications</Field>
+<Field name="orgUnitCode">7050</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=983</Field>
+<Field name="id_c">165273</Field>
+<Field name="courseName">Selected chapter operating systems</Field>
+<Field name="courseCode">705302</Field>
+<Field name="teachingTerm">Wintersemester 2012/13</Field>
+<Field name="hoursPerWeek">2</Field>
+<Field name="courseCAMPUSonlineURL">https://online.tugraz.at/tug_online/LV_TX.wbLvInfotypen?pStpSpNr=165273</Field>
+<Field name="examCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cstp_sp_nr=165273&amp;cheader=J</Field>
+<Field name="teachingActivityID">VO</Field>
+<Field name="teachingActivityNameText">Lecture</Field>
+<Field name="TACAMPUSonlineURL">https://online.tugraz.at/tug_online/wbTvw_List.lehrveranstaltung?pStpSpNr=165273</Field>
+<Field name="persons_name">Reinhard Posch</Field>
+<Field name="lvDetailCAMPUSonlineURL">https://online.tugraz.at/tug_online/lv.detail?clvnr=165273</Field>
+<Field name="lvAnmeldungCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbsession.redirectSSO?pUrl=sa.gruppen_einteilung%3Fclvnr=165273%26corg=983</Field>
+<Field name="WEB SERVICE">CBO</Field>
+<Field name="wb_result_cnt">4/6</Field>
+<Field name="count_all_results">6</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>5</Title>
+<Field name="name">Institute of Applied Information Processing and Communications</Field>
+<Field name="orgUnitCode">7050</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=983</Field>
+<Field name="id_c">164756</Field>
+<Field name="courseName">Operating Systems</Field>
+<Field name="courseCode">705056</Field>
+<Field name="teachingTerm">Wintersemester 2012/13</Field>
+<Field name="hoursPerWeek">2</Field>
+<Field name="courseCAMPUSonlineURL">https://online.tugraz.at/tug_online/LV_TX.wbLvInfotypen?pStpSpNr=164756</Field>
+<Field name="examCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cstp_sp_nr=164756&amp;cheader=J</Field>
+<Field name="teachingActivityID">VO</Field>
+<Field name="teachingActivityNameText">Lecture</Field>
+<Field name="TACAMPUSonlineURL">https://online.tugraz.at/tug_online/wbTvw_List.lehrveranstaltung?pStpSpNr=164756</Field>
+<Field name="persons_name">Peter Lipp</Field>
+<Field name="lvDetailCAMPUSonlineURL">https://online.tugraz.at/tug_online/lv.detail?clvnr=164756</Field>
+<Field name="lvAnmeldungCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbsession.redirectSSO?pUrl=sa.gruppen_einteilung%3Fclvnr=164756%26corg=983</Field>
+<Field name="WEB SERVICE">CBO</Field>
+<Field name="wb_result_cnt">5/6</Field>
+<Field name="count_all_results">6</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>6</Title>
+<Field name="name">Institute of Applied Information Processing and Communications</Field>
+<Field name="orgUnitCode">7050</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=983</Field>
+<Field name="id_c">163411</Field>
+<Field name="courseName">Operating Systems (Computer Science for Teachers)</Field>
+<Field name="courseCode">705048</Field>
+<Field name="teachingTerm">Wintersemester 2012/13</Field>
+<Field name="hoursPerWeek">2</Field>
+<Field name="courseCAMPUSonlineURL">https://online.tugraz.at/tug_online/LV_TX.wbLvInfotypen?pStpSpNr=163411</Field>
+<Field name="examCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cstp_sp_nr=163411&amp;cheader=J</Field>
+<Field name="teachingActivityID">VU</Field>
+<Field name="teachingActivityNameText">Lecture/Practical</Field>
+<Field name="TACAMPUSonlineURL">https://online.tugraz.at/tug_online/wbTvw_List.lehrveranstaltung?pStpSpNr=163411</Field>
+<Field name="persons_name">Peter Lipp</Field>
+<Field name="lvDetailCAMPUSonlineURL">https://online.tugraz.at/tug_online/lv.detail?clvnr=163411</Field>
+<Field name="lvAnmeldungCAMPUSonlineURL">https://online.tugraz.at/tug_online/wbsession.redirectSSO?pUrl=sa.gruppen_einteilung%3Fclvnr=163411%26corg=983</Field>
+<Field name="WEB SERVICE">CBO</Field>
+<Field name="wb_result_cnt">6/6</Field>
+<Field name="count_all_results">6</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>1</Title>
+<Field name="author">David Hannl, Markus Pausakerl, Harald Moser, René Rieberer</Field>
+<Field name="title">Experimental analysis and simulation of the operating behavior of an ammonia/water absorption chiller</Field>
+<Field name="booktitle">Proceedings 10th IIR Gustav Lorenzen Conference 2012</Field>
+<Field name="year">2012</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">214 - 221</Field>
+<Field name="month">Jun</Field>
+<Field name="person_id_string1">918F9DD90D272372</Field>
+<Field name="person_id_string2">BE34FAABD99870EC |</Field>
+<Field name="person_name_string1">Dipl.-Ing.David Hannl</Field>
+<Field name="person_name_string2">Dipl.-Ing.Markus Pausakerl</Field>
+<Field name="person_name_string3">Dipl.-Ing. Dr.techn.Harald Moser</Field>
+<Field name="person_name_string4">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.René Rieberer |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Delft</Field>
+<Field name="editor">IIF-IIR</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">1/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>2</Title>
+<Field name="author">Gerald Zotter, Werner Hermeling, Wolfgang Sanz</Field>
+<Field name="title">THERMODYNAMIC ANALYSIS OF A NOVEL CRYOGENIC RANKINE CYCLE FOR WIND ENERGY STORAGE</Field>
+<Field name="booktitle">Reliable Gas Turbines Operating in Extreme Environments: GT2012-68180</Field>
+<Field name="year">2012</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">1 - 10</Field>
+<Field name="month">Jun</Field>
+<Field name="person_id_string1">45C3892BB32068FF</Field>
+<Field name="person_id_string2">2DF3C5C38C2FA6EB |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Gerald Zotter</Field>
+<Field name="person_name_string2">Dipl.-Ing.Werner Hermeling</Field>
+<Field name="person_name_string3">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Wolfgang Sanz |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Kopenhagen</Field>
+<Field name="url">http://www.asmeconferences.org/te2012/</Field>
+<Field name="editor">ASME</Field>
+<Field name="publisher">ASME</Field>
+<Field name="series">GT2012-68180</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">2/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>3</Title>
+<Field name="author">David Hannl</Field>
+<Field name="title">Experimental analysis and simulation of the operating behavior of an ammonia/water absorption chiller</Field>
+<Field name="year">2012</Field>
+<Field name="person_id_string">918F9DD90D272372 |</Field>
+<Field name="person_name_string">Dipl.-Ing.David Hannl |</Field>
+<Field name="howpublished">IIR Gustav Lorentzen Conference on Natural Working Fluids 2012 type: Contributed, TU Delft, 26.06.12</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">3/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>4</Title>
+<Field name="author">Viktor Hacker</Field>
+<Field name="title">Lifetime Investigations of Polymer Electrolyte Fuel Cells (PEFCs) Under Real Operating Conditions</Field>
+<Field name="year">2011</Field>
+<Field name="person_id_string">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string">Assoc.Prof. Dipl.-Ing. Dr.techn.Viktor Hacker |</Field>
+<Field name="howpublished">ECO-MOBILITY 2011, A3PS type: Contributed, Wien, 15.12.11</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">4/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>5</Title>
+<Field name="title">Influence parameters of step and touch voltages in the vicinity of HV power line towers under normal and fault operating conditions</Field>
+<Field name="year">2011</Field>
+<Field name="person_id_string1">49E830769473CE35</Field>
+<Field name="person_id_string2">CC1DE27CF1B4D13A</Field>
+<Field name="person_id_string3">3601782E38A91ABB |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn.Ernst Schmautzer</Field>
+<Field name="person_name_string2">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Stephan Pack</Field>
+<Field name="person_name_string3">Dipl.-Ing.Herwig Breitwieser</Field>
+<Field name="person_name_string4">Dipl.-Ing.Walter Hipp |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Frankfurt</Field>
+<Field name="url">www.cired2011.org</Field>
+<Field name="editor">Ernst Schmautzer and Stephan Pack and Herwig Breitwieser and Walter Hipp</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">5/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>6</Title>
+<Field name="author">Astrid Stadlhofer, Viktor Hacker</Field>
+<Field name="title">Durability of membrane electrode assemblies under severe operating conditions</Field>
+<Field name="year">2011</Field>
+<Field name="person_id_string1">72A23AF1836D9E22</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Astrid Stadlhofer</Field>
+<Field name="person_name_string2">Assoc.Prof. Dipl.-Ing. Dr.techn.Viktor Hacker |</Field>
+<Field name="howpublished">European Fuel Cell 2011, Piero Lunghi Conference &amp; Exhibition type: Contributed, Rom, 14.12.11</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">6/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>7</Title>
+<Field name="author">Annette Mütze, Jussi Tamminen, Jero Ahola</Field>
+<Field name="title">Influence of motor operating parameters on discharge bearing current activity</Field>
+<Field name="year">2011</Field>
+<Field name="volume">47</Field>
+<Field name="pages">1767 - 1777</Field>
+<Field name="person_id_string">A2503B1CAD60DEDF |</Field>
+<Field name="person_name_string1">Univ.-Prof. Dr.-Ing.Annette Mütze</Field>
+<Field name="person_name_string2">Jussi Tamminen</Field>
+<Field name="person_name_string3">Jero Ahola |</Field>
+<Field name="language">EN</Field>
+<Field name="location">New York, NY</Field>
+<Field name="journal">IEEE transactions on industry applications</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">7/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>8</Title>
+<Field name="author">Viktor Hacker, Astrid Stadlhofer</Field>
+<Field name="title">Lifetime Investigations of Polymer Electrolyte Fuel Cells (PEFCs) Under Real Operating Conditions</Field>
+<Field name="year">2011</Field>
+<Field name="person_id_string1">3F7E37F7FE0ADBEA</Field>
+<Field name="person_id_string2">72A23AF1836D9E22 |</Field>
+<Field name="person_name_string1">Assoc.Prof. Dipl.-Ing. Dr.techn.Viktor Hacker</Field>
+<Field name="person_name_string2">Dipl.-Ing.Astrid Stadlhofer |</Field>
+<Field name="howpublished">ECO-MOBILITY 2011, A3PS, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">8/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>9</Title>
+<Field name="author">Gerhard Maderbacher, Thomas Jackum, Wolfgang Pribyl, Christoph Sandner</Field>
+<Field name="title">Output stage topologies of DC-DC buck converters operating up to 5 V supply voltage in 65 nm CMOS</Field>
+<Field name="booktitle">Proceedings of IEEE PRIME 2011</Field>
+<Field name="year">2011</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">105 - 108</Field>
+<Field name="month">Jul</Field>
+<Field name="person_id_string1">6D7718B43186EDE9</Field>
+<Field name="person_id_string2">FBDE20414FDD60C8</Field>
+<Field name="person_id_string3">10FF66AAD98100AF |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Gerhard Maderbacher</Field>
+<Field name="person_name_string2">Dipl.-Ing. (FH)Thomas Jackum</Field>
+<Field name="person_name_string3">Univ.-Prof. Dipl.-Ing. Dr.techn.Wolfgang Pribyl</Field>
+<Field name="person_name_string4">DIChristoph Sandner |</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">9/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>10</Title>
+<Field name="author">Erich Ramschak, Nicolas Fouquet, Harald Brandstätter, Viktor Hacker</Field>
+<Field name="title">Online Fuel Cell Monitoring and Operating Conditions Identification Including Life Time Measurement</Field>
+<Field name="year">2011</Field>
+<Field name="volume">2</Field>
+<Field name="pages">45 - 52</Field>
+<Field name="person_id_string1">D2A2CAA6BA66E1A6</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Erich Ramschak</Field>
+<Field name="person_name_string2">Nicolas Fouquet</Field>
+<Field name="person_name_string3">Dipl.-Ing.Harald Brandstätter</Field>
+<Field name="person_name_string4">Assoc.Prof. Dipl.-Ing. Dr.techn.Viktor Hacker |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Beijing</Field>
+<Field name="journal">Journal of automotive safety and energy</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">10/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>11</Title>
+<Field name="type">Diplomarbeit</Field>
+<Field name="author">David Seebacher</Field>
+<Field name="title">Test Methodology Development for Contactless Proximity Coupling Systems Operating at Very High Bit Rates</Field>
+<Field name="year">2011</Field>
+<Field name="person_id_string">1C81B0EC4DD25E28 |</Field>
+<Field name="person_name_string">Dipl.-Ing. BScDavid Seebacher |</Field>
+<Field name="school">Graz, TU Graz</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">11/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>12</Title>
+<Field name="author">Thomas Gigl, Florian Troesch, Josef Preishuber-Pfluegl, Klaus Witrisal</Field>
+<Field name="title">Maximal Operating Distance Estimation using IEEE 802.15.4a Ultra Wideband</Field>
+<Field name="booktitle">Korea-Australia International Conference Alliance (KOALA2010)</Field>
+<Field name="year">2010</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">84 - 92</Field>
+<Field name="month">Jan</Field>
+<Field name="person_id_string1">9BF8B50041647977</Field>
+<Field name="person_id_string2">6CEBA5C413E668CA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Thomas Gigl</Field>
+<Field name="person_name_string2">PhDFlorian Troesch</Field>
+<Field name="person_name_string3">Dipl.-Ing.Josef Preishuber-Pfluegl</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr. Assoc.Prof.Klaus Witrisal |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Perth</Field>
+<Field name="note">IEEE Student Outstanding Best Paper Award</Field>
+<Field name="editor">Murdoch University</Field>
+<Field name="series">Korea-Australia International Conference Alliances</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">12/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>13</Title>
+<Field name="author">Thomas Gigl, Florian Troesch, Josef Preishuber-Pfluegl, Klaus Witrisal</Field>
+<Field name="title">Maximal Operating Distance Estimation using IEEE 802.15.4a Ultra Wideband</Field>
+<Field name="booktitle">Workshop on Positioning, Navigation and Communication (WPNC) 2010</Field>
+<Field name="year">2010</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">10 - 18</Field>
+<Field name="month">Mar</Field>
+<Field name="person_id_string1">9BF8B50041647977</Field>
+<Field name="person_id_string2">6CEBA5C413E668CA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Thomas Gigl</Field>
+<Field name="person_name_string2">PhDFlorian Troesch</Field>
+<Field name="person_name_string3">Dipl.-Ing.Josef Preishuber-Pfluegl</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr. Assoc.Prof.Klaus Witrisal |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Dresden</Field>
+<Field name="editor">IEEE, University of Applied Sciences Dresden</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">13/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>14</Title>
+<Field name="author">Erich Ramschak, Nicolas Fouquet, Harald Brandstätter, Viktor Hacker</Field>
+<Field name="title">Online FC Monitoring and Identification of Operating Conditions Including Lifetime Measurement</Field>
+<Field name="year">2010</Field>
+<Field name="person_id_string1">D2A2CAA6BA66E1A6</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Erich Ramschak</Field>
+<Field name="person_name_string2">Nicolas Fouquet</Field>
+<Field name="person_name_string3">Dipl.-Ing.Harald Brandstätter</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker |</Field>
+<Field name="howpublished">EVS25 Proceedings, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">14/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>15</Title>
+<Field name="author">Harald Brandstätter, Viktor Hacker, Nicolas Fouquet, Erich Ramschak</Field>
+<Field name="title">Real-Time Diagnosis of the Operating State of Fuel Cells by Electrochemical Impedance Spectroscopy</Field>
+<Field name="year">2010</Field>
+<Field name="person_id_string1">D2A2CAA6BA66E1A6</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Harald Brandstätter</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string3">Nicolas Fouquet</Field>
+<Field name="person_name_string4">Dipl.-Ing.Erich Ramschak |</Field>
+<Field name="language">EN</Field>
+<Field name="url">http://www.ecsdl.org/getpdf/servlet/GetPDFServlet?filetype=pdf&amp;id=MAECES001002000010000818000001&amp;idtype=cvips&amp;prog=search</Field>
+<Field name="howpublished">Meeting Abstracts, 218th ECS Meeting, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">15/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>16</Title>
+<Field name="author">Philipp Maria Glatz</Field>
+<Field name="title">TOSPIE2: Tiny Operating System Plug-In for Energy Estimation</Field>
+<Field name="year">2010</Field>
+<Field name="person_id_string">7E3D9E0BE6B087CD |</Field>
+<Field name="person_name_string">Dipl.-Ing. Bakk.techn.Philipp Maria Glatz |</Field>
+<Field name="howpublished">9th ACM/IEEE International Conference on Information Processing in Sensor Networks type: Contributed, Stockholm, 13.04.10</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">16/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>17</Title>
+<Field name="author">Annette Mütze, Jussi Tamminen, Jero Ahola</Field>
+<Field name="title">Influence of motor operating parameters on discharge bearing current activity</Field>
+<Field name="booktitle">Proceedings of 2nd IEEE Energy Conversion Conference and Exhibition</Field>
+<Field name="year">2010</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">2739  - 2746</Field>
+<Field name="month">Sep</Field>
+<Field name="person_id_string">A2503B1CAD60DEDF |</Field>
+<Field name="person_name_string1">Univ.-Prof. Dr.-Ing.Annette Mütze</Field>
+<Field name="person_name_string2">Jussi Tamminen</Field>
+<Field name="person_name_string3">Jero Ahola |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Atlanta</Field>
+<Field name="url">http://www.ecce2010.org/</Field>
+<Field name="editor">IEEE</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">17/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>18</Title>
+<Field name="author">Philipp Maria Glatz</Field>
+<Field name="title">TOSPIE2: Tiny Operating System Plug-In for Energy Estimation</Field>
+<Field name="year">2010</Field>
+<Field name="person_id_string">7E3D9E0BE6B087CD |</Field>
+<Field name="person_name_string">Dipl.-Ing. Bakk.techn.Philipp Maria Glatz |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Stockholm, Schweden</Field>
+<Field name="howpublished">The 9th ACM/IEEE International Conference on Information Processing in Sensor Networks, Stockholm, Schweden</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">18/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>19</Title>
+<Field name="author">Eberhard Schutting</Field>
+<Field name="title">METHOD FOR OPERATING AN INTERNAL COMBUSTION ENGINE</Field>
+<Field name="year">2010</Field>
+<Field name="person_id_string">608050FDADEAE089 |</Field>
+<Field name="person_name_string">Dipl.-Ing. Dr.techn.Eberhard Schutting |</Field>
+<Field name="howpublished">WO2010/149563, AVL List GmbH, 17.06.10, 29.12.10, EP2010/058529, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">19/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>20</Title>
+<Field name="author">Philipp Maria Glatz, Christian Steger, Reinhold Weiß</Field>
+<Field name="title">TOSPIE2: Tiny Operating System Plug-In for Energy Estimation</Field>
+<Field name="booktitle">Proceedings of the 9th ACM/IEEE International Conference on Information Processing in Sensor Networks</Field>
+<Field name="year">2010</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">410 - 411</Field>
+<Field name="person_id_string">7E3D9E0BE6B087CD |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Bakk.techn.Philipp Maria Glatz</Field>
+<Field name="person_name_string2">Ass.Prof. Dipl.-Ing. Dr.techn.Christian Steger</Field>
+<Field name="person_name_string3">O.Univ.-Prof. Dipl.-Ing. Dr.techn.Reinhold Weiß |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Stockholm</Field>
+<Field name="url">http://doi.acm.org/10.1145/1791212.1791279</Field>
+<Field name="editor">ACM, New York, NY, USA</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">20/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>21</Title>
+<Field name="author">Harald Brandstätter, Viktor Hacker, Nicolas Fouquet, Erich Ramschak</Field>
+<Field name="title">Real-Time Diagnosis of the Operating State of Fuel Cells by Electrochemical Impedance Spectroscopy</Field>
+<Field name="year">2010</Field>
+<Field name="person_id_string1">D2A2CAA6BA66E1A6</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Harald Brandstätter</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string3">Nicolas Fouquet</Field>
+<Field name="person_name_string4">Dipl.-Ing.Erich Ramschak |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Las Vegas, USA</Field>
+<Field name="howpublished">218th ECS Meeting, Las Vegas, USA</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">21/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>22</Title>
+<Field name="author">Mathias Reum, Stefan Freunberger, Felix N. Büchi</Field>
+<Field name="title">Measuring the Current Distribution in PEFCs with Sub-Millimeter Resolution, II. Impact of Operating Parameters</Field>
+<Field name="year">2009</Field>
+<Field name="volume">156</Field>
+<Field name="pages">B310 - B310</Field>
+<Field name="person_id_string">BB836CF79A974A16 |</Field>
+<Field name="person_name_string1">Mathias Reum</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.sc.ETHStefan Freunberger</Field>
+<Field name="person_name_string3">Felix N. Büchi |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Pennington, NJ</Field>
+<Field name="journal">Journal of the Electrochemical Society</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">22/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>23</Title>
+<Field name="author">Viktor Hacker</Field>
+<Field name="title">Pinhole Formation in Polymer Electrolyte Membranes under Real Operating Conditions</Field>
+<Field name="year">2009</Field>
+<Field name="person_id_string">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker |</Field>
+<Field name="howpublished">PBFC 2009 - 4th International Conference on Polymer Batteries and Fuel Cells type: Invited, Yokohama, 02.08.09</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">23/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>24</Title>
+<Field name="author">Viktor Hacker, Eva Wallnöfer</Field>
+<Field name="title">Pinhole formation in polymer electrolyte membranes under real operating conditions</Field>
+<Field name="booktitle">PBFC 2009</Field>
+<Field name="year">2009</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">41 - 41</Field>
+<Field name="month">Aug</Field>
+<Field name="person_id_string1">3F7E37F7FE0ADBEA</Field>
+<Field name="person_id_string2">E7EE9B3F69A6A03D |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn.Eva Wallnöfer |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Yokohama</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">24/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>25</Title>
+<Field name="author">Michael Lebenbauer, Viktor Hacker</Field>
+<Field name="title">Influence of Operating Parameters of Polymer Electrolyte Membrane Single Cells on Cold Start-Behaviour at Subfreezing Temperatures</Field>
+<Field name="year">2008</Field>
+<Field name="person_id_string1">0AB54679D3755D4A</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Ing.Michael Lebenbauer</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Ulm</Field>
+<Field name="howpublished">11th ElectroChemical Talks (UECT), Ulm</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">25/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>26</Title>
+<Field name="author">Viktor Hacker, Eva Wallnöfer</Field>
+<Field name="title">Influence of Operating Conditions on Membrane Ageing in PEFC</Field>
+<Field name="year">2008</Field>
+<Field name="person_id_string1">3F7E37F7FE0ADBEA</Field>
+<Field name="person_id_string2">E7EE9B3F69A6A03D |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn.Eva Wallnöfer |</Field>
+<Field name="howpublished">Hybrid and electric vehicles, energy storage technologies and control systems type: Invited, n/a, 21.10.08</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">26/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>27</Title>
+<Field name="author">E. Starschich, Annette Mütze</Field>
+<Field name="title">Operating area analysis of direct and geared brushless-dc motor drives for electric bicycles</Field>
+<Field name="booktitle">Proceedings of the 42nd IEEE IAS Annual Conference</Field>
+<Field name="year">2007</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">2161 - 2168</Field>
+<Field name="month">Sep</Field>
+<Field name="person_id_string">A2503B1CAD60DEDF |</Field>
+<Field name="person_name_string1">E. Starschich</Field>
+<Field name="person_name_string2">Univ.-Prof. Dr.-Ing.Annette Mütze |</Field>
+<Field name="language">EN</Field>
+<Field name="location">New Orleans</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">27/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>28</Title>
+<Field name="author">Michaela Böberl, Maksym V. Kovalenko, Stefan Gamerith, Emil List, Wolfgang Heiss</Field>
+<Field name="title">Inkjet-Printed Nanocrystal Photodetectors Operating up to 3 µm Wavelengths</Field>
+<Field name="year">2007</Field>
+<Field name="volume">19</Field>
+<Field name="pages">3574 - 3578</Field>
+<Field name="person_id_string">71E379169329530F |</Field>
+<Field name="person_name_string1">Michaela Böberl</Field>
+<Field name="person_name_string2">Maksym V. Kovalenko</Field>
+<Field name="person_name_string3">Stefan Gamerith</Field>
+<Field name="person_name_string4">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Emil List</Field>
+<Field name="person_name_string5">Prof. Wolfgang Heiss |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Weinheim</Field>
+<Field name="journal">Advanced materials</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">28/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>29</Title>
+<Field name="author">Fernando Miguel, Angel Martin, Thomas Gamse, Maria Jose Cocero</Field>
+<Field name="title">Supercritical anti solvent precipitation of lycopene: Effect of the operating parameters</Field>
+<Field name="year">2006</Field>
+<Field name="volume">36</Field>
+<Field name="pages">225 - 235</Field>
+<Field name="person_id_string">96BCEAA9428B6A34 |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Fernando Miguel</Field>
+<Field name="person_name_string2">Dipl.-Ing.Dr.techn.Angel Martin</Field>
+<Field name="person_name_string3">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Thomas Gamse</Field>
+<Field name="person_name_string4">Univ.Prof.Dipl-Ing.Dr.techn.Maria Jose Cocero |</Field>
+<Field name="language">EN</Field>
+<Field name="location">New York, NY [u.a.]</Field>
+<Field name="journal">The journal of supercritical fluids</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">29/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>30</Title>
+<Field name="author">Thomas Schaffer, Wolfgang Richard Baumgartner, Eva Wallnöfer, Viktor Hacker, Erich Ramschak, Volker Peinecke, Peter Prenninger</Field>
+<Field name="title">Detection of Critical Operating Conditions for Fuel Cell Applications via Distortion Analysis</Field>
+<Field name="booktitle">n/a</Field>
+<Field name="year">2006</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">428 - -</Field>
+<Field name="month">Nov</Field>
+<Field name="person_id_string1">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string2">223E1A7849DC8535</Field>
+<Field name="person_id_string3">E7EE9B3F69A6A03D</Field>
+<Field name="person_id_string4">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string2">BEng. Dipl.-Ing. Dr.techn.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string3">Dipl.-Ing.Eva Wallnöfer</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string5">DIErich Ramschak</Field>
+<Field name="person_name_string6">Dr.Volker Peinecke</Field>
+<Field name="person_name_string7">Dr.Peter Prenninger |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Cancun</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">30/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>31</Title>
+<Field name="author">Erich Ramschak, Volker Peinecke, Peter Prenninger, Wolfgang Richard Baumgartner, Thomas Schaffer, Viktor Hacker</Field>
+<Field name="title">New Approach for Detection of Different Critical Stack Operating Conditions for Large Volume Fuel Cell Applications</Field>
+<Field name="year">2006</Field>
+<Field name="pages">367 -</Field>
+<Field name="person_id_string1">223E1A7849DC8535</Field>
+<Field name="person_id_string2">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string3">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">DIErich Ramschak</Field>
+<Field name="person_name_string2">Dr.Volker Peinecke</Field>
+<Field name="person_name_string3">Dr.Peter Prenninger</Field>
+<Field name="person_name_string4">BEng. Dipl.-Ing.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string5">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string6">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Pennington, NJ</Field>
+<Field name="journal">ECS transactions</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">31/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>32</Title>
+<Field name="author">Thomas Schaffer, Wolfgang Richard Baumgartner, Eva Wallnöfer, Viktor Hacker, Erich Ramschak, Volker Peinecke, Peter Prenninger</Field>
+<Field name="title">New Approach for Detection of Critical Operating Conditions for Fuel Cell Applications</Field>
+<Field name="booktitle">n/a</Field>
+<Field name="year">2006</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">1/2 - 06</Field>
+<Field name="month">May</Field>
+<Field name="person_id_string1">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string2">223E1A7849DC8535</Field>
+<Field name="person_id_string3">E7EE9B3F69A6A03D</Field>
+<Field name="person_id_string4">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string2">BEng. Dipl.-Ing. Dr.techn.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string3">Dipl.-Ing.Eva Wallnöfer</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string5">DIErich Ramschak</Field>
+<Field name="person_name_string6">Dr.Volker Peinecke</Field>
+<Field name="person_name_string7">Dr.Peter Prenninger |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Essen</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">32/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>33</Title>
+<Field name="author">Thomas Schaffer, Wolfgang Richard Baumgartner, Eva Wallnöfer, Viktor Hacker, Erich Ramschak, Volker Peinecke, Peter Prenninger</Field>
+<Field name="title">Detection of Critical Operating Conditions for Fuel Cell Applications via Distortion Analisys</Field>
+<Field name="year">2006</Field>
+<Field name="person_id_string1">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string2">223E1A7849DC8535</Field>
+<Field name="person_id_string3">E7EE9B3F69A6A03D</Field>
+<Field name="person_id_string4">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string2">BEng. Dipl.-Ing. Dr.techn.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string3">Dipl.-Ing.Eva Wallnöfer</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string5">DIErich Ramschak</Field>
+<Field name="person_name_string6">Dr.Volker Peinecke</Field>
+<Field name="person_name_string7">Peter Prenninger |</Field>
+<Field name="howpublished">210th Meeting of The Electrochemical Society type: Contributed, Cancun, 29.10.06</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">33/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>34</Title>
+<Field name="author">Th. Schaffer, Wolfgang Richard Baumgartner, Eva Wallnöfer, Viktor Hacker, E. Ramschak, V. Peinecke, P. Prenninger</Field>
+<Field name="title">Detection of Critical Operating Conditions for Fuel Cell Applications via Distortion Analysis</Field>
+<Field name="year">2006</Field>
+<Field name="person_id_string1">223E1A7849DC8535</Field>
+<Field name="person_id_string2">E7EE9B3F69A6A03D</Field>
+<Field name="person_id_string3">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dr.Th. Schaffer</Field>
+<Field name="person_name_string2">BEng. Dipl.-Ing.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string3">Dipl.-Ing.Eva Wallnöfer</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string5">DIE. Ramschak</Field>
+<Field name="person_name_string6">Dr.V. Peinecke</Field>
+<Field name="person_name_string7">Dr.P. Prenninger |</Field>
+<Field name="howpublished">Abstract No. 428,  210th Meeting of The Electrochemical Society, Cancun, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">34/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>35</Title>
+<Field name="author">Heimo Theuretzbacher-Fritz</Field>
+<Field name="title">Cost drivers and operating conditions towards different tariff levels for efficient water use</Field>
+<Field name="year">2006</Field>
+<Field name="person_id_string">462628211A19FF46 |</Field>
+<Field name="person_name_string">Mag.rer.nat.Heimo Theuretzbacher-Fritz |</Field>
+<Field name="howpublished">IWA World Water Congress and Exhibition. Workshop &quot;Water Pricing and Tariff Structures – Trends and Case Studies Towards More Efficient Water Use&quot; type: Invited, Beijing, 10.09.06</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">35/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>36</Title>
+<Field name="author">Thomas Schaffer, Wolfgang Richard Baumgartner, Eva Wallnöfer, Viktor Hacker, Erich Ramschack, Volker Peinecke, Peter Prenninger</Field>
+<Field name="title">Detection of Critical Operating Conditions for Fuel Cell Applications via Distortion Analysis</Field>
+<Field name="year">2006</Field>
+<Field name="pages">941 -</Field>
+<Field name="person_id_string1">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string2">223E1A7849DC8535</Field>
+<Field name="person_id_string3">E7EE9B3F69A6A03D</Field>
+<Field name="person_id_string4">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string2">BEng. Dipl.-Ing.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string3">Dipl.-Ing.Eva Wallnöfer</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string5">DIErich Ramschack</Field>
+<Field name="person_name_string6">Dr.Volker Peinecke</Field>
+<Field name="person_name_string7">Dr.Peter Prenninger |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Pennington, NJ</Field>
+<Field name="journal">ECS transactions</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">36/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>37</Title>
+<Field name="author">Th. Schaffer, Wolfgang Richard Baumgartner, Eva Wallnöfer, Viktor Hacker, E. Ramschak, V. Peinecke, P. Prenninger</Field>
+<Field name="title">New Approach for Detection of Critical Operating Conditions for Fuel Cell Applications</Field>
+<Field name="year">2006</Field>
+<Field name="person_id_string1">223E1A7849DC8535</Field>
+<Field name="person_id_string2">E7EE9B3F69A6A03D</Field>
+<Field name="person_id_string3">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Dr.Th. Schaffer</Field>
+<Field name="person_name_string2">BEng. Dipl.-Ing.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string3">Dipl.-Ing.Eva Wallnöfer</Field>
+<Field name="person_name_string4">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string5">DIE. Ramschak</Field>
+<Field name="person_name_string6">Dr.V. Peinecke</Field>
+<Field name="person_name_string7">Dr.P. Prenninger |</Field>
+<Field name="howpublished">1. Symposium Impedanzspektroskopie, Haus der Technik, Essen, Technische Mitteilungen, Jahrgang 99, 1/2 06, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">37/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>38</Title>
+<Field name="author">Günter Gruber</Field>
+<Field name="title">Different Concepts and Practical Experiences by Operating On-Line Measurement Stations for Water Quality Monitoring</Field>
+<Field name="year">2006</Field>
+<Field name="person_id_string">DDC9047A50789E1F |</Field>
+<Field name="person_name_string">Ass.-Prof. Dipl.-Ing. Dr.techn.Günter Gruber |</Field>
+<Field name="howpublished">Construction of Pilot Devices for Advanced River Water Quality Monitoring Stations, Final Symposium type: Invited, Nis, 13.10.06</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">38/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>39</Title>
+<Field name="author">Wolfgang Richard Baumgartner, Viktor Hacker, Jürgen Besenhard</Field>
+<Field name="title">Carbon Corrosion in PEMFC electrodes under real operating conditions</Field>
+<Field name="year">2006</Field>
+<Field name="person_id_string1">223E1A7849DC8535</Field>
+<Field name="person_id_string2">3F7E37F7FE0ADBEA</Field>
+<Field name="person_id_string3">DE3C2834FE25EFF9 |</Field>
+<Field name="person_name_string1">BEng. Dipl.-Ing. Dr.techn.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker</Field>
+<Field name="person_name_string3">O.Univ.-Prof. Dipl.-Ing. Dr.rer.nat.Jürgen Besenhard |</Field>
+<Field name="howpublished">Workshop Advanced Fuel Cells type: Contributed, n/a, 04.09.06</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">39/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>40</Title>
+<Field name="author">Erich Ramschak, Volker Peinecke, Peter Prenninger, Wolfgang Richard Baumgartner, Thomas Schaffer, Viktor Hacker</Field>
+<Field name="title">New Approach for Detection od Different Critical Stack Operating Conditions for Large Volume Fuel Cell Applications</Field>
+<Field name="booktitle">n/a</Field>
+<Field name="year">2005</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">-</Field>
+<Field name="month">Oct</Field>
+<Field name="person_id_string1">223E1A7849DC8535</Field>
+<Field name="person_id_string2">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string3">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">DIErich Ramschak</Field>
+<Field name="person_name_string2">Dr.Volker Peinecke</Field>
+<Field name="person_name_string3">Dr.Peter Prenninger</Field>
+<Field name="person_name_string4">BEng. Dipl.-Ing. Dr.techn.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string5">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string6">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Los Angeles</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">40/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>41</Title>
+<Field name="author">Erich Ramschak, Volker Peinecker, Peter Prenninger, Wolfgang Richard Baumgartner, Thomas Schaffer, Viktor Hacker</Field>
+<Field name="title">New Approach for Detection of Different Critical Stack Operating Conditions for Large Volume Fuel Cell Applications</Field>
+<Field name="year">2005</Field>
+<Field name="person_id_string1">223E1A7849DC8535</Field>
+<Field name="person_id_string2">E4B7DADF1B6C81A9</Field>
+<Field name="person_id_string3">3F7E37F7FE0ADBEA |</Field>
+<Field name="person_name_string1">Erich Ramschak</Field>
+<Field name="person_name_string2">Volker Peinecker</Field>
+<Field name="person_name_string3">Dr.Peter Prenninger</Field>
+<Field name="person_name_string4">BEng. Dipl.-Ing. Dr.techn.Wolfgang Richard Baumgartner</Field>
+<Field name="person_name_string5">Dipl.-Ing. Dr.techn.Thomas Schaffer</Field>
+<Field name="person_name_string6">Dipl.-Ing. Dr.techn. Univ.-Doz.Viktor Hacker |</Field>
+<Field name="howpublished">208th Meeting of The Electrochemical Society  type: Contributed, Los Angeles , 16.10.05</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">41/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>42</Title>
+<Field name="author">Joshua N. Haddock, Bernard Kippelen, David L. Mathine, Johanna Schmidtke, Sriram Kumaraswamy, Seth R. Marder, Ohyun Kwon, Egbert Zojer, Jean-Luc Brédas</Field>
+<Field name="title">Colorless Molecular Dopands for Low-Operating-Voltage Nematic Liquid Crystals</Field>
+<Field name="year">2005</Field>
+<Field name="volume">428</Field>
+<Field name="pages">17 - 32</Field>
+<Field name="person_id_string">C6D7A2ED40F92E54 |</Field>
+<Field name="person_name_string1">Joshua N. Haddock</Field>
+<Field name="person_name_string2">Bernard Kippelen</Field>
+<Field name="person_name_string3">David L. Mathine</Field>
+<Field name="person_name_string4">Johanna Schmidtke</Field>
+<Field name="person_name_string5">Sriram Kumaraswamy</Field>
+<Field name="person_name_string6">Seth R. Marder</Field>
+<Field name="person_name_string7">Ohyun Kwon</Field>
+<Field name="person_name_string8">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Egbert Zojer</Field>
+<Field name="person_name_string9">Jean-Luc Brédas |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Philadelphia, Pa. [u.a.]</Field>
+<Field name="journal">Molecular crystals and liquid crystals science and technology / A</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">42/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>43</Title>
+<Field name="author">Xinghua Guo, Marc Duursma, Ahmed Al-Khalili, Liam A.  McDonnell, Ron M. A. Heeren</Field>
+<Field name="title">Design and performance of a new FT-ICR ion cell operating at a temperature range of 77-438 K</Field>
+<Field name="year">2004</Field>
+<Field name="volume">231 1</Field>
+<Field name="pages">37 - 45</Field>
+<Field name="person_id_string">AA0A482BF0F5ECD1 |</Field>
+<Field name="person_name_string1">Ph.DXinghua Guo</Field>
+<Field name="person_name_string2">Marc Duursma</Field>
+<Field name="person_name_string3">Ahmed Al-Khalili</Field>
+<Field name="person_name_string4">Liam A.  McDonnell</Field>
+<Field name="person_name_string5">Ron M. A. Heeren |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Amsterdam [u.a.]</Field>
+<Field name="journal">International journal of mass spectrometry</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">43/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>44</Title>
+<Field name="author">Z. Yan, M. Dong, Y. Shang, Hans Michael Muhr</Field>
+<Field name="title">Ageing diagnosis and life estimation of paper insulation for operating power transformer</Field>
+<Field name="booktitle">ICSD / Vol. 2</Field>
+<Field name="year">2004</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">715 - 718</Field>
+<Field name="month">Jul</Field>
+<Field name="person_id_string">C7ECF8408D819DBE |</Field>
+<Field name="person_name_string1">Z. Yan</Field>
+<Field name="person_name_string2">M. Dong</Field>
+<Field name="person_name_string3">Y. Shang</Field>
+<Field name="person_name_string4">O.Univ.-Prof. Dipl.-Ing. Dr.techn.Hans Michael Muhr |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Toulouse</Field>
+<Field name="url">http://ieeexplore.ieee.org/iel5/9346/29688/01350531.pdf?tp=&amp;arnumber=1350531&amp;isnumber=29688</Field>
+<Field name="editor">IEEE</Field>
+<Field name="publisher">IEEE Service Center</Field>
+<Field name="address">Piscataway, NJ</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">44/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>45</Title>
+<Field name="author">Dieter Draxelmayr, Christian Vogel, Franz Kuttner</Field>
+<Field name="title">Circuit arrangement for compensation for nonlinearities from analog/digital converters operating with different timing</Field>
+<Field name="year">2004</Field>
+<Field name="person_id_string">6AFCD48CE80B2C9A |</Field>
+<Field name="person_name_string1">Dr.Dieter Draxelmayr</Field>
+<Field name="person_name_string2">Dipl.-Ing.Christian Vogel</Field>
+<Field name="person_name_string3">DIFranz Kuttner |</Field>
+<Field name="howpublished">US7135999, n/a, 27.02.04, 15.09.05, 6758905, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">45/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>46</Title>
+<Field name="author">Ingwald Obernberger, Friedrich BIEDERMANN , Henrik Carlsen, Martin Schöch</Field>
+<Field name="title">Small-scale CHP Plant based on a 75 kWel Hermetic Eight Cylinder Stirling Engine for Biomass Fuels – Development, Technology and Operating Experiences</Field>
+<Field name="booktitle">2nd World Conference and Exhibition on Biomass for Energy, Industry and Climate Protection</Field>
+<Field name="year">2004</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">1722 - 1725</Field>
+<Field name="month">May</Field>
+<Field name="person_id_string">6A21E72E285E7FCE |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn. Prof. Univ.-Doz.Ingwald Obernberger</Field>
+<Field name="person_name_string2">Dr.Friedrich BIEDERMANN </Field>
+<Field name="person_name_string3">Henrik Carlsen</Field>
+<Field name="person_name_string4">Martin Schöch |</Field>
+<Field name="language">EN</Field>
+<Field name="location">ROM</Field>
+<Field name="editor">ETA-Florence (Ed.)</Field>
+<Field name="address">ROM</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">46/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>47</Title>
+<Field name="author">Franz Chmela, Janos Csato, Helmut Eichlseder, Günter Figer, Christian Hermann Fuchs, Michael Glensvig, Peter Herzog, Thomas Kammerdiener, Klemens Neunteufel, Gerhard Pirker, Theodor Sams, Michael Weissbäck, Andreas Wimmer</Field>
+<Field name="title">Method for Operating an Internal Combustion Engine</Field>
+<Field name="year">2004</Field>
+<Field name="person_id_string1">FAF595AEC7107A5D</Field>
+<Field name="person_id_string2">B0F9208C9C44F221</Field>
+<Field name="person_id_string3">A0399B583736261F</Field>
+<Field name="person_id_string4">9698CD12386320E9</Field>
+<Field name="person_id_string5">3A156EF9603E2214</Field>
+<Field name="person_id_string6">DE6E574E32EC7326 |</Field>
+<Field name="person_name_string1">Dipl.-Ing. Dr.techn.Franz Chmela</Field>
+<Field name="person_name_string2">Dr.Janos Csato</Field>
+<Field name="person_name_string3">Univ.-Prof. Dipl.-Ing. Dr.techn.Helmut Eichlseder</Field>
+<Field name="person_name_string4">Dipl.-Ing.Günter Figer</Field>
+<Field name="person_name_string5">Dipl.-Ing.Christian Hermann Fuchs</Field>
+<Field name="person_name_string6">Dipl.-Ing.Michael Glensvig</Field>
+<Field name="person_name_string7">Dr.Peter Herzog</Field>
+<Field name="person_name_string8">Thomas Kammerdiener</Field>
+<Field name="person_name_string9">Klemens Neunteufel</Field>
+<Field name="person_name_string10">Dipl.-Ing.Gerhard Pirker</Field>
+<Field name="person_name_string11">Dr.Theodor Sams</Field>
+<Field name="person_name_string12">Michael Weissbäck</Field>
+<Field name="person_name_string13">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Andreas Wimmer |</Field>
+<Field name="howpublished">WO2005/033496 (internat. PA), AVL List GmbH, Graz, AT, 16.04.04, 14.04.05, n/a, PCT/AT2004/000132</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">47/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>48</Title>
+<Field name="author">Christian Vogel, Dieter Draxelmayr, Franz Kuttner</Field>
+<Field name="title">Circuit arrangement for the delay adjustment of analog-to-digital converters operating in a temporally offset manner</Field>
+<Field name="year">2004</Field>
+<Field name="person_id_string">6AFCD48CE80B2C9A |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Christian Vogel</Field>
+<Field name="person_name_string2">Dr.Dieter Draxelmayr</Field>
+<Field name="person_name_string3">DIFranz Kuttner |</Field>
+<Field name="howpublished">US7126511, n/a, 27.02.04, 22.09.05, DE102004009612, n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">48/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>49</Title>
+<Field name="author">Jürgen Ringler, Wolfgang Strobl, Andreas Schüers, Helmut Eichlseder, Andreas Wimmer, Thomas Wallner</Field>
+<Field name="title">Method for Operating an Internal Combustion Engine</Field>
+<Field name="year">2004</Field>
+<Field name="person_id_string1">B0F9208C9C44F221</Field>
+<Field name="person_id_string2">DE6E574E32EC7326 |</Field>
+<Field name="person_name_string1">Dipl.-Phys.Jürgen Ringler</Field>
+<Field name="person_name_string2">Dipl.-Ing.Wolfgang Strobl</Field>
+<Field name="person_name_string3">Dr.Andreas Schüers</Field>
+<Field name="person_name_string4">Univ.-Prof. Dipl.-Ing. Dr.techn.Helmut Eichlseder</Field>
+<Field name="person_name_string5">Ao.Univ.-Prof. Dipl.-Ing. Dr.techn.Andreas Wimmer</Field>
+<Field name="person_name_string6">Dr.Thomas Wallner |</Field>
+<Field name="howpublished">WO2004/101972  (internat. PA), Bayrische Motoren Werke Aktiengesellschaft, 06.05.04, 25.11.04, n/a, PCT/EP2004/004929</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">49/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>50</Title>
+<Field name="author">A. Koynov, Johannes Khinast</Field>
+<Field name="title">Yield and Selectivity of Reactions in Bubble Column Reactors Operating in Different Flow Regimes</Field>
+<Field name="year">2003</Field>
+<Field name="pages">n/a - n/a</Field>
+<Field name="person_id_string">962D54D549D3E453 |</Field>
+<Field name="person_name_string1">A. Koynov</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn. Marie Curie Chair HolderJohannes Khinast |</Field>
+<Field name="language">EN</Field>
+<Field name="location">New York, NY</Field>
+<Field name="journal">AIChE journal</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">50/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>51</Title>
+<Field name="author">M.Lesnik</Field>
+<Field name="title">Operating Parameters and Measurements for Jet Grouting</Field>
+<Field name="booktitle">Proc. of the 13th Young Geotechnical Engineers Conference, Santorini, Greece, 23-25 September 1999, Minoas Books, 445-454</Field>
+<Field name="year">2000</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">51/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>52</Title>
+<Field name="author">Köfler H., Rechberger K., Müller F.</Field>
+<Field name="title">Unbalanced load in variable speed generators in hydro power plants</Field>
+<Field name="booktitle">CD-ROM Proceedings of the POWER GEN Europe 2000, Helsinki, June 20.-22. 2000, Track 8, Operating Plants in a Competitive Electricity Market, O&amp;M 1: Plant Optimisation</Field>
+<Field name="year">2000</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">n/a</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">52/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>53</Title>
+<Field name="author">M.Lesnik</Field>
+<Field name="title">Operating Parameters and Measurements for Jet Grouting</Field>
+<Field name="year">1999</Field>
+<Field name="howpublished">Lecture, &quot;13th Young Geotechnical Engineers Conference&quot;, Santorini, Greece, 24.9.1999</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">53/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>54</Title>
+<Field name="author">Michael Woertz, Alois Schlögl, E. Trenker, Peter Rappelsberger, Gert Pfurtscheller</Field>
+<Field name="title">Spindle Filter Optimisation with Receiver Operating Characteristics-Curves</Field>
+<Field name="booktitle">Medical &amp; Biological Engineering &amp; Computing, European Medical &amp; Biological Engineering Conference EMBEC 99</Field>
+<Field name="year">1999</Field>
+<Field name="volume">n/a</Field>
+<Field name="pages">480 - 481</Field>
+<Field name="month">Nov</Field>
+<Field name="person_id_string1">7CBB700B68F79727</Field>
+<Field name="person_id_string2">40730F92949BF685</Field>
+<Field name="person_id_string3">50F5B2C5B8EB76BF |</Field>
+<Field name="person_name_string1">Dipl.-Ing.Michael Woertz</Field>
+<Field name="person_name_string2">Dipl.-Ing. Dr.techn.Alois Schlögl</Field>
+<Field name="person_name_string3">E. Trenker</Field>
+<Field name="person_name_string4">Univ.-Prof. Dr.Peter Rappelsberger</Field>
+<Field name="person_name_string5">Univ.-Prof. Dipl.-Ing. Dr.techn.Gert Pfurtscheller |</Field>
+<Field name="language">EN</Field>
+<Field name="location">Wien</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">54/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>55</Title>
+<Field name="author">Gernot Staudinger</Field>
+<Field name="title">Design, Start-Up and Operating Experience of FGD System with Gypsum By-product at Riedersbach NO 2 in Austria</Field>
+<Field name="year">1988</Field>
+<Field name="person_id_string">C4749C4885C894EF |</Field>
+<Field name="person_name_string">O.Univ.-Prof. Dipl.-Ing. Dr.techn.Gernot Staudinger |</Field>
+<Field name="howpublished">First combined FGD and Dry SO2 Control Symposium type: Mündlich, St. Louis, Missouri, 25.10.88</Field>
+<Field name="WEB SERVICE">btx</Field>
+<Field name="wb_result_cnt">55/55</Field>
+<Field name="count_all_results">55</Field>
+</MODULE_RESULT>
+
+</OBRES>
+<OBRES module_name="TUG_exportOrganisation_v3">
+<description></description>
+<resultCode>success</resultCode>
+<provider>http://search-proxy.tugraz.at/search/</provider>
+<searchTerm>operating</searchTerm>
+<totalResults>11</totalResults>
+<MODULE_RESULT>
+<Title>1</Title>
+<Field name="orgUnitID">9193</Field>
+<Field name="name">Institute of Machine Components and Methods of Development</Field>
+<Field name="orgUnitCode">3100</Field>
+<Field name="text">Institute</Field>
+<Field name="userDefname">Institute</Field>
+<Field name="street">Inffeldgasse 21/B/II</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 (316) 873 7361</Field>
+<Field name="fax">+43 (316) 873 7370</Field>
+<Field name="email">birgit.reich[at]tugraz.at</Field>
+<Field name="href">http://www.meem.tugraz.at/</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=Maschinenelemente%20und%20Entwicklungsmethodik&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D9193</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=9193</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">1/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>2</Title>
+<Field name="orgUnitID">13586</Field>
+<Field name="name">Institute for Software Technology</Field>
+<Field name="orgUnitCode">7160</Field>
+<Field name="text">Institute</Field>
+<Field name="userDefname">Institute</Field>
+<Field name="street">Inffeldgasse 16b/II</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 316 873-57 11</Field>
+<Field name="fax">+43 316 873-57 06</Field>
+<Field name="email">sekretariat@ist.tugraz.at</Field>
+<Field name="href">http://www.ist.tugraz.at</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=Softwaretechnologie&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13586</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13586</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">2/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>3</Title>
+<Field name="orgUnitID">13249</Field>
+<Field name="name">AB - Applied Biocatalysis GmbH</Field>
+<Field name="orgUnitCode">98730</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Petersgasse  14/V</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 316 873 9300</Field>
+<Field name="fax">9302</Field>
+<Field name="email">office@acib.at</Field>
+<Field name="href">www.acib.at</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=ACIB%20GmbH&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13249</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13249</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">3/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>4</Title>
+<Field name="orgUnitID">13256</Field>
+<Field name="name">ECHEM - Center of Competence for Applied Electrochemistry GmbH</Field>
+<Field name="orgUnitCode">98760</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Rechbauerstraße 12</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="href">http://www.echem.at/</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=ECHEM%20-%20Kompetenzzentrum%20f%C3%BCr%20angewandte%20Elektrochemie%20GmbH&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13256</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13256</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">4/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>5</Title>
+<Field name="orgUnitID">13258</Field>
+<Field name="name">Know Centre - Competence Center for Knowledge-based Applications and Systems R&amp;D GmbH</Field>
+<Field name="orgUnitCode">98770</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Inffeldgasse 13</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 (0) 316-873-30801</Field>
+<Field name="fax">+43 (0) 316-873-30802</Field>
+<Field name="email">office@know-center.at</Field>
+<Field name="href">http://www.know-center.at</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=Know%20Center&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13258</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13258</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">5/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>6</Title>
+<Field name="orgUnitID">13264</Field>
+<Field name="name">MCL - Materials Center Leoben GmbH</Field>
+<Field name="orgUnitCode">98790</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Franz-Josef-Straße 13/II</Field>
+<Field name="locality">Leoben</Field>
+<Field name="pcode">8700</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 (0) 3842 45922</Field>
+<Field name="fax">+43 (0) 3842 45922 5</Field>
+<Field name="email">mclburo@mcl.at</Field>
+<Field name="href">http://www.mcl.at</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=MCL%20-%20Werkstoff-Kompetenzzentrum-Leoben%20Forschungsgesellschaft%20m.b.H.&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13264</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13264</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">6/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>7</Title>
+<Field name="orgUnitID">13266</Field>
+<Field name="name">PCCL - Polymer Competence Center Leoben GmbH</Field>
+<Field name="orgUnitCode">98800</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Roseggerstrasse 12</Field>
+<Field name="locality">Leoben</Field>
+<Field name="pcode">8700</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 (0)3842 42962-0</Field>
+<Field name="fax">+43 (0)3842 42962-6</Field>
+<Field name="email">office@pccl.at</Field>
+<Field name="href">http://www.pccl.at</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=PCCL%20-%20Polymer%20Competence%20Center%20Leoben%20GmbH&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13266</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13266</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">7/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>8</Title>
+<Field name="orgUnitID">13272</Field>
+<Field name="name">VIV - The Virtual Vehicle GmbH</Field>
+<Field name="orgUnitCode">98830</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Inffeldgasse 21/A/I</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">+43 (0) 316-873-9001</Field>
+<Field name="fax">+43 (0) 316-873-9002</Field>
+<Field name="email">office@virtuellesfahrzeug.at</Field>
+<Field name="href">http://www.virtuellesfahrzeug.at</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=VIF%20-%20Kompetenzzentrum%20-%20Das%20virtuelle%20Fahrzeug%20Forschungsgesellschaft%20mbH&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13272</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13272</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">8/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>9</Title>
+<Field name="orgUnitID">13274</Field>
+<Field name="name">VRVis Research Center for Virtual Reality and Visualization, Ltd.</Field>
+<Field name="orgUnitCode">98840</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="street">Inffeldgasse 16/II</Field>
+<Field name="locality">Graz</Field>
+<Field name="pcode">8010</Field>
+<Field name="country">AT</Field>
+<Field name="telephone">0043 (316) 873-5027</Field>
+<Field name="fax">0043 (316) 873-5050</Field>
+<Field name="email">zach@icg.tu-graz.ac.at</Field>
+<Field name="href">http://www.VRVis.at/</Field>
+<Field name="locationURL">https://online.tugraz.at/tug_online/wblbs.map?pOwner=VRVis%20-%20Zentrum%20f%C3%BCr%20Virtual%20Reality%20und%20Visualisierung%20Forschungs-GmbH&amp;pTitle=Lageplan&amp;pKmlListAddress=wbLBS.orgKmlList%3FpOrgNr%3D13274</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=13274</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">9/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>10</Title>
+<Field name="orgUnitID">18793</Field>
+<Field name="name">Knet Water - Water Resources and their Management&quot;</Field>
+<Field name="orgUnitCode">98883</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=18793</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">10/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+<MODULE_RESULT>
+<Title>11</Title>
+<Field name="orgUnitID">18797</Field>
+<Field name="name">Internal Combustion Engines of the Future</Field>
+<Field name="orgUnitCode">98885</Field>
+<Field name="text">Competence Center</Field>
+<Field name="userDefname">Competence Center</Field>
+<Field name="CAMPUSonlineURL">https://online.tugraz.at/tug_online/wborg.display?pOrgNr=18797</Field>
+<Field name="WEB SERVICE">org</Field>
+<Field name="wb_result_cnt">11/11</Field>
+<Field name="count_all_results">11</Field>
+</MODULE_RESULT>
+
+</OBRES>
+</ENTOBRESULTS><RES SN="1" EN="10">
+<M>1780</M>
+<FI/><NB><NU>/search?q=operating&amp;site=Alle&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;client=tug_portal&amp;access=p&amp;sort=date:D:L:d1&amp;start=10&amp;sa=N</NU>
+</NB>
+
+<R N="1"><U>http://www.soft-net.at/new/tag/operating-hours-assistant-3-6/</U><UE>http://www.soft-net.at/new/tag/operating-hours-assistant-3-6/</UE><UD>http://www.soft-net.at/new/tag/operating-hours-assistant-3-6/</UD><T>&lt;b&gt;Operating&lt;/b&gt; Hours Assistant 3.6 | SoftNet Austria</T><RK>10</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE=""/><S>Home » Getaggte Artikel&amp;#39;&lt;b&gt;Operating&lt;/b&gt; Hours Assistant 3.6&amp;#39;. Tag: &lt;b&gt;Operating&lt;/b&gt;&lt;br&gt; Hours Assistant 3.6. Die letzten Publikationen. Model &lt;b&gt;...&lt;/b&gt;  </S><LANG>de</LANG><HAS><L/><C SZ="18k" CID="NQb_N5WufocJ" ENC="UTF-8"/></HAS></R><R N="2"><U>http://www.soft-net.at/new/tag/operating-hours-assistant-3-6-en/?lang=en</U><UE>http://www.soft-net.at/new/tag/operating-hours-assistant-3-6-en/%3Flang%3Den</UE><UD>http://www.soft-net.at/new/tag/operating-hours-assistant-3-6-en/?lang=en</UD><T>&lt;b&gt;Operating&lt;/b&gt; Hours Assistant 3.6 | SoftNet Austria</T><RK>10</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE=""/><S>Home » Articles tagged &amp;#39;&lt;b&gt;Operating&lt;/b&gt; Hours Assistant 3.6&amp;#39;. Tag: &lt;b&gt;Operating&lt;/b&gt;&lt;br&gt; Hours Assistant 3.6. The latest publications. Social &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="18k" CID="oYwsT9A9nZ0J" ENC="ISO-8859-1"/></HAS></R><R N="3" MIME="application/msword"><U>http://portal.tugraz.at/portal/page/portal/Files/i3350/iddrg/files/Sample_Abstract.doc</U><UE>http://portal.tugraz.at/portal/page/portal/Files/i3350/iddrg/files/Sample_Abstract.doc</UE><UD>http://portal.tugraz.at/portal/page/portal/Files/i3350/iddrg/files/Sample_Abstract.doc</UD><T>Impact of the geometric uncertainties onto the &lt;b&gt;operating&lt;/b&gt; &lt;b&gt;...&lt;/b&gt;</T><RK>9</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2009-10-23"/><S>Title of the Intended Paper (18 pt) Title of the Intended Paper (18 pt)&lt;br&gt; Title of the Intended Paper. Author #1*, Author #2*, (12 &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="4k" CID="WlXCsTZyr1kJ" ENC="ISO-8859-1"/></HAS></R><R N="4" L="2" MIME="application/pdf"><U>http://portal.tugraz.at/portal/page/portal/Files/zid/files/datenblatt/computing/HP_USB-PS2_Washable_Keyboard.pdf</U><UE>http://portal.tugraz.at/portal/page/portal/Files/zid/files/datenblatt/computing/HP_USB-PS2_Washable_Keyboard.pdf</UE><UD>http://portal.tugraz.at/portal/page/portal/Files/zid/files/datenblatt/computing/HP_USB-PS2_Washable_Keyboard.pdf</UD><T>HP USB PS2 Washable Keyboard</T><RK>9</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2010-03-18"/><S>&lt;b&gt;...&lt;/b&gt; be easily disconnected without having to access the computer Plug and play&lt;br&gt; capability when using supported Microsoft Windows &lt;b&gt;operating&lt;/b&gt; systems &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="18k" CID="oeB-5O7fIq4J" ENC="UTF-8"/></HAS><HN U="portal.tugraz.at/portal/page/portal">portal.tugraz.at/portal/page/portal</HN></R><R N="5" MIME="application/pdf"><U>http://www.ttm.tugraz.at/facilities/testrig/neumayer_et_al_asme01.pdf</U><UE>http://www.ttm.tugraz.at/facilities/testrig/neumayer_et_al_asme01.pdf</UE><UD>http://www.ttm.tugraz.at/facilities/testrig/neumayer_et_al_asme01.pdf</UD><T>OPERATIONAL BEHAVIOR OF A COMPLEX TRANSONIC &lt;b&gt;...&lt;/b&gt;</T><RK>9</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2001-04-27"/><S>&lt;b&gt;...&lt;/b&gt; and “SC20” can also be &lt;b&gt;operated&lt;/b&gt; in parallel, which adds their volume flows.&lt;br&gt; “FW8” and “FW9” are the high pressure &lt;b&gt;operating&lt;/b&gt; modes achieved by &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="123k" CID="L33UBuwFzIoJ" ENC="UTF-8"/></HAS></R><R N="6" MIME="application/pdf"><U>http://www.ist.tugraz.at/steinbauer_mediawiki/images/9/96/Kmr12_practical_introduction.pdf</U><UE>http://www.ist.tugraz.at/steinbauer_mediawiki/images/9/96/Kmr12_practical_introduction.pdf</UE><UD>http://www.ist.tugraz.at/steinbauer_mediawiki/images/9/96/Kmr12_practical_introduction.pdf</UD><T>KMR WS2012/13 Overview Robot &lt;b&gt;Operating&lt;/b&gt; System (ROS) &lt;b&gt;...&lt;/b&gt;</T><RK>9</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2012-10-22"/><S>&lt;b&gt;...&lt;/b&gt; Institute for Software Technology i ST Robot &lt;b&gt;Operating&lt;/b&gt; System (ROS) –&lt;br&gt; open-source meta-&lt;b&gt;operating&lt;/b&gt; system – runs on several robot platforms &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="94k" CID="bhKX2SgxE04J" ENC="UTF-8"/></HAS></R><R N="7" MIME="application/pdf"><U>http://www.ist.tugraz.at/qr05/files/p25.pdf</U><UE>http://www.ist.tugraz.at/qr05/files/p25.pdf</UE><UD>http://www.ist.tugraz.at/qr05/files/p25.pdf</UD><T>Causes of Ineradicable Spurious Predictions in Qualitative &lt;b&gt;...&lt;/b&gt;</T><RK>9</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2005-05-24"/><S>&lt;b&gt;...&lt;/b&gt; Finally, the &lt;b&gt;operating&lt;/b&gt; region transition feature is used heavily, since it is thanks&lt;br&gt; to this characteris- tic that the sine function can be represented in &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="92k" CID="WMBj3ynrKfkJ" ENC="UTF-8"/></HAS></R><R N="8" MIME="application/pdf"><U>http://www.iaik.tugraz.at/content/teaching/bachelor_courses/bachelor_arbeit/bachelor_arbeiten_2009/bachelor_arbeit_kloebl_kirchengast_zoehrersauer_new_operating_system.pdf</U><UE>http://www.iaik.tugraz.at/content/teaching/bachelor_courses/bachelor_arbeit/bachelor_arbeiten_2009/bachelor_arbeit_kloebl_kirchengast_zoehrersauer_new_operating_system.pdf</UE><UD>http://www.iaik.tugraz.at/content/teaching/bachelor_courses/bachelor_arbeit/bachelor_arbeiten_2009/bachelor_arbeit_kloebl_kirchengast_zoehrersauer_new_operating_system.pdf</UD><T>New &lt;b&gt;Operating&lt;/b&gt; System</T><RK>8</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2010-01-18"/><S>&lt;b&gt;...&lt;/b&gt; IAIK IAIK TU Graz Bachelor Thesis New &lt;b&gt;Operating&lt;/b&gt; System Version 1.001 &lt;b&gt;...&lt;/b&gt; Page&lt;br&gt; 2. New &lt;b&gt;Operating&lt;/b&gt; System Roland Klöbl1 Martin Kirchengast2 &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="455k" CID="vH5hZw65HoUJ" ENC="UTF-8"/></HAS></R><R N="9" MIME="application/pdf"><U>http://www.ist.tugraz.at/projects/isac/publ/100708-plmms.pdf</U><UE>http://www.ist.tugraz.at/projects/isac/publ/100708-plmms.pdf</UE><UD>http://www.ist.tugraz.at/projects/isac/publ/100708-plmms.pdf</UD><T>CTP-based programming languages ? - Considerations about &lt;b&gt;...&lt;/b&gt;</T><RK>8</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2011-06-01"/><S>&lt;b&gt;...&lt;/b&gt; Proving and Programming Isabelle/Isar logical &lt;b&gt;operating&lt;/b&gt; system (contexts&lt;br&gt; etc) Page 9. &lt;b&gt;...&lt;/b&gt; interpreter logical &lt;b&gt;operating&lt;/b&gt; system (contexts etc) &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="425k" CID="7ZWEXQbX6VkJ" ENC="UTF-8"/></HAS></R><R N="10" MIME="application/pdf"><U>http://www.hfm.tugraz.at/fileadmin/user_upload/pdf/Benigni_Hydro_2006.pdf</U><UE>http://www.hfm.tugraz.at/fileadmin/user_upload/pdf/Benigni_Hydro_2006.pdf</UE><UD>http://www.hfm.tugraz.at/fileadmin/user_upload/pdf/Benigni_Hydro_2006.pdf</UD><T>Numerical simulation of a horizontal shaft tube bulb turbine</T><RK>8</RK><ENT_SOURCE>T2-JESW7LX72YWK2</ENT_SOURCE><FS NAME="date" VALUE="2012-03-01"/><S>&lt;b&gt;...&lt;/b&gt; For both installations different &lt;b&gt;operating&lt;/b&gt; points were calculated in order to&lt;br&gt; validate the existing geometry and the runner-guide vane correlation for &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="131k" CID="3C6an0l7t24J" ENC="UTF-8"/></HAS></R></RES>
+</GSP>
