@@ -7,13 +7,14 @@ import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
+import at.tugraz.examreminder.core.CourseContainer;
+import at.tugraz.examreminder.service.CourseListSerializer;
 
 public class ExamReminderApplication extends Application{
 
 	private static Context context;
 
     public static boolean useTabletMode(Context context) {
-        //@Todo move to application class once it is merged
         int use_tablet_mode = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("pref_use_tablet_layout", "0"));
         switch (use_tablet_mode) {
             case 0: return context.getResources().getBoolean(R.bool.isTablet);
@@ -29,6 +30,12 @@ public class ExamReminderApplication extends Application{
     public void onCreate(){
         super.onCreate();
         context=getApplicationContext();
+        CourseContainer.instance().deleteObservers();
+        if(CourseContainer.instance().size() == 0) {
+            CourseListSerializer courseListSerializer = new CourseListSerializer();
+            CourseContainer.instance().getCourseList().addAll(courseListSerializer.loadCourseListFromFile());
+        }
+        CourseContainer.instance().addObserver(new CourseListSerializer());
         Log.v("EXAM_REMINDER_APPLICATION", "ONCREATED");
     }
 
@@ -36,4 +43,6 @@ public class ExamReminderApplication extends Application{
         Log.v("EXAM_REMINDER_APPLICATION", "GIVE ME THE SWEET CONTEXT");
         return context;
     }
+
+
 }

@@ -51,4 +51,8 @@ public class CourseContainer extends Observable {
     public void setChanged() {
         super.setChanged();
     }
+
+    public List<Course> getCourseList() {
+        return courses;
+    }
 }
