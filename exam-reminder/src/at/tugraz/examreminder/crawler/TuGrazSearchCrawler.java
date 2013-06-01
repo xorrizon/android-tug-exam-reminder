@@ -108,17 +108,20 @@ public class TuGrazSearchCrawler implements Crawler {
     @Override
     public SortedSet<Exam> getExams(Course course) {
         File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempExamsSearchDataXmlFilename);
-        getResponseXmlAndWriteToFile(course.number, tempFileOnDevice);
+        getResponseXmlAndWriteToFile(course.name, tempFileOnDevice);
         SortedSet<Exam> foundExams;
 
         try {
             foundExams = getExamsFromFile(new FileInputStream(tempFileOnDevice), course);
-        } catch (IOException e) {
+            //TODO: filter Exams method
+
+            } catch (IOException e) {
             Log.v("TuGrazSearchCrawler", e.toString());
             return null;
         }
         return foundExams;
     }
+
 
     public List<Course> getCourseListFromFile(InputStream inputstream) throws IOException {
         List<Course> foundCourse = new ArrayList<Course>();
@@ -173,6 +176,9 @@ public class TuGrazSearchCrawler implements Crawler {
         String currentTagAttribute;
         String currentLine;
         Exam currentExam;
+        String currentCourseId;
+        String currentCourseName;
+
 
         while (((currentLine = br.readLine()) != null)) {
             if (currentLine.contains("<MODULE_RESULT>")) {
@@ -180,27 +186,38 @@ public class TuGrazSearchCrawler implements Crawler {
                 while (((currentLine = br.readLine()) != null)) {
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("EBO"))) {
-                            currentExam = new Exam(course);
-                            try {
-                                currentExam.from = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
-                                currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd"));
-                            } catch (ParseException e) {
-                                throw new IOException("Dateformat of returned data not recognized!");
+                            currentCourseId = currentModuleMap.get("courseID");
+                            currentCourseName = currentModuleMap.get("courseCode");
+
+                            if(currentCourseName.equals(course.name) && currentCourseId.equals(course.number)) {
+                                currentExam = new Exam(course);
+
+                                try {
+                                    currentExam.from = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
+                                    currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd"));
+                                } catch (ParseException e) {
+                                    throw new IOException("Dateformat of returned data not recognized!");
+                                }
+
+                                currentExam.place = currentModuleMap.get("examLocation");
+                                currentExam.term = currentModuleMap.get("teachingTerm");
+                                currentExam.lecturer = currentModuleMap.get("lecturer");
+                                currentExam.examinar = currentModuleMap.get("examinerName");
+                                currentExam.registrationStart = null;
+
+                                //TODO: add cancel Deadline data
+
+                                try {
+                                    currentExam.registrationEnd = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline"));
+                                } catch (ParseException e) {
+                                    throw new IOException("Dateformat of returned data not recognized!");
+                                }
+
+                                currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
+                                currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
+                                currentExam.updated_at = null;
+                                foundExams.add(currentExam);
                             }
-                            currentExam.place = currentModuleMap.get("examLocation");
-                            currentExam.term = currentModuleMap.get("teachingTerm");
-                            currentExam.lecturer = currentModuleMap.get("lecturer");
-                            currentExam.examinar = currentModuleMap.get("examinerName");
-                            currentExam.registrationStart = null;
-                            try {
-                                currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
-                            } catch (ParseException e) {
-                                throw new IOException("Dateformat of returned data not recognized!");
-                            }
-                            currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
-                            currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
-                            currentExam.updated_at = null;
-                            foundExams.add(currentExam);
                         }
                         currentModuleMap.clear();
                     }
