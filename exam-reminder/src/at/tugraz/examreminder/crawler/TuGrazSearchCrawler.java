@@ -103,6 +103,7 @@ public class TuGrazSearchCrawler implements Crawler {
             return null;
         }
         Log.d(LOGCAT_TAG, "- get courses for searchterm "+ searchTerm);
+        Collections.sort(foundCourse);
         return foundCourse;
     }
 
