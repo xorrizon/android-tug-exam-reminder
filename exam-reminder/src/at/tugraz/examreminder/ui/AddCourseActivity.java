@@ -21,6 +21,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -33,6 +34,7 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
     ProgressBar progressBar;
     List<Course> courses = new ArrayList<Course>();
     SimpleCoursesAdapter adapter;
+    GregorianCalendar lastSearchSubmit = new GregorianCalendar();
 
     String restored_search_term = null;
 
@@ -89,6 +91,14 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        GregorianCalendar now = new GregorianCalendar();
+
+        // Dirty hack to prevent double submit android bug: https://code.google.com/p/android/issues/detail?id=24599
+        if( (now.getTimeInMillis()-lastSearchSubmit.getTimeInMillis()) < 1000 ){
+            return true;
+        }
+        lastSearchSubmit = now;
+
         if(getCurrentFocus()!=null){
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
@@ -99,6 +109,8 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         new SearchCoursesTask(query, crawler).execute();
         return true;
     }
+
+
 
     @Override
     public boolean onQueryTextChange(String newText) {
