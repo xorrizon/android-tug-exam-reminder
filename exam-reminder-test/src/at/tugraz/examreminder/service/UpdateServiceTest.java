@@ -44,15 +44,15 @@ public class UpdateServiceTest extends InstrumentationTestCase {
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);
         assertFalse("If nothing has changed, compareExamList should return false", new_exams);
 
-        exams.first().from = (new GregorianCalendar(2014,1,1,13,0)).getTime();
-        exams.first().to = (new GregorianCalendar(2014,1,1,14,0)).getTime();
+        exams.first().setFrom(new GregorianCalendar(2014,1,1,13,0));
+        exams.first().setTo(new GregorianCalendar(2014,1,1,14,0));
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);
         assertTrue("After changing the times compareExamList should return true", new_exams);
 
         exams = SimpleMockCrawler.createExams(course);
         Exam another_exam = exams.first().clone();
-        another_exam.from = (new GregorianCalendar(2014,1,3,13,0)).getTime();
-        another_exam.to = (new GregorianCalendar(2014,1,3,14,0)).getTime();
+        another_exam.setFrom(new GregorianCalendar(2014,1,3,13,0));
+        another_exam.setTo(new GregorianCalendar(2014,1,3,14,0));
         exams.add(another_exam);
 
         new_exams = UpdateService.compareExamList(CourseContainer.instance().get(0).exams, exams);

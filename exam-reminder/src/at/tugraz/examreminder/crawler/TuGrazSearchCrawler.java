@@ -194,8 +194,11 @@ public class TuGrazSearchCrawler implements Crawler {
                                 currentExam = new Exam(course);
 
                                 try {
-                                    currentExam.from = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart"));
-                                    currentExam.to = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd"));
+                                    GregorianCalendar calendar = new GregorianCalendar();
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
+                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
+                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
                                 } catch (ParseException e) {
                                     throw new IOException("Dateformat of returned data not recognized!");
                                 }

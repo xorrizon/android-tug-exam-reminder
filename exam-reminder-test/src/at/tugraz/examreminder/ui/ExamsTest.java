@@ -76,21 +76,21 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
         exam.examinar = "Mr. Aufsicht";
         exam.place = "Der Höhrsaal";
         calender.set(year, month, day+2,12,0);
-        exam.from = calender.getTime();
+        exam.setFrom((GregorianCalendar)calender.clone());
         calender.set(year, month, day+2,14,0);
-        exam.to = calender.getTime();
+        exam.setTo((GregorianCalendar)calender.clone());
         exams.add(exam.clone());
 
         calender.set(year, month, day+12,12,0);
-        exam.from = calender.getTime();
+        exam.setFrom((GregorianCalendar)calender.clone());
         calender.set(year, month, day+12,14,0);
-        exam.to = calender.getTime();
+        exam.setTo((GregorianCalendar)calender.clone());
         exams.add(exam.clone());
 
         calender.set(year, month, day,10,0);
-        exam.from = calender.getTime();
+        exam.setFrom((GregorianCalendar)calender.clone());
         calender.set(year, month, day,11,0);
-        exam.to = calender.getTime();
+        exam.setTo((GregorianCalendar)calender.clone());
         exams.add(exam.clone());
 
         course.exams = exams;

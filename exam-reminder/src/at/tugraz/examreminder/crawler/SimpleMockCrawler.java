@@ -48,21 +48,21 @@ public class SimpleMockCrawler implements Crawler {
 
     public static SortedSet<Exam> createExams(Course course){
         SortedSet<Exam> exams = new TreeSet<Exam>();
-        Calendar calender = new GregorianCalendar();
+        GregorianCalendar calender = new GregorianCalendar();
         Exam exam = new Exam(course);
         exam.lecturer = "Mr. Professor";
         exam.examinar = "Mr. Aufsicht";
         exam.place = "Der Höhrsaal";
         calender.set(2014,1,1,12,0);
-        exam.from = calender.getTime();
+        exam.setFrom((GregorianCalendar)calender.clone());
         calender.set(2014,1,1,14,0);
-        exam.to = calender.getTime();
+        exam.setTo((GregorianCalendar)calender.clone());
         exams.add(exam.clone());
 
         calender.set(2014,2,1,12,0);
-        exam.from = calender.getTime();
+        exam.setFrom((GregorianCalendar)calender.clone());
         calender.set(2014,2,1,14,0);
-        exam.to = calender.getTime();
+        exam.setTo((GregorianCalendar)calender.clone());
         exams.add(exam.clone());
 
         return exams;
