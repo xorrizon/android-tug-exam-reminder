@@ -49,11 +49,11 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.clickOnCheckBox(5);
         solo.clickOnCheckBox(7);
         solo.clickOnView(getActivity().findViewById(R.id.delete));
+        ListView listView = (ListView)solo.getView(R.id.courses_list);
+        assertEquals("Listview should only contain 6 courses", 5, listView.getCount());
         for(int i=0; i < 9; i++) {
             if(i%2 == 0){
                 assertTrue(solo.searchText("Course #"+i));
-            } else {
-                assertFalse(solo.searchText("Course #"+i));
             }
         }
     }
