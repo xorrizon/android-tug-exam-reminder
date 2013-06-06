@@ -1,7 +1,7 @@
 package at.tugraz.examreminder.service;
 
-import android.os.Environment;
 import android.util.Log;
+import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.core.Course;
 
 import at.tugraz.examreminder.core.Exam;
@@ -20,7 +20,7 @@ public class CourseListSerializer implements Observer {
     private static final String FILENAME = "saved_course_container.json";
 
     public void saveCourseListToFile(List<Course> courseList) {
-        File file = new File(Environment.getExternalStorageDirectory(), FILENAME);
+        File file = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), FILENAME);
         String json = courseListToJson(courseList);
         FileWriter fileWriter;
         try {
@@ -69,7 +69,7 @@ public class CourseListSerializer implements Observer {
 
     public List<Course> loadCourseListFromFile() {
         try {
-            return loadCourseListFromFile(new FileInputStream(new File(Environment.getExternalStorageDirectory(), FILENAME)));
+            return loadCourseListFromFile(new FileInputStream(new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), FILENAME)));
         } catch (FileNotFoundException e) {
             return new ArrayList<Course>();
         }
