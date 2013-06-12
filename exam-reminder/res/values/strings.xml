@@ -41,4 +41,5 @@
     <string name="search_error">An error occured while searching. Please make sure that you are connected to the
         internet.
     </string>
+    <string name="course_already_added">This course has already been added</string>
 </resources>

@@ -43,6 +43,7 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         setContentView(R.layout.add_course_activity);
         progressBar = (ProgressBar)findViewById(R.id.progress);
         adapter = new SimpleCoursesAdapter(this, courses);
+        adapter.setMarkCoursesInContainer(true);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,9 +85,13 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Course course = adapter.getItem(position);
-        CourseContainer.instance().add(course);
-        CourseContainer.instance().notifyObservers();
-        finish();
+        if(CourseContainer.instance().contains(course)){
+            Toast.makeText(this, R.string.course_already_added, Toast.LENGTH_SHORT).show();
+        } else {
+            CourseContainer.instance().add(course);
+            CourseContainer.instance().notifyObservers();
+            finish();
+        }
     }
 
     @Override
