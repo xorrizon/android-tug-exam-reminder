@@ -9,12 +9,13 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.test.InstrumentationTestCase;
 import at.tugraz.examreminder.R;
+import at.tugraz.examreminder.crawler.SimpleMockCrawler;
 import com.commonsware.cwac.wakeful.AlarmReceiver;
 
 public class DailyListenerTest extends InstrumentationTestCase {
 	private Context context;
 	private AlarmReceiver alarmReceiver;
-	private static final int SLEEP_TIME=100;
+	private static final int SLEEP_TIME=400;
 
 	@Override
 	protected void setUp() throws Exception {
@@ -22,6 +23,7 @@ public class DailyListenerTest extends InstrumentationTestCase {
 		context = getInstrumentation().getTargetContext();
 		alarmReceiver = new AlarmReceiver();
 		init();
+        UpdateService.setCrawlerToUse(SimpleMockCrawler.class);
 	}
 
 	@Override
