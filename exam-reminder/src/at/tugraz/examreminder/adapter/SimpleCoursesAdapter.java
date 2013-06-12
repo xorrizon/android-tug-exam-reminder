@@ -46,7 +46,7 @@ public class SimpleCoursesAdapter extends BaseAdapter {
         ViewGroup group = (ViewGroup)convertView;
         Course course = getItem(position);
         ((TextView)group.findViewById(android.R.id.text1)).setText(course.name);
-        ((TextView)group.findViewById(android.R.id.text2)).setText(course.number);
+        ((TextView)group.findViewById(android.R.id.text2)).setText(course.number + " " + course.type + " " + course.term);
         group.findViewById(android.R.id.checkbox).setVisibility(View.GONE);
         return group;
     }
