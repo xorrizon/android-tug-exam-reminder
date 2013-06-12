@@ -46,7 +46,7 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         adapter.setMarkCoursesInContainer(true);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
