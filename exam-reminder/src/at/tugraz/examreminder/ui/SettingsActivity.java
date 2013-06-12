@@ -1,6 +1,7 @@
 package at.tugraz.examreminder.ui;
 
 import android.content.Intent;
+import android.widget.Toast;
 import at.tugraz.examreminder.service.DailyListener;
 import at.tugraz.examreminder.service.UpdateService;
 import at.tugraz.examreminder.ui.custompreferences.TimePreference;
@@ -84,6 +85,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		//pref_updateNow.setSummary(prefix + datetime + " (didn't actually do anything)");
         Intent intent = new Intent(getApplicationContext(), UpdateService.class);
         intent.setAction("Blub");
+        Toast.makeText(this, R.string.update_started, Toast.LENGTH_SHORT).show();
         WakefulIntentService.sendWakefulWork(getApplicationContext(), UpdateService.class);
 	}
 }

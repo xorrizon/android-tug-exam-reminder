@@ -41,4 +41,5 @@
         internet.
     </string>
     <string name="course_already_added">This course has already been added</string>
+    <string name="update_started">Update started in background</string>
 </resources>
