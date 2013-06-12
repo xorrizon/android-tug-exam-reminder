@@ -3,6 +3,7 @@ package at.tugraz.examreminder.ui;
 import android.content.Intent;
 import at.tugraz.examreminder.service.DailyListener;
 import at.tugraz.examreminder.service.UpdateService;
+import at.tugraz.examreminder.ui.custompreferences.TimePreference;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
 import android.content.Context;
@@ -22,6 +23,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 
 	private ListPreference pref_updateFrequency;
     private ListPreference pref_useTabletLayout;
+    private TimePreference pref_updateTime;
 	private Preference pref_updateNow;	
 	
 	
@@ -33,6 +35,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		addPreferencesFromResource(R.xml.preferences);
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
         pref_useTabletLayout = (ListPreference) findPreference("pref_use_tablet_layout");
+        pref_updateTime = (TimePreference) findPreference("pref_update_time");
 		pref_updateNow = findPreference("pref_update_now");
 		updateSummaries();
 
@@ -69,6 +72,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	private void updateSummaries() {
 		pref_updateFrequency.setSummary(pref_updateFrequency.getEntry());
         pref_useTabletLayout.setSummary(pref_useTabletLayout.getEntry());
+        pref_updateTime.setSummary(pref_updateTime.toString());
         Date time = new Date(PreferenceManager.getDefaultSharedPreferences(context).getLong("pref_last_update",0));
         pref_updateNow.setSummary(getString(R.string.pref_update_now_summery) + time.toString());
 	}
