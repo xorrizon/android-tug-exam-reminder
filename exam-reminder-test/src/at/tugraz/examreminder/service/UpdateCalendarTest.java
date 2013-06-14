@@ -1,11 +1,15 @@
 package at.tugraz.examreminder.service;
 
-/**
- * Created with IntelliJ IDEA.
- * User: thoros
- * Date: 06/06/13
- * Time: 07:27
- * To change this template use File | Settings | File Templates.
- */
-public class UpdateCalendarTest {
+import android.net.Uri;
+import android.test.InstrumentationTestCase;
+import at.tugraz.examreminder.ExamReminderApplication;
+import at.tugraz.examreminder.core.Course;
+import at.tugraz.examreminder.core.Exam;
+
+public class UpdateCalendarTest extends InstrumentationTestCase {
+
+    public testCalendarBasic() {
+
+        assert(true);
+    }
 }
