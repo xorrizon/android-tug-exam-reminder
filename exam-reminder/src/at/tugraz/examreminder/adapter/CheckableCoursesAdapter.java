@@ -50,7 +50,7 @@ public class CheckableCoursesAdapter extends MultiChoiceBaseAdapter {
         ViewGroup group = (ViewGroup)convertView;
         Course course = getItem(position);
         ((TextView)group.findViewById(android.R.id.text1)).setText(course.name);
-        ((TextView)group.findViewById(android.R.id.text2)).setText(course.number);
+        ((TextView)group.findViewById(android.R.id.text2)).setText(course.number + " " + course.type + " " + course.term);
         return group;
     }
 

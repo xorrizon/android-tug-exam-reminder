@@ -8,17 +8,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
+import at.tugraz.examreminder.core.CourseContainer;
 
 import java.util.List;
 
 public class SimpleCoursesAdapter extends BaseAdapter {
     List<Course> courses;
     Context context;
+    boolean markCoursesInContainer;
 
     public SimpleCoursesAdapter(Context context, List<Course> courses){
         super();
         this.courses = courses;
         this.context = context;
+        this.markCoursesInContainer = false;
+    }
+
+    public void setMarkCoursesInContainer(boolean greyOut) {
+        this.markCoursesInContainer = greyOut;
     }
 
     @Override
@@ -45,8 +52,15 @@ public class SimpleCoursesAdapter extends BaseAdapter {
         }
         ViewGroup group = (ViewGroup)convertView;
         Course course = getItem(position);
-        ((TextView)group.findViewById(android.R.id.text1)).setText(course.name);
-        ((TextView)group.findViewById(android.R.id.text2)).setText(course.number);
+        TextView text1 = (TextView)group.findViewById(android.R.id.text1);
+        TextView text2 = (TextView)group.findViewById(android.R.id.text2);
+        if(markCoursesInContainer && CourseContainer.instance().contains(course))
+            text1.setText("[X] " + course.name);
+        else
+            text1.setText(course.name);
+        text2.setText(course.number + " " + course.type + " " + course.term);
+
+
         group.findViewById(android.R.id.checkbox).setVisibility(View.GONE);
         return group;
     }

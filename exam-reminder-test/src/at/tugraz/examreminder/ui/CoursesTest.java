@@ -70,6 +70,16 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         assertEquals(oldsize+1, CourseContainer.instance().size());
         assertTrue(solo.searchText("THE COURSE #2", 1, true));
 
+        oldsize = CourseContainer.instance().size();
+        solo.clickOnView(getActivity().findViewById(R.id.add));
+        solo.enterText(0, "Course");
+        solo.clickOnEditText(0);
+        solo.sendKey(Solo.ENTER);
+        solo.waitForText("THE COURSE #2", 1, 5);
+        solo.clickOnText("THE COURSE #2");
+        assertEquals("You should not be able to add the same course twice", oldsize, CourseContainer.instance().size());
+
+        solo.goBack();
         solo.goBack();
     }
 
