@@ -29,6 +29,7 @@ public class DailyListenerTest extends InstrumentationTestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		init();
+        UpdateService.setCrawlerToUse(null);
 		super.tearDown();
 	}
 
