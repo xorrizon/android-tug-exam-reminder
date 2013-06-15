@@ -36,7 +36,7 @@ public class ExamReminderApplication extends Application{
         CourseContainer.instance().deleteObservers();
         if(CourseContainer.instance().size() == 0) {
             CourseListSerializer courseListSerializer = new CourseListSerializer();
-            CourseContainer.instance().getCourseList().addAll(courseListSerializer.loadCourseListFromFile());
+            CourseContainer.instance().addAll(courseListSerializer.loadCourseListFromFile());
         }
         CourseContainer.instance().addObserver(new CourseListSerializer());
         DailyListener.scheduleMe(context);

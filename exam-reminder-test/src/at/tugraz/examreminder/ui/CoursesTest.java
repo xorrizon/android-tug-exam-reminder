@@ -114,6 +114,7 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         assertEquals("List view should't change size after oriantation change", 2, listView.getCount());
         assertEquals("SearchView should not reset.", "Course", solo.getEditText(0).getText().toString());
         solo.goBack();
+        solo.goBack();
     }
 
     public void testCourseDetails() {

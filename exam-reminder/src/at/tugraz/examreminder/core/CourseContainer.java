@@ -1,8 +1,6 @@
 package at.tugraz.examreminder.core;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
+import java.util.*;
 
 public class CourseContainer extends Observable {
 	private static CourseContainer instance = null;
@@ -26,6 +24,7 @@ public class CourseContainer extends Observable {
 
     public void add(Course course) {
         courses.add(course);
+        sort();
         setChanged();
     }
 
@@ -54,5 +53,14 @@ public class CourseContainer extends Observable {
 
     public List<Course> getCourseList() {
         return courses;
+    }
+
+    public void addAll(List<Course> courses) {
+        this.courses.addAll(courses);
+        sort();
+    }
+
+    private void sort() {
+        Collections.sort(courses);
     }
 }
