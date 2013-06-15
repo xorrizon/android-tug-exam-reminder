@@ -14,6 +14,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import at.tugraz.examreminder.R;
+import com.actionbarsherlock.view.MenuItem;
 import com.commonsware.cwac.wakeful.WakefulIntentService;
 
 import java.util.Date;
@@ -51,8 +52,18 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 			}
 			});
 	}
-	
-	@Override
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
 	public void onResume() {
 		super.onResume();
 		PreferenceManager.getDefaultSharedPreferences(context).registerOnSharedPreferenceChangeListener(this);

@@ -7,6 +7,7 @@ import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 public class CourseDetailsActivity extends SherlockFragmentActivity {
     public static final String INTENT_COURSE_ID = "CourseDetailsActivity.intent_course_id";
@@ -24,5 +25,16 @@ public class CourseDetailsActivity extends SherlockFragmentActivity {
             if(courseDetailsFragment != null && courseDetailsFragment.isInLayout())
                 courseDetailsFragment.setValuesFromCourse(course);
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

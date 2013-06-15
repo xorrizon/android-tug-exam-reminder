@@ -33,6 +33,7 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     @Override
     protected void tearDown() throws Exception {
+        UpdateService.setCrawlerToUse(null);
         super.tearDown();
     }
 
