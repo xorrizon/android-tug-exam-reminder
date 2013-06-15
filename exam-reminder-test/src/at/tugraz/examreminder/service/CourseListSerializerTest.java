@@ -16,8 +16,9 @@ public class CourseListSerializerTest extends InstrumentationTestCase{
         CourseListSerializer courseListSerializer = new CourseListSerializer();
         courses = courseListSerializer.loadCourseListFromFile(getInstrumentation().getContext().getAssets().open("saved_course_container_sample.json"));
         assertEquals("Wrong number of courses serialized.", 2, courses.size());
-        assertEquals("Wrong number of exams serialized.", 3, courses.get(0).exams.size()+courses.get(1).exams.size());
-        assertEquals("Other coursename expected.", "Mathematik II, M", courses.get(0).name);
+        assertEquals("Wrong number of exams serialized.", 1, courses.get(0).exams.size());
+        assertEquals("Wrong number of exams serialized.", 1, courses.get(1).exams.size());
+        assertEquals("Other coursename expected.", "IT-Sicherheit", courses.get(0).name);
         courseListSerializer.saveCourseListToFile(courses);
         List<Course> courses_new = courseListSerializer.loadCourseListFromFile();
         assertEquals("Deserialization error.", courses.size(), courses_new.size());
