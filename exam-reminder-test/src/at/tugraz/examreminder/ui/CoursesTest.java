@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import at.tugraz.examreminder.R;
+import at.tugraz.examreminder.adapter.CheckableCoursesAdapter;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
@@ -117,6 +118,18 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.goBack();
     }
 
+    public void testEmptyCourseListClick() {
+        ListView listView = (ListView) solo.getView(R.id.courses_list);
+        View emptyview = listView.getEmptyView();
+        assertEquals("EmptyView shoudl not be visible", View.GONE, emptyview.getVisibility());
+        deleteAllCourses();
+        assertEquals(0, listView.getCount());
+        assertEquals("Empty view should be visible", View.VISIBLE, emptyview.getVisibility());
+        solo.clickOnView(emptyview);
+        solo.assertCurrentActivity("Current activity shoudl Be the AddCourse Activity", AddCourseActivity.class);
+        solo.goBack();
+    }
+
     public void testCourseDetails() {
         Course course = CourseContainer.instance().get(0);
         course.exams = SimpleMockCrawler.createExams(course);
@@ -145,6 +158,17 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
             course.type = "VO";
             CourseContainer.instance().add(course);
         }
+    }
+
+    private void deleteAllCourses() {
+        for(int i=0; i < 4; i++){
+            solo.clickOnCheckBox(i);
+        }
+        solo.clickOnView(getActivity().findViewById(R.id.delete));
+        for(int i=0; i < 5; i++){
+            solo.clickOnCheckBox(i);
+        }
+        solo.clickOnView(getActivity().findViewById(R.id.delete));
     }
 
 }
