@@ -21,4 +21,10 @@ public class Course implements Comparable<Course> {
             return true;
         return name.equals(c.name) && number.equals(c.number) && term.equals(c.term) && type.equals(c.type);
     }
+
+    @Override
+    public int compareTo(Course course) {
+        return this.name.compareTo(course.name);
+
+    }
 }
