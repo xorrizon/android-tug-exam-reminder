@@ -48,7 +48,8 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AddCourseActivity" />
+        <activity android:name=".ui.AddCourseActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize" />
         <activity android:name=".ui.CourseDetailsActivity"/>
 
         <activity android:name="MyActivity"
