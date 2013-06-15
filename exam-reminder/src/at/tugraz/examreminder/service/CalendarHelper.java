@@ -9,13 +9,15 @@ import android.util.Log;
 import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.core.Exam;
 
+import java.util.Calendar;
+
 public class CalendarHelper {
 
     private static String CALENDAR_ID = null;
     private final static String LOGCAT_TAG = "CalendarHelper";
     private final static Uri CALENDAR_URI = CalendarContract.Calendars.CONTENT_URI;
-    private final static String INTERNAL_CALENDAR_NAME = "tug-exam-reminder";
-    private final static String EXTERNAL_CALENDAR_NAME = "TUG Exam Reminder";
+    private final static String INTERNAL_CALENDAR_NAME = "tug-exam-reminder2";
+    private final static String EXTERNAL_CALENDAR_NAME = "TUG Exam Reminder2";
     private final static String CALENDAR_COLOR = "red";
     private final static String CALENDAR_TYPE = CalendarContract.ACCOUNT_TYPE_LOCAL;
 
@@ -43,7 +45,9 @@ public class CalendarHelper {
 
         ContentValues event = new ContentValues();
 
+
         if (CALENDAR_ID == null) CALENDAR_ID = getLocalCalendarId();
+        // CALENDAR_ID = getLocalCalendarId();
         event.put(CalendarContract.Events.CALENDAR_ID, Long.valueOf(CALENDAR_ID));
         event.put(CalendarContract.Events.TITLE, exam.course.toString());
         event.put(CalendarContract.Events.DESCRIPTION, exam.course.type);
@@ -58,8 +62,8 @@ public class CalendarHelper {
 //        event.put("transparency", EVENT_TRANSPARENCY_TRANSPARENT);
  //       event.put("hasAlarm", EVENT_HASALARM_FALSE);
 
-        //Uri eventsUri = CalendarContract.Events.CONTENT_URI;
-        Uri eventsUri = Uri.parse("content://com.android.calendar/events");
+        Uri eventsUri = CalendarContract.Events.CONTENT_URI;
+        //Uri eventsUri = Uri.parse("content://com.android.calendar/events");
         Uri url = ExamReminderApplication.getAppContext().getContentResolver().insert(eventsUri, event);
         Log.v(LOGCAT_TAG, url.toString());
     }
@@ -71,7 +75,8 @@ public class CalendarHelper {
         contentValues.put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, EXTERNAL_CALENDAR_NAME);
         contentValues.put(CalendarContract.Calendars.CALENDAR_COLOR, CALENDAR_COLOR);
         contentValues.put(CalendarContract.Calendars.VISIBLE, 1);
-
+//        contentValues.put(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL, 700);
+//        contentValues.put(CalendarContract.Calendars.CALENDAR_TIME_ZONE, "GMT");
         final Uri calUri = CalendarContract.Calendars.CONTENT_URI;
 
         final Uri result = ExamReminderApplication.getAppContext().getContentResolver().insert(calUri, contentValues);
