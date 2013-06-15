@@ -57,8 +57,16 @@ public class DailyListener implements WakefulIntentService.AlarmListener {
 		ConnectivityManager cm = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		boolean isConnectedOrConnecting = netInfo == null ? false : netInfo.isConnectedOrConnecting();
-		sendWakefulWork(context, isConnectedOrConnecting, netInfo.getType());
+        boolean isConnectedOrConnecting;
+        int type;
+        if(netInfo == null) {
+            type = -1;
+            isConnectedOrConnecting = false;
+        } else {
+            type = netInfo.getType();
+            isConnectedOrConnecting = netInfo == null ? false : netInfo.isConnectedOrConnecting();
+        }
+		sendWakefulWork(context, isConnectedOrConnecting, type);
 	}
 
 	public void sendWakefulWork(Context context, boolean isConnectedOrConnecting, int connectionType) {

@@ -84,7 +84,7 @@ public class ExamsAdapter extends BaseAdapter{
 
         ((TextView)group.findViewById(R.id.course_text)).setText(exam.course.name);
 
-        ((TextView)group.findViewById(R.id.start_text)).setText(exam.getFrom());
+        ((TextView)group.findViewById(R.id.start_text)).setText(exam.getFromFormated());
 
         Calendar now = new GregorianCalendar();
         int year = now.get(Calendar.YEAR);
@@ -92,7 +92,7 @@ public class ExamsAdapter extends BaseAdapter{
         int day = now.get(Calendar.DAY_OF_MONTH);
         now.set(year, month, day, 0, 0, 0);
 
-        long days = (exam.from.getTime() - now.getTimeInMillis()) / 1000 / 60 / 60 / 24;
+        long days = (exam.getFrom().getTime().getTime() - now.getTime().getTime()) / 1000 / 60 / 60 / 24;
         ((TextView)group.findViewById(R.id.days_text)).setText(String.valueOf(days));
 
         return group;
