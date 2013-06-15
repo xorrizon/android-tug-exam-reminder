@@ -6,8 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import android.os.Environment;
 import android.util.Log;
+import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.Exam;
 import org.apache.http.HttpResponse;
@@ -93,7 +93,7 @@ public class TuGrazSearchCrawler implements Crawler {
     @Override
     public List<Course> getCourseList(String searchTerm) {
         Log.d(LOGCAT_TAG, "- get courses for searchterm "+ searchTerm);
-        File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempCoursesSearchDataXmlFilename);
+        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempCoursesSearchDataXmlFilename);
         List<Course> foundCourse;
         try {
             getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
@@ -110,7 +110,7 @@ public class TuGrazSearchCrawler implements Crawler {
     @Override
     public SortedSet<Exam> getExams(Course course) {
         Log.d(LOGCAT_TAG, "- get exams for course "+ course.name);
-        File tempFileOnDevice = new File(Environment.getExternalStorageDirectory(), tempExamsSearchDataXmlFilename);
+        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempExamsSearchDataXmlFilename);
         SortedSet<Exam> foundExams;
 
         try {

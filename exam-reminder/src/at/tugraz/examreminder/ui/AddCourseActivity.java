@@ -83,6 +83,16 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Course course = adapter.getItem(position);
         if(CourseContainer.instance().contains(course)){
