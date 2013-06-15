@@ -21,6 +21,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -33,6 +34,7 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
     ProgressBar progressBar;
     List<Course> courses = new ArrayList<Course>();
     SimpleCoursesAdapter adapter;
+    GregorianCalendar lastSearchSubmit = new GregorianCalendar();
 
     String restored_search_term = null;
 
@@ -41,9 +43,10 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         setContentView(R.layout.add_course_activity);
         progressBar = (ProgressBar)findViewById(R.id.progress);
         adapter = new SimpleCoursesAdapter(this, courses);
+        adapter.setMarkCoursesInContainer(true);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -80,15 +83,37 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Course course = adapter.getItem(position);
-        CourseContainer.instance().add(course);
-        CourseContainer.instance().notifyObservers();
-        finish();
+        if(CourseContainer.instance().contains(course)){
+            Toast.makeText(this, R.string.course_already_added, Toast.LENGTH_SHORT).show();
+        } else {
+            CourseContainer.instance().add(course);
+            CourseContainer.instance().notifyObservers();
+            finish();
+        }
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        GregorianCalendar now = new GregorianCalendar();
+
+        // Dirty hack to prevent double submit android bug: https://code.google.com/p/android/issues/detail?id=24599
+        if( (now.getTimeInMillis()-lastSearchSubmit.getTimeInMillis()) < 1000 ){
+            return true;
+        }
+        lastSearchSubmit = now;
+
         if(getCurrentFocus()!=null){
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
@@ -99,6 +124,8 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         new SearchCoursesTask(query, crawler).execute();
         return true;
     }
+
+
 
     @Override
     public boolean onQueryTextChange(String newText) {

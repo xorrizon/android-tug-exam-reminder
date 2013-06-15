@@ -21,7 +21,6 @@
     <string name="pref_update_time">Time to run update</string>
     <string name="set">Set</string>
     <string name="cancel">Cancel</string>
-    <string name="pref_update_time_summery">When to update</string>
     <string name="delete">Delete</string>
     <string name="add">Add</string>
     <string name="days">days</string>
@@ -41,4 +40,6 @@
     <string name="search_error">An error occured while searching. Please make sure that you are connected to the
         internet.
     </string>
+    <string name="course_already_added">This course has already been added</string>
+    <string name="update_started">Update started in background</string>
 </resources>

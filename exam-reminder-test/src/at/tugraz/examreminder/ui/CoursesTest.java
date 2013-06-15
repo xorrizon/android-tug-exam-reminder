@@ -40,6 +40,7 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
 
     @Override
     protected void tearDown() throws Exception {
+        UpdateService.setCrawlerToUse(null);
         super.tearDown();
     }
 
@@ -49,11 +50,11 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.clickOnCheckBox(5);
         solo.clickOnCheckBox(7);
         solo.clickOnView(getActivity().findViewById(R.id.delete));
+        ListView listView = (ListView)solo.getView(R.id.courses_list);
+        assertEquals("Listview should only contain 6 courses", 5, listView.getCount());
         for(int i=0; i < 9; i++) {
             if(i%2 == 0){
                 assertTrue(solo.searchText("Course #"+i));
-            } else {
-                assertFalse(solo.searchText("Course #"+i));
             }
         }
     }
@@ -70,6 +71,16 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         assertEquals(oldsize+1, CourseContainer.instance().size());
         assertTrue(solo.searchText("THE COURSE #2", 1, true));
 
+        oldsize = CourseContainer.instance().size();
+        solo.clickOnView(getActivity().findViewById(R.id.add));
+        solo.enterText(0, "Course");
+        solo.clickOnEditText(0);
+        solo.sendKey(Solo.ENTER);
+        solo.waitForText("THE COURSE #2", 1, 5);
+        solo.clickOnText("THE COURSE #2");
+        assertEquals("You should not be able to add the same course twice", oldsize, CourseContainer.instance().size());
+
+        solo.goBack();
         solo.goBack();
     }
 

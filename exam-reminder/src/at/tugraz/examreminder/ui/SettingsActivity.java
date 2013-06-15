@@ -1,8 +1,10 @@
 package at.tugraz.examreminder.ui;
 
 import android.content.Intent;
+import android.widget.Toast;
 import at.tugraz.examreminder.service.DailyListener;
 import at.tugraz.examreminder.service.UpdateService;
+import at.tugraz.examreminder.ui.custompreferences.TimePreference;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
 import android.content.Context;
@@ -12,6 +14,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import at.tugraz.examreminder.R;
+import com.actionbarsherlock.view.MenuItem;
 import com.commonsware.cwac.wakeful.WakefulIntentService;
 
 import java.util.Date;
@@ -22,6 +25,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 
 	private ListPreference pref_updateFrequency;
     private ListPreference pref_useTabletLayout;
+    private TimePreference pref_updateTime;
 	private Preference pref_updateNow;	
 	
 	
@@ -33,6 +37,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		addPreferencesFromResource(R.xml.preferences);
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
         pref_useTabletLayout = (ListPreference) findPreference("pref_use_tablet_layout");
+        pref_updateTime = (TimePreference) findPreference("pref_update_time");
 		pref_updateNow = findPreference("pref_update_now");
 		updateSummaries();
 
@@ -47,8 +52,18 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 			}
 			});
 	}
-	
-	@Override
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
 	public void onResume() {
 		super.onResume();
 		PreferenceManager.getDefaultSharedPreferences(context).registerOnSharedPreferenceChangeListener(this);
@@ -69,6 +84,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 	private void updateSummaries() {
 		pref_updateFrequency.setSummary(pref_updateFrequency.getEntry());
         pref_useTabletLayout.setSummary(pref_useTabletLayout.getEntry());
+        pref_updateTime.setSummary(pref_updateTime.toString());
         Date time = new Date(PreferenceManager.getDefaultSharedPreferences(context).getLong("pref_last_update",0));
         pref_updateNow.setSummary(getString(R.string.pref_update_now_summery) + time.toString());
 	}
@@ -80,6 +96,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		//pref_updateNow.setSummary(prefix + datetime + " (didn't actually do anything)");
         Intent intent = new Intent(getApplicationContext(), UpdateService.class);
         intent.setAction("Blub");
+        Toast.makeText(this, R.string.update_started, Toast.LENGTH_SHORT).show();
         WakefulIntentService.sendWakefulWork(getApplicationContext(), UpdateService.class);
 	}
 }
