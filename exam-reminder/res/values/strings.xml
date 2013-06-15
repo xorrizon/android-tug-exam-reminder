@@ -42,4 +42,21 @@
     </string>
     <string name="course_already_added">This course has already been added</string>
     <string name="update_started">Update started in background</string>
+    <string name="about">About</string>
+    <string name="developers">Developers</string>
+    <string name="rosmarin">Rosmarin Thomas</string>
+    <string name="pail">Pail Daniel</string>
+    <string name="app_design">App Design</string>
+    <string name="icon_design">Icon Design</string>
+    <string name="version_with_param">Version %s</string>
+    <string name="libs">3rd party libraries</string>
+    <string name="abs_with_link"><a href="http://actionbarsherlock.com/">ActionBarSherlock</a></string>
+    <string name="cwak_with_link"><a href="https://github.com/commonsguy/cwac-wakeful">CWAC WakefulIntentService</a></string>
+    <string name="gson_with_link"><a href="http://code.google.com/p/google-gson/">Gson</a></string>
+    <string name="mca_with_link"><a href="https://github.com/ManuelPeinado/MultiChoiceAdapter">MultiChoiceAdapter</a></string>
+    <string name="spl_with_link"><a href="https://github.com/MobiDevelop/android-split-pane-layout">Split Pane Layout</a></string>
+    <string name="vpi_with_link"><a href="http://viewpagerindicator.com/">ViewpagerIndicator</a></string>
+    <string name="special_thanks">Special Thanks</string>
+    <string name="thanks_text">to Petra, Delonghi and all the other coffee machines\nwhich kept us alive while making this app!</string>
+    <string name="homepage_with_link"><a href="https://github.com/xorrizon/android-tug-exam-reminder">Homepage</a></string>
 </resources>
