@@ -129,7 +129,8 @@ public class TuGrazSearchCrawler implements Crawler {
         List<Course> foundCourse = new ArrayList<Course>();
         Map<String, String> currentModuleMap = new HashMap<String, String>();
         DataInputStream in = new DataInputStream(inputstream);
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        InputStreamReader isr = new InputStreamReader(in);
+        BufferedReader br = new BufferedReader(isr);
         String currentTagValue;
         String currentTagAttribute;
         String currentLine;
@@ -165,7 +166,12 @@ public class TuGrazSearchCrawler implements Crawler {
                 }
             }
         }
+        br.close();
+        isr.close();
         in.close();
+
+        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempCoursesSearchDataXmlFilename);
+        setExamsFromFile(new FileInputStream(tempFileOnDevice), foundCourse);
         return foundCourse;
     }
 
@@ -173,7 +179,8 @@ public class TuGrazSearchCrawler implements Crawler {
         SortedSet<Exam> foundExams = new TreeSet<Exam>();
         Map<String, String> currentModuleMap = new HashMap<String, String>();
         DataInputStream in = new DataInputStream(inputstream);
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        InputStreamReader isr = new InputStreamReader(in);
+        BufferedReader br = new BufferedReader(isr);
 
         String currentTagValue;
         String currentTagAttribute;
@@ -237,7 +244,84 @@ public class TuGrazSearchCrawler implements Crawler {
                 }
             }
         }
+        br.close();
+        isr.close();
         in.close();
         return foundExams;
+    }
+
+     public void setExamsFromFile(InputStream inputstream, List<Course> courses) throws IOException{
+        SortedSet<Exam> foundExams = new TreeSet<Exam>();
+        Map<String, String> currentModuleMap = new HashMap<String, String>();
+        DataInputStream in = new DataInputStream(inputstream);
+        InputStreamReader isr = new InputStreamReader(in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String currentTagValue;
+        String currentTagAttribute;
+        String currentLine;
+        Exam currentExam;
+        String currentCourseId;
+        String currentCourseName;
+
+
+        while (((currentLine = br.readLine()) != null)) {
+            if (currentLine.contains("<MODULE_RESULT>")) {
+                currentModuleMap.clear();
+                while (((currentLine = br.readLine()) != null)) {
+                    if (currentLine.contains("</MODULE_RESULT>")) {
+                        if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("EBO"))) {
+                            currentCourseId = currentModuleMap.get("courseID");
+                            currentCourseName = currentModuleMap.get("courseCode");
+                            for(Course courseitem : courses) {
+                            if(currentCourseName.equals(courseitem.name) && currentCourseId.equals(courseitem.number)) {
+                                currentExam = new Exam(courseitem);
+
+                                try {
+                                    GregorianCalendar calendar = new GregorianCalendar();
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
+                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
+                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
+                                } catch (ParseException e) {
+                                    throw new IOException("Dateformat of returned data not recognized!");
+                                }
+
+                                currentExam.place = currentModuleMap.get("examLocation");
+                                currentExam.term = currentModuleMap.get("teachingTerm");
+                                currentExam.lecturer = currentModuleMap.get("lecturer");
+                                currentExam.examinar = currentModuleMap.get("examinerName");
+                                currentExam.registrationStart = null;
+
+                                //TODO: add cancel Deadline data
+
+                                try {
+                                    currentExam.registrationEnd = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline"));
+                                } catch (ParseException e) {
+                                    throw new IOException("Dateformat of returned data not recognized!");
+                                }
+
+                                currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
+                                currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
+                                currentExam.updated_at = null;
+                                courseitem.exams.add(currentExam);
+                            }
+                            }
+                        }
+                        currentModuleMap.clear();
+                    }
+                    if (currentLine.contains("<Field") && currentLine.contains("</Field>")) {
+                        currentTagAttribute = currentLine.substring(currentLine.indexOf("=\"") + 2, currentLine.indexOf("\">"));
+                        currentTagValue = currentLine.substring(currentLine.indexOf("\">") + 2, currentLine.indexOf("</Field>"));
+                        currentModuleMap.put(currentTagAttribute, currentTagValue);
+                    } else if (currentLine.contains("<Field>")) {
+                        throw new IOException("Format of returned data not recognized!");
+                    }
+                }
+            }
+        }
+        br.close();
+        isr.close();
+        in.close();
     }
 }
