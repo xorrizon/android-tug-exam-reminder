@@ -20,7 +20,7 @@ public class Course implements Comparable<Course> {
         Course c = (Course)o;
         if(c == this)
             return true;
-        return name.equals(c.name) && number.equals(c.number) && term.equals(c.term) && type.equals(c.type) && id.equals(c.id);
+        return name.equals(c.name) && number.equals(c.number) && term.equals(c.term) && type.equals(c.type);
     }
 
     @Override
