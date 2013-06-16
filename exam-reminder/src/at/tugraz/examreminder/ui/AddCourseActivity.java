@@ -3,6 +3,7 @@ package at.tugraz.examreminder.ui;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -12,6 +13,7 @@ import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.crawler.Crawler;
 import at.tugraz.examreminder.crawler.SimpleMockCrawler;
+import at.tugraz.examreminder.service.CalendarHelper;
 import at.tugraz.examreminder.service.CourseListSerializer;
 import at.tugraz.examreminder.service.UpdateService;
 import com.actionbarsherlock.view.Menu;
@@ -98,6 +100,11 @@ public class AddCourseActivity extends SherlockListActivity implements SearchVie
         if(CourseContainer.instance().contains(course)){
             Toast.makeText(this, R.string.course_already_added, Toast.LENGTH_SHORT).show();
         } else {
+            boolean use_calendar = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_use_android_calendar", false);
+            if(use_calendar) {
+                CalendarHelper calendarHelper = new CalendarHelper(this);
+                calendarHelper.addExamEvents(course.exams);
+            }
             CourseContainer.instance().add(course);
             CourseContainer.instance().notifyObservers();
             finish();

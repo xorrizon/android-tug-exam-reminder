@@ -5,16 +5,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.text.format.Time;
 import android.util.Log;
 import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.core.Exam;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 public class CalendarHelper {
     private Context context;
@@ -30,6 +28,22 @@ public class CalendarHelper {
     public void addExamEvent(long calendar_id, Exam exam) {
         long event_id = addEvent(calendar_id, exam.course.name, exam.getFrom(), exam.getTo());
         exam.event_id = event_id;
+    }
+
+    public void addExamEvents(SortedSet<Exam> exams) {
+        long calendar_id = Long.parseLong(PreferenceManager.getDefaultSharedPreferences(context).getString("pref_android_calendar_to_use", "-1"));
+        if(calendar_id < 0)
+            return;
+
+        for(Exam exam : exams) {
+            addExamEvent(calendar_id, exam);
+        }
+    }
+
+    public void deleteExamEvents(SortedSet<Exam> exams) {
+        for(Exam exam : exams){
+            deleteExamEvent(exam);
+        }
     }
 
     public void deleteExamEvent(Exam exam) {
@@ -58,7 +72,7 @@ public class CalendarHelper {
         //Uri eventsUri = Uri.parse("content://com.android.calendar/events");
         Uri result = context.getContentResolver().insert(eventsUri, event);
         long id = Long.parseLong(result.getLastPathSegment());
-        Log.v(TAG, "Created Calendar event with id: " + id);
+        Log.v(TAG, "Created Calendar event with id: " + id + " in calendar with id: " + calendar_id);
         return id;
     }
 

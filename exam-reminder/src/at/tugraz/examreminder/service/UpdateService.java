@@ -71,6 +71,11 @@ public class UpdateService extends WakefulIntentService {
 	protected void doWakefulWork(Intent intent) {
         Crawler crawler = getCrawlerInstance();
         boolean new_exams = false;
+        CalendarHelper calendarHelper = null;
+        boolean use_calendar = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_use_android_calendar", false);
+        if(use_calendar)
+            calendarHelper = new CalendarHelper(this);
+
         for(int i = 0; i < CourseContainer.instance().size(); i++) {
             Course course = CourseContainer.instance().get(i);
             SortedSet<Exam> exams = crawler.getExams(course);
@@ -78,6 +83,10 @@ public class UpdateService extends WakefulIntentService {
                 continue;
             if(!new_exams && compareExamList(course.exams, exams)){
                 new_exams = true;
+            }
+            if(use_calendar && calendarHelper != null) {
+                calendarHelper.deleteExamEvents(course.exams);
+                calendarHelper.addExamEvents(exams);
             }
             course.exams = exams;
         }

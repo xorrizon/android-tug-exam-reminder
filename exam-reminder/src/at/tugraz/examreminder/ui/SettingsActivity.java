@@ -42,7 +42,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		context = getApplicationContext();
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 		addPreferencesFromResource(R.xml.preferences);
-        pref_use_android_calendar = (CheckBoxPreference) findPreference("pref_android_calendar_to_use");
+        pref_use_android_calendar = (CheckBoxPreference) findPreference("pref_use_android_calendar");
         pref_android_calendar_to_use = (ListPreference) findPreference("pref_android_calendar_to_use");
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
         pref_useTabletLayout = (ListPreference) findPreference("pref_use_tablet_layout");
