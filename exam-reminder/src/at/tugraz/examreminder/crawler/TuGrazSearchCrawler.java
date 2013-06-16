@@ -98,6 +98,7 @@ public class TuGrazSearchCrawler implements Crawler {
         try {
             getResponseXmlAndWriteToFile(searchTerm, tempFileOnDevice);
             foundCourse = getCourseListFromFile(new FileInputStream(tempFileOnDevice));
+            setExamsFromFile(new FileInputStream(tempFileOnDevice), foundCourse);
         } catch (IOException e) {
             Log.v(LOGCAT_TAG, e.toString());
             return null;
@@ -170,8 +171,6 @@ public class TuGrazSearchCrawler implements Crawler {
         isr.close();
         in.close();
 
-        File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempCoursesSearchDataXmlFilename);
-        setExamsFromFile(new FileInputStream(tempFileOnDevice), foundCourse);
         return foundCourse;
     }
 
