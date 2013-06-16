@@ -1,5 +1,7 @@
 package at.tugraz.examreminder.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.adapter.ExamsAdapter;
 import at.tugraz.examreminder.core.Course;
 import com.actionbarsherlock.app.SherlockFragment;
+
 
 public class CourseDetailsFragment extends SherlockFragment {
     TextView course_name;
@@ -23,6 +26,7 @@ public class CourseDetailsFragment extends SherlockFragment {
     ExamsAdapter adapter;
 
     Course course = null;
+    private Uri courseinfoSiteURL;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,9 +49,11 @@ public class CourseDetailsFragment extends SherlockFragment {
 
     public void setValuesFromCourse(Course course) {
         this.course = course;
-
+        this.courseinfoSiteURL = Uri.parse("https://online.tugraz.at/tug_online/lv.detail?clvnr=" + course.id);
+//        this.btn_open_in_browser.setU
         //@TODO Open URL Button
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,9 +71,17 @@ public class CourseDetailsFragment extends SherlockFragment {
         course_term = (TextView) layout.findViewById(R.id.course_term);
         course_lecturer = (TextView) layout.findViewById(R.id.course_lecturer);
         btn_open_in_browser = (Button) layout.findViewById(R.id.btn_open_in_browser);
-
+        btn_open_in_browser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, courseinfoSiteURL);
+                startActivity(intent);
+            }
+        });
 
 
         return layout;
     }
+
+
 }

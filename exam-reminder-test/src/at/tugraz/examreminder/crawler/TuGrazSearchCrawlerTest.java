@@ -32,7 +32,6 @@ public class TuGrazSearchCrawlerTest extends InstrumentationTestCase {
         assertEquals("Wrong number of exams found!", exams.size(), 0);
     }
 
-
     public void testSearchFileErrorHandling() throws IOException {
         TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
         List<Course> courses = null;

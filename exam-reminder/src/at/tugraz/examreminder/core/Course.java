@@ -3,6 +3,7 @@ package at.tugraz.examreminder.core;
 import java.util.*;
 
 public class Course implements Comparable<Course> {
+    public String id;
 	public String name;
 	public String number;
 	public String term;
