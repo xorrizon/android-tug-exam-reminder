@@ -28,6 +28,12 @@
     <string name="id">ID</string>
     <string name="type">Type</string>
     <string name="term">Term</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="place">Place</string>
+    <string name="register_deadline">Deadline Register</string>
+    <string name="cancel_deadline">Deadline Cancel</string>
+    <string name="participants">Participants</string>
     <string name="lecturer">Lecturer</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="exams">Exams</string>

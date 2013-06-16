@@ -15,48 +15,44 @@
             <TextView style="@style/DetailsView.Value" android:id="@+id/exam_course_name" android:text="@string/mame" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/id" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_date" android:text="@string/id" />
+            <TextView android:text="@string/date" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_date" android:text="@string/date" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/time" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_time" android:text="@string/time" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/place" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_place" android:text="@string/place" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
             <TextView android:text="@string/id" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_time" android:text="@string/id" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_id" android:text="@string/id" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
             <TextView android:text="@string/type" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_place" android:text="@string/type" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_type" android:text="@string/type" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
             <TextView android:text="@string/term" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_id" android:text="@string/term" />
-        </TableRow>
-        <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/lecturer" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_type" android:text="@string/lecturer" />
-        </TableRow>
-        <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/lecturer" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_term" android:text="@string/lecturer" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_term" android:text="@string/term" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
             <TextView android:text="@string/lecturer" />
             <TextView style="@style/DetailsView.Value" android:id="@+id/exam_lecturer" android:text="@string/lecturer" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/lecturer" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_register_deadline" android:text="@string/lecturer" />
+            <TextView android:text="@string/register_deadline" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_register_deadline" android:text="@string/register_deadline" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/lecturer" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_cancel_deadline" android:text="@string/lecturer" />
+            <TextView android:text="@string/cancel_deadline" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_cancel_deadline" android:text="@string/cancel_deadline" />
         </TableRow>
         <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/lecturer" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_participants" android:text="@string/lecturer" />
-        </TableRow>
-        <TableRow style="@style/DetailsView.TableRow">
-            <TextView android:text="@string/lecturer" />
-            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_type" android:text="@string/lecturer" />
+            <TextView android:text="@string/participants" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_participants" android:text="@string/participants" />
         </TableRow>
 
     </TableLayout>
