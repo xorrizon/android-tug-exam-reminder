@@ -5,8 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 import at.tugraz.examreminder.ExamReminderApplication;
 import at.tugraz.examreminder.R;
+import at.tugraz.examreminder.adapter.ExamsAdapter;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -14,8 +18,9 @@ import com.mobidevelop.widget.SplitPaneLayout;
 import com.viewpagerindicator.TabPageIndicator;
 
 
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends SherlockFragmentActivity implements ViewPager.OnPageChangeListener {
     SplitPaneLayout splitLayout;
+    FragmentAdapter adapter;
 
     public void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,13 +28,14 @@ public class MainActivity extends SherlockFragmentActivity {
 
         splitLayout = (SplitPaneLayout) findViewById(R.id.split_layout);
 
-        FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
+        adapter = new FragmentAdapter(getSupportFragmentManager());
 
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
         TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(pager);
+        indicator.setOnPageChangeListener(this);
 
     }
 
@@ -62,8 +68,31 @@ public class MainActivity extends SherlockFragmentActivity {
         }
     }
 
+    @Override
+    public void onPageScrolled(int i, float v, int i2) {
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+        if(adapter.getPageTitle(i).equals(FragmentAdapter.EXAMS)){
+            ViewGroup container = (ViewGroup)splitLayout.findViewById(R.id.exams_fragment_container);
+            if(container != null){
+                ListView examslistview = (ListView)container.getChildAt(0);
+                if(examslistview != null) {
+                    ((ExamsAdapter)examslistview.getAdapter()).notifyDataSetChanged();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+    }
+
     class FragmentAdapter extends FragmentPagerAdapter {
-        private final String[] CONTENT = new String[] { "Courses", "Exams"};
+        public final static String EXAMS = "Exams";
+        public final static String COURSES = "Courses";
+        public final String[] CONTENT = new String[] { COURSES, EXAMS };
 
         public FragmentAdapter(FragmentManager fm) {
             super(fm);
