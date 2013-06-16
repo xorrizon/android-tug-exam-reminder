@@ -206,7 +206,11 @@ public class TuGrazSearchCrawler implements Crawler {
                                     calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
                                     currentExam.setFrom((GregorianCalendar)calendar.clone());
                                     calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
-                                    currentExam.setTo((GregorianCalendar)calendar.clone());
+                                    currentExam.setTo((GregorianCalendar) calendar.clone());
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
+                                    currentExam.registerDeadline = (GregorianCalendar) calendar.clone();
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("cancelDeadline")));
+                                    currentExam.cancelDeadline = (GregorianCalendar) calendar.clone();
                                 } catch (ParseException e) {
                                     throw new IOException("Dateformat of returned data not recognized!");
                                 }
@@ -215,15 +219,6 @@ public class TuGrazSearchCrawler implements Crawler {
                                 currentExam.term = currentModuleMap.get("teachingTerm");
                                 currentExam.lecturer = currentModuleMap.get("lecturer");
                                 currentExam.examinar = currentModuleMap.get("examinerName");
-                                currentExam.registrationStart = null;
-
-                                //TODO: add cancel Deadline data
-
-                                try {
-                                    currentExam.registrationEnd = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline"));
-                                } catch (ParseException e) {
-                                    throw new IOException("Dateformat of returned data not recognized!");
-                                }
 
                                 currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
                                 currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
@@ -281,7 +276,11 @@ public class TuGrazSearchCrawler implements Crawler {
                                     calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
                                     currentExam.setFrom((GregorianCalendar)calendar.clone());
                                     calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
-                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
+                                    currentExam.setTo((GregorianCalendar)calendar.clone());
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
+                                    currentExam.registerDeadline = (GregorianCalendar) calendar.clone();
+                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("cancelDeadline")));
+                                    currentExam.cancelDeadline = (GregorianCalendar) calendar.clone();
                                 } catch (ParseException e) {
                                     throw new IOException("Dateformat of returned data not recognized!");
                                 }
@@ -290,15 +289,6 @@ public class TuGrazSearchCrawler implements Crawler {
                                 currentExam.term = currentModuleMap.get("teachingTerm");
                                 currentExam.lecturer = currentModuleMap.get("lecturer");
                                 currentExam.examinar = currentModuleMap.get("examinerName");
-                                currentExam.registrationStart = null;
-
-                                //TODO: add cancel Deadline data
-
-                                try {
-                                    currentExam.registrationEnd = SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline"));
-                                } catch (ParseException e) {
-                                    throw new IOException("Dateformat of returned data not recognized!");
-                                }
 
                                 currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
                                 currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));

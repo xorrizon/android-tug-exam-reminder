@@ -32,6 +32,18 @@ public class TuGrazSearchCrawlerTest extends InstrumentationTestCase {
         assertEquals("Wrong number of exams found!", exams.size(), 0);
     }
 
+    public void testExamsWithAdditionalAttributes() throws  IOException {
+        TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
+        List<Course> courses;
+        SortedSet<Exam> exams;
+
+        courses = crawler.getCourseListFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"));
+        exams = crawler.getExamsFromFile(getInstrumentation().getContext().getAssets().open("searchterm_analysis.xml"), courses.get(6));
+        assertEquals("Wrong number of courses found!", courses.size(), 130);
+        assertEquals("Wrong value in exam found!", "12.06.2013 23:55",exams.first().getCancelDeadline().toString());
+        assertEquals("Wrong value in exam found!", "12.06.2013 23:55",exams.first().getRegisterDeadline().toString());
+    }
+
     public void testSearchFileErrorHandling() throws IOException {
         TuGrazSearchCrawler crawler = new TuGrazSearchCrawler();
         List<Course> courses = null;

@@ -14,8 +14,8 @@ public class Exam implements Comparable<Exam> {
 	public String term;
 	public String lecturer;
 	public String examinar;
-	public Date registrationStart;
-	public Date registrationEnd;
+	public GregorianCalendar registerDeadline;
+	public GregorianCalendar cancelDeadline;
 	public int participants;
 	public int participants_max;
 	public GregorianCalendar updated_at;
@@ -25,8 +25,8 @@ public class Exam implements Comparable<Exam> {
         this.course = course;
         setFrom(new GregorianCalendar());
         setTo(new GregorianCalendar());
-        registrationEnd = new Date();
-        registrationStart = new Date();
+        cancelDeadline = new GregorianCalendar();
+        registerDeadline = new GregorianCalendar();
         updated_at = new GregorianCalendar();
         event_id = -1;
     }
@@ -39,12 +39,12 @@ public class Exam implements Comparable<Exam> {
         return new SimpleDateFormat(DATE_FORMAT).format(getTo().getTime());
     }
 
-    public String getRegistrationStartFormeted() {
-        return new SimpleDateFormat(DATE_FORMAT).format(registrationStart);
+    public String getRegisterDeadline() {
+        return new SimpleDateFormat(DATE_FORMAT).format(registerDeadline.getTime());
     }
 
-    public String getRegistrationEnd() {
-        return new SimpleDateFormat(DATE_FORMAT).format(registrationEnd);
+    public String getCancelDeadline() {
+        return new SimpleDateFormat(DATE_FORMAT).format(cancelDeadline.getTime());
     }
 
     @Override
@@ -52,29 +52,6 @@ public class Exam implements Comparable<Exam> {
         return getFrom().compareTo(exam.getFrom());
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if(o == null)
-//            return false;
-//        if(!(o instanceof Exam))
-//            return false;
-//        Exam e = (Exam)o;
-//        if(e == this)
-//            return true;
-//        boolean equal = true;
-//        equal &= from.equals(e.from);
-//        equal &= to.equals(e.to);
-////        equal &= place.equals(e.place);
-////        equal &= term.equals(e.term);
-////        equal &= lecturer.equals(e.lecturer);
-////        equal &= examinar.equals(e.examinar);
-////        equal &= registrationStart.equals(e.registrationStart);
-////        equal &= registrationEnd.equals(e.registrationEnd);
-////        equal &= participants == e.participants;
-////        equal &= participants_max == e.participants_max;
-////        equal &= updated_at.equals(e.updated_at);
-//        return equal;
-//    }
 
     @Override
     public Exam clone() {
@@ -85,8 +62,8 @@ public class Exam implements Comparable<Exam> {
         exam.term = term;
         exam.lecturer = lecturer;
         exam.examinar = examinar;
-        exam.registrationStart = registrationStart;
-        exam.registrationEnd = registrationEnd;
+        exam.registerDeadline = registerDeadline;
+        exam.cancelDeadline = cancelDeadline;
         exam.participants = participants;
         exam.participants_max = participants_max;
         exam.updated_at = updated_at;
