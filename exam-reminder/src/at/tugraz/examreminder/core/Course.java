@@ -3,6 +3,7 @@ package at.tugraz.examreminder.core;
 import java.util.*;
 
 public class Course implements Comparable<Course> {
+    public String id;
 	public String name;
 	public String number;
 	public String term;
@@ -19,7 +20,7 @@ public class Course implements Comparable<Course> {
         Course c = (Course)o;
         if(c == this)
             return true;
-        return name.equals(c.name) && number.equals(c.number) && term.equals(c.term) && type.equals(c.type);
+        return name.equals(c.name) && number.equals(c.number) && term.equals(c.term) && type.equals(c.type) && id.equals(c.id);
     }
 
     @Override

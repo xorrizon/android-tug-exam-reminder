@@ -141,6 +141,7 @@ public class TuGrazSearchCrawler implements Crawler {
                     if (currentLine.contains("</MODULE_RESULT>")) {
                         if (currentModuleMap.containsKey("WEB SERVICE") && (currentModuleMap.get("WEB SERVICE").toString().equals("CBO"))) {
                             currentCourse = new at.tugraz.examreminder.core.Course();
+                            currentCourse.id = currentModuleMap.get("id_c");
                             currentCourse.name = currentModuleMap.get("courseName");
                             currentCourse.number = currentModuleMap.get("courseCode");
                             currentCourse.term = currentModuleMap.get("teachingTerm");
