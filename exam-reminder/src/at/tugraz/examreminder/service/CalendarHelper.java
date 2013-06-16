@@ -28,10 +28,18 @@ public class CalendarHelper {
 
 
     public void addExamEvent(long calendar_id, Exam exam) {
-        addEvent(calendar_id, exam.course.name, exam.getFrom(), exam.getTo());
+        long event_id = addEvent(calendar_id, exam.course.name, exam.getFrom(), exam.getTo());
+        exam.event_id = event_id;
     }
 
-    private void addEvent(long calendar_id, String title, GregorianCalendar start, GregorianCalendar end) {
+    public void deleteExamEvent(Exam exam) {
+        if(exam.event_id >= 0) {
+            deleteEvent(exam.event_id);
+            exam.event_id = -1;
+        }
+    }
+
+    public long addEvent(long calendar_id, String title, GregorianCalendar start, GregorianCalendar end) {
         ContentValues event = new ContentValues();
 
         event.put(CalendarContract.Events.CALENDAR_ID, calendar_id);
@@ -48,8 +56,17 @@ public class CalendarHelper {
 
         Uri eventsUri = CalendarContract.Events.CONTENT_URI;
         //Uri eventsUri = Uri.parse("content://com.android.calendar/events");
-        Uri url = context.getContentResolver().insert(eventsUri, event);
-        Log.v(TAG, url.toString());
+        Uri result = context.getContentResolver().insert(eventsUri, event);
+        long id = Long.parseLong(result.getLastPathSegment());
+        Log.v(TAG, "Created Calendar event with id: " + id);
+        return id;
+    }
+
+    public void deleteEvent(long event_id) {
+        Uri.Builder builder = CalendarContract.Events.CONTENT_URI.buildUpon();
+        Uri uri = builder.appendPath(String.valueOf(event_id)).build();
+        context.getContentResolver().delete(uri, null, null);
+        Log.v(TAG, "Deleted Calendar event with id: " + event_id);
     }
 
     public List<Calendar> getLocalCalendars() {

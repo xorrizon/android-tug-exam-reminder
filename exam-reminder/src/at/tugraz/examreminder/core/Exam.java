@@ -19,6 +19,7 @@ public class Exam implements Comparable<Exam> {
 	public int participants;
 	public int participants_max;
 	public GregorianCalendar updated_at;
+    public long event_id;
 
     public Exam(Course course){
         this.course = course;
@@ -27,6 +28,7 @@ public class Exam implements Comparable<Exam> {
         registrationEnd = new Date();
         registrationStart = new Date();
         updated_at = new GregorianCalendar();
+        event_id = -1;
     }
 
     public String getFromFormated() {

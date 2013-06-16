@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import at.tugraz.examreminder.ui.SettingsActivity;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -89,15 +90,13 @@ public class MyActivity extends SherlockFragmentActivity implements View.OnClick
            case R.id.btn_calendar_test:
                CalendarHelper calendarHelper = new CalendarHelper(this);
                List<CalendarHelper.Calendar> calendars = calendarHelper.getLocalCalendars();
-               GregorianCalendar from = new GregorianCalendar(2013, 06, 16, 17, 0);
-               GregorianCalendar to = new GregorianCalendar(2013, 06, 16, 18, 0);
-               Course course = new Course();
-               course.name = "Blub42";
-               course.type = "VO";
-               Exam exam = new Exam(course);
-               exam.setFrom(from);
-               exam.setTo(to);
-               calendarHelper.addExamEvent(calendars.get(0).ID, exam);
+               GregorianCalendar from = new GregorianCalendar();
+               from.set(Calendar.HOUR_OF_DAY, 17);
+               GregorianCalendar to = new GregorianCalendar();
+               to.set(Calendar.HOUR_OF_DAY, 19);
+
+               long id = calendarHelper.addEvent(1, "Test42", from, to);
+               calendarHelper.deleteEvent(id);
                break;
        }
     }
