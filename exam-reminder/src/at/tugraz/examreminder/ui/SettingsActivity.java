@@ -1,6 +1,7 @@
 package at.tugraz.examreminder.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.preference.CheckBoxPreference;
 import android.widget.Toast;
 import at.tugraz.examreminder.service.CalendarHelper;
@@ -41,16 +42,24 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		context = getApplicationContext();
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 		addPreferencesFromResource(R.xml.preferences);
+        pref_use_android_calendar = (CheckBoxPreference) findPreference("pref_android_calendar_to_use");
         pref_android_calendar_to_use = (ListPreference) findPreference("pref_android_calendar_to_use");
 		pref_updateFrequency = (ListPreference) findPreference("pref_update_frequency");
         pref_useTabletLayout = (ListPreference) findPreference("pref_use_tablet_layout");
         pref_updateTime = (TimePreference) findPreference("pref_update_time");
 		pref_updateNow = findPreference("pref_update_now");
 
-        boolean use_calendar = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_use_android_calendar", false);
-        pref_android_calendar_to_use.setEnabled(use_calendar);
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putString("pref_use_android_calendar", "false").commit();
+            pref_use_android_calendar.setEnabled(false);
+            pref_android_calendar_to_use.setEnabled(false);
 
-        updateCalendarList();
+        } else {
+            boolean use_calendar = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_use_android_calendar", false);
+            pref_android_calendar_to_use.setEnabled(use_calendar);
+            updateCalendarList();
+        }
+
 		updateSummaries();
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
