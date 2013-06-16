@@ -2,6 +2,8 @@ package at.tugraz.examreminder;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
@@ -34,7 +36,7 @@ public class ExamReminderApplication extends Application{
         CourseContainer.instance().deleteObservers();
         if(CourseContainer.instance().size() == 0) {
             CourseListSerializer courseListSerializer = new CourseListSerializer();
-            CourseContainer.instance().getCourseList().addAll(courseListSerializer.loadCourseListFromFile());
+            CourseContainer.instance().addAll(courseListSerializer.loadCourseListFromFile());
         }
         CourseContainer.instance().addObserver(new CourseListSerializer());
         DailyListener.scheduleMe(context);
@@ -44,6 +46,18 @@ public class ExamReminderApplication extends Application{
     public static Context getAppContext(){
         Log.v("EXAM_REMINDER_APPLICATION", "GIVE ME THE SWEET CONTEXT");
         return context;
+    }
+
+    public static String getAppVersion() {
+        String version = "<<42>>";
+        try {
+            PackageManager manager = getAppContext().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(getAppContext().getPackageName(), 0);
+            version = info.versionName;
+        } catch (Exception e) {
+            Log.v("EXAM_REMINDER_APPLICATION", "getAppVersion() call failed, maybe no package manager?");
+        }
+        return version;
     }
 
 

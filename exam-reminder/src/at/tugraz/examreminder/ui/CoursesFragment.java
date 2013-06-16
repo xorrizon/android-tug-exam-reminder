@@ -73,6 +73,16 @@ public class CoursesFragment extends SherlockFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.courses_fragment, container, false);
         courses_list_view = (ListView) layout.findViewById(R.id.courses_list);
+        View empty_view = layout.findViewById(android.R.id.empty);
+        courses_list_view.setEmptyView(empty_view);
+        empty_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddCourseActivity.class);
+                startActivity(intent);
+            }
+        });
+
         adapter = new CheckableCoursesAdapter(savedInstanceState);
         adapter.setAdapterView(courses_list_view);
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
