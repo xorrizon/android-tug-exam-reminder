@@ -103,14 +103,14 @@ public class TuGrazSearchCrawler implements Crawler {
             Log.v(LOGCAT_TAG, e.toString());
             return null;
         }
-        Log.d(LOGCAT_TAG, "- get courses for searchterm "+ searchTerm);
+        Log.d(LOGCAT_TAG, "- found "+foundCourse.size()+ " courses  for searchterm "+ searchTerm);
         Collections.sort(foundCourse);
         return foundCourse;
     }
 
     @Override
     public SortedSet<Exam> getExams(Course course) {
-        Log.d(LOGCAT_TAG, "- get exams for course "+ course.name);
+        Log.d(LOGCAT_TAG, "- get exams for course "+ course.name + "("+ course.number + ")");
         File tempFileOnDevice = new File(ExamReminderApplication.getAppContext().getExternalFilesDir(null), tempExamsSearchDataXmlFilename);
         SortedSet<Exam> foundExams;
 
@@ -122,6 +122,7 @@ public class TuGrazSearchCrawler implements Crawler {
                 Log.v(LOGCAT_TAG, e.toString());
             return null;
         }
+        Log.d(LOGCAT_TAG, "- found "+ foundExams.size() + " courses for course "+course.number);
         return foundExams;
     }
 
@@ -215,7 +216,8 @@ public class TuGrazSearchCrawler implements Crawler {
                                         calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
                                         currentExam.setFrom((GregorianCalendar)calendar.clone());
                                         if(currentModuleMap.containsKey("examEnd")) {
-                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
+                                            calendar.add(Calendar.HOUR_OF_DAY, 1);
                                             currentExam.setTo((GregorianCalendar)calendar.clone());
                                         }
                                         else {
@@ -309,8 +311,9 @@ public class TuGrazSearchCrawler implements Crawler {
                                             currentExam.setTo((GregorianCalendar)calendar.clone());
                                         }
                                         else {
-                                            calendar.clear();
-                                            currentExam.setTo(calendar);
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
+                                            calendar.add(Calendar.HOUR_OF_DAY, 1);
+                                            currentExam.setTo((GregorianCalendar)calendar.clone());
                                         }
                                         if(currentModuleMap.containsKey("registerDeadline")) {
                                             calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
@@ -329,6 +332,7 @@ public class TuGrazSearchCrawler implements Crawler {
                                             currentExam.cancelDeadline = calendar;
                                         }
                                         courseitem.exams.add(currentExam);
+                                        Log.v(LOGCAT_TAG, "...add exam "+currentExam.getFromFormated() + " to " + courseitem.name + "(" + courseitem.number + ")");
                                     }
 
                                 } catch (ParseException e) {
