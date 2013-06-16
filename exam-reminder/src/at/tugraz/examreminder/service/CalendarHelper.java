@@ -26,7 +26,10 @@ public class CalendarHelper {
 
 
     public void addExamEvent(long calendar_id, Exam exam) {
-        long event_id = addEvent(calendar_id, exam.course.name, exam.getFrom(), exam.getTo());
+        String title = exam.course.name + " " + exam.course.type;
+        String location = exam.place;
+        String description = "Registration deadline"; //@TODO after crawled
+        long event_id = addEvent(calendar_id, exam.course.name, exam.getFrom(), exam.getTo(), description, location);
         exam.event_id = event_id;
     }
 
@@ -53,23 +56,20 @@ public class CalendarHelper {
         }
     }
 
-    public long addEvent(long calendar_id, String title, GregorianCalendar start, GregorianCalendar end) {
+    public long addEvent(long calendar_id, String title, GregorianCalendar start, GregorianCalendar end, String description, String location) {
         ContentValues event = new ContentValues();
 
         event.put(CalendarContract.Events.CALENDAR_ID, calendar_id);
         event.put(CalendarContract.Events.TITLE, title);
-//        event.put(CalendarContract.Events.DESCRIPTION, exam.course.type);
-//        event.put(CalendarContract.Events.EVENT_LOCATION,exam.place);
+        if(description != null)
+            event.put(CalendarContract.Events.DESCRIPTION, description);
+        if(location != null)
+            event.put(CalendarContract.Events.EVENT_LOCATION, location);
         event.put(CalendarContract.Events.DTSTART, start.getTimeInMillis());
         event.put(CalendarContract.Events.DTEND, end.getTimeInMillis());
         event.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
-//        event.put("eventStatus", EVENT_STATUS_CONFIRMED);
-//        event.put(CalendarContract.Events.VISIBLE, "true");
-//        event.put("transparency", EVENT_TRANSPARENCY_TRANSPARENT);
-        //       event.put("hasAlarm", EVENT_HASALARM_FALSE);
 
         Uri eventsUri = CalendarContract.Events.CONTENT_URI;
-        //Uri eventsUri = Uri.parse("content://com.android.calendar/events");
         Uri result = context.getContentResolver().insert(eventsUri, event);
         long id = Long.parseLong(result.getLastPathSegment());
         Log.v(TAG, "Created Calendar event with id: " + id + " in calendar with id: " + calendar_id);

@@ -95,7 +95,7 @@ public class MyActivity extends SherlockFragmentActivity implements View.OnClick
                GregorianCalendar to = new GregorianCalendar();
                to.set(Calendar.HOUR_OF_DAY, 19);
 
-               long id = calendarHelper.addEvent(1, "Test42", from, to);
+               long id = calendarHelper.addEvent(1, "Test42", from, to, null, null);
                calendarHelper.deleteEvent(id);
                break;
        }

@@ -71,6 +71,8 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo.waitForText("Courses", 1, 5);
         assertEquals(oldsize+1, CourseContainer.instance().size());
         assertTrue(solo.searchText("THE COURSE #2", 1, true));
+        Exam exam = CourseContainer.instance().get(CourseContainer.instance().size()-1).exams.first();
+        assertFalse("Exam of added course should have a created event", exam.event_id == -1);
 
         oldsize = CourseContainer.instance().size();
         solo.clickOnView(getActivity().findViewById(R.id.add));
