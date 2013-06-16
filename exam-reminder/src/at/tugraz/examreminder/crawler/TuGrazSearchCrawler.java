@@ -200,30 +200,49 @@ public class TuGrazSearchCrawler implements Crawler {
 
                             if(currentCourseName.equals(course.name) && currentCourseId.equals(course.number)) {
                                 currentExam = new Exam(course);
+                                 try {
+                                    if(currentModuleMap.containsKey("examStart")) {
+                                        currentExam.place = currentModuleMap.get("examLocation");
+                                        currentExam.term = currentModuleMap.get("teachingTerm");
+                                        currentExam.lecturer = currentModuleMap.get("lecturer");
+                                        currentExam.examinar = currentModuleMap.get("examinerName");
 
-                                try {
-                                    GregorianCalendar calendar = new GregorianCalendar();
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
-                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
-                                    currentExam.setTo((GregorianCalendar) calendar.clone());
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
-                                    currentExam.registerDeadline = (GregorianCalendar) calendar.clone();
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("cancelDeadline")));
-                                    currentExam.cancelDeadline = (GregorianCalendar) calendar.clone();
+                                        currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
+                                        currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
+                                        currentExam.updated_at = null;
+
+                                        GregorianCalendar calendar = new GregorianCalendar();
+                                        calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
+                                        currentExam.setFrom((GregorianCalendar)calendar.clone());
+                                        if(currentModuleMap.containsKey("examEnd")) {
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
+                                            currentExam.setTo((GregorianCalendar)calendar.clone());
+                                        }
+                                        else {
+                                            calendar.clear();
+                                            currentExam.setTo(calendar);
+                                        }
+                                        if(currentModuleMap.containsKey("registerDeadline")) {
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
+                                            currentExam.registerDeadline = (GregorianCalendar)calendar.clone();
+                                        }
+                                        else {
+                                            calendar.clear();
+                                            currentExam.registerDeadline = calendar;
+                                        }
+                                        if(currentModuleMap.containsKey("cancelDeadline")) {
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("cancelDeadline")));
+                                            currentExam.cancelDeadline = (GregorianCalendar)calendar.clone();
+                                        }
+                                        else {
+                                            calendar.clear();
+                                            currentExam.cancelDeadline = calendar;
+                                        }
+                                        foundExams.add(currentExam);
+                                    }
                                 } catch (ParseException e) {
                                     throw new IOException("Dateformat of returned data not recognized!");
                                 }
-
-                                currentExam.place = currentModuleMap.get("examLocation");
-                                currentExam.term = currentModuleMap.get("teachingTerm");
-                                currentExam.lecturer = currentModuleMap.get("lecturer");
-                                currentExam.examinar = currentModuleMap.get("examinerName");
-
-                                currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
-                                currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
-                                currentExam.updated_at = null;
-                                foundExams.add(currentExam);
                             }
                         }
                         currentModuleMap.clear();
@@ -268,32 +287,53 @@ public class TuGrazSearchCrawler implements Crawler {
                             currentCourseId = currentModuleMap.get("courseID");
                             currentCourseName = currentModuleMap.get("courseCode");
                             for(Course courseitem : courses) {
-                            if(currentCourseName.equals(courseitem.name) && currentCourseId.equals(courseitem.number)) {
+                                if(currentCourseName.equals(courseitem.name) && currentCourseId.equals(courseitem.number)) {
                                 currentExam = new Exam(courseitem);
 
-                                try {
-                                    GregorianCalendar calendar = new GregorianCalendar();
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
-                                    currentExam.setFrom((GregorianCalendar)calendar.clone());
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
-                                    currentExam.setTo((GregorianCalendar)calendar.clone());
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
-                                    currentExam.registerDeadline = (GregorianCalendar) calendar.clone();
-                                    calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("cancelDeadline")));
-                                    currentExam.cancelDeadline = (GregorianCalendar) calendar.clone();
+                                 try {
+                                    if(currentModuleMap.containsKey("examStart")) {
+                                        currentExam.place = currentModuleMap.get("examLocation");
+                                        currentExam.term = currentModuleMap.get("teachingTerm");
+                                        currentExam.lecturer = currentModuleMap.get("lecturer");
+                                        currentExam.examinar = currentModuleMap.get("examinerName");
+
+                                        currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
+                                        currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
+                                        currentExam.updated_at = null;
+
+                                        GregorianCalendar calendar = new GregorianCalendar();
+                                        calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examStart")));
+                                        currentExam.setFrom((GregorianCalendar)calendar.clone());
+                                        if(currentModuleMap.containsKey("examEnd")) {
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("examEnd")));
+                                            currentExam.setTo((GregorianCalendar)calendar.clone());
+                                        }
+                                        else {
+                                            calendar.clear();
+                                            currentExam.setTo(calendar);
+                                        }
+                                        if(currentModuleMap.containsKey("registerDeadline")) {
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("registerDeadline")));
+                                            currentExam.registerDeadline = (GregorianCalendar)calendar.clone();
+                                        }
+                                        else {
+                                            calendar.clear();
+                                            currentExam.registerDeadline = calendar;
+                                        }
+                                        if(currentModuleMap.containsKey("cancelDeadline")) {
+                                            calendar.setTime(SEARCH_MACHINE_RESULTS_DATE_FORMAT.parse(currentModuleMap.get("cancelDeadline")));
+                                            currentExam.cancelDeadline = (GregorianCalendar)calendar.clone();
+                                        }
+                                        else {
+                                            calendar.clear();
+                                            currentExam.cancelDeadline = calendar;
+                                        }
+                                        courseitem.exams.add(currentExam);
+                                    }
+
                                 } catch (ParseException e) {
                                     throw new IOException("Dateformat of returned data not recognized!");
                                 }
-
-                                currentExam.place = currentModuleMap.get("examLocation");
-                                currentExam.term = currentModuleMap.get("teachingTerm");
-                                currentExam.lecturer = currentModuleMap.get("lecturer");
-                                currentExam.examinar = currentModuleMap.get("examinerName");
-
-                                currentExam.participants = Integer.parseInt(currentModuleMap.get("numberOfParticipants"));
-                                currentExam.participants_max = Integer.parseInt(currentModuleMap.get("maximumNumberOfParticipants"));
-                                currentExam.updated_at = null;
-                                courseitem.exams.add(currentExam);
                             }
                             }
                         }

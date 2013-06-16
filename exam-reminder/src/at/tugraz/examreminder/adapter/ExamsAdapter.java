@@ -17,7 +17,7 @@ import java.util.*;
 public class ExamsAdapter extends BaseAdapter{
     private Context context;
     private Course course;
-    private SortedSet<Exam> exams = new TreeSet<Exam>();
+    private List<Exam> exams = new ArrayList<Exam>();
 
     /**
      * Use this Constructor if you want to use the CourseContainer instead of a single Course
@@ -49,6 +49,7 @@ public class ExamsAdapter extends BaseAdapter{
                 exams.addAll(CourseContainer.instance().get(i).exams);
             }
         }
+        Collections.sort(exams);
     }
 
     @Override
@@ -64,7 +65,7 @@ public class ExamsAdapter extends BaseAdapter{
 
     @Override
     public Exam getItem(int position) {
-        return (Exam)exams.toArray()[position];
+        return exams.get(position);
     }
 
     @Override
