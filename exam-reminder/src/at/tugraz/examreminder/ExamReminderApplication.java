@@ -40,11 +40,9 @@ public class ExamReminderApplication extends Application{
         }
         CourseContainer.instance().addObserver(new CourseListSerializer());
         DailyListener.scheduleMe(context);
-        Log.v("EXAM_REMINDER_APPLICATION", "ONCREATED");
     }
 
     public static Context getAppContext(){
-        Log.v("EXAM_REMINDER_APPLICATION", "GIVE ME THE SWEET CONTEXT");
         return context;
     }
 
