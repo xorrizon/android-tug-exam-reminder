@@ -25,7 +25,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class MyActivity extends SherlockFragmentActivity implements View.OnClickListener {
+public class ManualTestingActivity extends SherlockFragmentActivity implements View.OnClickListener {
 	/**
 	 * Called when the activity is first created.
 	 */

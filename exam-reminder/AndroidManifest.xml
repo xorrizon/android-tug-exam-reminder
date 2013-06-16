@@ -55,7 +55,7 @@
                   android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize" />
         <activity android:name=".ui.CourseDetailsActivity"/>
 
-        <activity android:name="MyActivity"
+        <activity android:name=".ManualTestingActivity"
                   android:label="exam-reminderdebug">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
