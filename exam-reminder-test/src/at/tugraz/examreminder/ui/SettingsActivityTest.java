@@ -3,8 +3,11 @@ package at.tugraz.examreminder.ui;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import at.tugraz.examreminder.R;
+import at.tugraz.examreminder.service.CalendarHelper;
 import at.tugraz.examreminder.service.DailyListener;
 import com.jayway.android.robotium.solo.Solo;
+
+import java.util.List;
 
 
 public class SettingsActivityTest extends ActivityInstrumentationTestCase2<SettingsActivity> {
@@ -47,5 +50,21 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
 
 
 	}
+
+    public void testCalendarPreferences() {
+        assertFalse("Android Calendar should not be used per default", PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("pref_use_android_calendar", false));
+        solo.clickOnCheckBox(1);
+        CalendarHelper calendarHelper = new CalendarHelper(getActivity());
+        List<CalendarHelper.Calendar> calendarList = calendarHelper.getLocalCalendars();
+        assertTrue("This test only works if there are at least 2 calendars", calendarList.size() >= 2);
+
+        solo.clickOnText(solo.getString(R.string.pref_android_calendar_to_use));
+        for(CalendarHelper.Calendar calendar : calendarList) {
+            assertTrue(solo.searchText(calendar.displayName));
+        }
+        solo.clickOnText(calendarList.get(1).displayName);
+        assertTrue("Selected calendar should show in summery", solo.searchText(calendarList.get(1).displayName));
+
+    }
 
 }

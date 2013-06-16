@@ -13,7 +13,12 @@
             android:key="pref_use_android_calendar"
             android:summary="@string/pref_use_android_calendar_description"
             android:title="@string/pref_use_android_calendar"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
+        <ListPreference
+            android:key="pref_android_calendar_to_use"
+            android:title="@string/pref_android_calendar_to_use"
+            android:defaultValue="-1"
+            android:enabled="false" />
         <ListPreference
                 android:key="pref_use_tablet_layout"
                 android:title="@string/pref_use_tablet_layout"
