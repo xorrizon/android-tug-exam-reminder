@@ -25,7 +25,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -299,8 +298,8 @@ class MultiChoiceAdapterHelper implements OnItemLongClickListener, OnItemClickLi
     private void initItemCheckbox(int position, ViewGroup view) {
         CheckBox checkBox = (CheckBox) view.findViewById(android.R.id.checkbox);
         boolean checked = isChecked(position);
-        checkBox.setChecked(checked);
         checkBox.setTag(position);
+        checkBox.setChecked(checked);
         checkBox.setOnCheckedChangeListener(this);
     }
 

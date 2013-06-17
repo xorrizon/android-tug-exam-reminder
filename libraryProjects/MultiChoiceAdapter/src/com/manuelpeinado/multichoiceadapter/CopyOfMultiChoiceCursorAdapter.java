@@ -31,7 +31,7 @@ import com.actionbarsherlock.view.ActionMode;
 
 /**
  */
-public abstract class MultiChoiceSimpleCursorAdapter extends SimpleCursorAdapter implements ActionMode.Callback,
+public abstract class CopyOfMultiChoiceCursorAdapter extends SimpleCursorAdapter implements ActionMode.Callback,
         MultiChoiceAdapter {
 
     private MultiChoiceAdapterHelper helper = new MultiChoiceAdapterHelper(this) {
@@ -41,7 +41,7 @@ public abstract class MultiChoiceSimpleCursorAdapter extends SimpleCursorAdapter
         }
     };
 
-    public MultiChoiceSimpleCursorAdapter(Bundle savedInstanceState, Context context, int layout, Cursor cursor,
+    public CopyOfMultiChoiceCursorAdapter(Bundle savedInstanceState, Context context, int layout, Cursor cursor,
             String[] from, int[] to, int flags) {
         super(context, layout, cursor, from, to, flags);
         helper.restoreSelectionFromSavedInstanceState(savedInstanceState);
