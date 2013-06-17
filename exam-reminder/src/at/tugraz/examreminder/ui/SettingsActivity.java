@@ -50,7 +50,7 @@ public class SettingsActivity extends SherlockPreferenceActivity implements Shar
 		pref_updateNow = findPreference("pref_update_now");
 
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putString("pref_use_android_calendar", "false").commit();
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("pref_use_android_calendar", false).commit();
             pref_use_android_calendar.setEnabled(false);
             pref_android_calendar_to_use.setEnabled(false);
 
