@@ -1,5 +1,6 @@
 package at.tugraz.examreminder.ui;
 
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
@@ -37,11 +38,15 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         solo = new Solo(getInstrumentation(), getActivity());
         DailyListener.setNewPendingIntentAndCancelOld(getActivity(), null); //Cancel schedule
         CourseContainer.instance().deleteObservers();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit(); //Reset default preferences!!
+        PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, true);
     }
 
     @Override
     protected void tearDown() throws Exception {
         UpdateService.setCrawlerToUse(null);
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit(); //Reset default preferences!!
+        PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, true);
         super.tearDown();
     }
 
@@ -61,6 +66,11 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
     }
 
     public void testAddCourse() {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
+                .putBoolean("pref_use_android_calendar", true)
+                .putString("pref_android_calendar_to_use", "1")
+                .commit();
+
         solo.clickOnView(getActivity().findViewById(R.id.add));
         int oldsize = CourseContainer.instance().size();
         solo.enterText(0, "Course");
