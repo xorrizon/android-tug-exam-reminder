@@ -31,8 +31,8 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="place">Place</string>
-    <string name="register_deadline">Deadline Register</string>
-    <string name="cancel_deadline">Deadline Cancel</string>
+    <string name="register_deadline">Deadline\nRegister</string>
+    <string name="cancel_deadline">Deadline\nCancel</string>
     <string name="participants">Participants</string>
     <string name="lecturer">Lecturer</string>
     <string name="open_in_browser">Open in browser</string>
