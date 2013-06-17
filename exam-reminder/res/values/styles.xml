@@ -2,11 +2,12 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="DetailsView" />
     <style name="DetailsView.TableRow">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">10dip</item>
     </style>
     <style name="DetailsView.Value">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:paddingLeft">30dip</item>
         <item name="android:textColor">@color/DetailsViewValueColor</item>
     </style>

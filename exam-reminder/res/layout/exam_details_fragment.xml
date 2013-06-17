@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+<LinearLayout
+              android:id="@+id/exam_details"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <TableLayout
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              >
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/mame" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_course_name" android:text="@string/mame" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/date" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_date" android:text="@string/date" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/time" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_time" android:text="@string/time" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/place" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_place" android:text="@string/place" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/id" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_id" android:text="@string/id" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/type" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_type" android:text="@string/type" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/term" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_term" android:text="@string/term" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/lecturer" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_lecturer" android:text="@string/lecturer" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/register_deadline" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_register_deadline" android:text="@string/register_deadline" />
+        </TableRow>
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/cancel_deadline" />
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_cancel_deadline" android:text="@string/cancel_deadline" />
+        </TableRow>
+
+    </TableLayout>
+    <LinearLayout
+            android:id="@+id/exam_details"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TableLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+        <TableRow style="@style/DetailsView.TableRow">
+            <TextView android:text="@string/participants" android:layout_centerHorizontal="true"/>
+            <TextView style="@style/DetailsView.Value" android:id="@+id/exam_participants" android:text="@string/participants" />
+        </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <Button android:id="@+id/btn_open_in_browser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dip"
+        android:layout_marginRight="40dip"
+        android:text="@string/open_in_browser" />
+<!--
+    <ListView
+        android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+-->
+</LinearLayout>
+</ScrollView>

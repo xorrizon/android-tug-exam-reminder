@@ -89,4 +89,14 @@ public class Exam implements Comparable<Exam> {
         this.to.set(Calendar.SECOND, 0);
         this.to.set(Calendar.MILLISECOND, 0);
     }
+
+    public String getDateFormated() {
+        return new SimpleDateFormat("dd.MM.yyyy").format(from.getTime());
+    }
+
+    public String getTimespanFormated() {
+        String fromTime = new SimpleDateFormat("HH:mm").format(from.getTime());
+        String toTime = new SimpleDateFormat("HH:mm").format(to.getTime());
+        return fromTime + " - " + toTime;
+    }
 }

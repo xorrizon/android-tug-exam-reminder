@@ -85,4 +85,20 @@ public class CourseListSerializer implements Observer {
         }
         return courseList;
     }
+
+    public static String examToJson(Exam exam) {
+        return new Gson().toJson(exam);
+    }
+
+    public static Exam jsonToExam(String json) {
+        return new Gson().fromJson(json, Exam.class);
+    }
+
+    public static String courseToJson(Course course) {
+        return new Gson().toJson(course);
+    }
+
+    public static Course jsonToCourse(String json) {
+        return new Gson().fromJson(json, Course.class);
+    }
 }
