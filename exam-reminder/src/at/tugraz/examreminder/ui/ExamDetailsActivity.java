@@ -5,26 +5,29 @@ import android.os.Bundle;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
+import at.tugraz.examreminder.core.Exam;
+import at.tugraz.examreminder.service.CourseListSerializer;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 public class ExamDetailsActivity extends SherlockFragmentActivity {
     // TODO: change to
-    public static final String INTENT_COURSE_ID = "CourseDetailsActivity.intent_course_id";
+    public static final String INTENT_EXAM_DUMP = "ExamDetailsActivity.INTENT_EXAM_DUMP";
+    public static final String INTENT_COURSE_DUMP = "ExamDetailsActivity.INTENT_COURSE_DUMP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.course_details_activity);
-        CourseDetailsFragment courseDetailsFragment = (CourseDetailsFragment) getSupportFragmentManager().findFragmentById(R.id.course_details_fragment);
+        setContentView(R.layout.exam_details_activity);
+        ExamDetailsFragment examDetailsFragment = (ExamDetailsFragment) getSupportFragmentManager().findFragmentById(R.id.exam_details_fragment);
 
-        int course_id = getIntent().getIntExtra(INTENT_COURSE_ID, -1);
-        if(course_id >= 0 && course_id < CourseContainer.instance().size()) {
-            Course course = CourseContainer.instance().get(course_id);
+        String exam_dump = getIntent().getStringExtra(INTENT_EXAM_DUMP);
+        String course_dump = getIntent().getStringExtra(INTENT_COURSE_DUMP);
+        Exam exam = CourseListSerializer.jsonToExam(exam_dump);
+        Course course = CourseListSerializer.jsonToCourse(course_dump);
 
-            if(courseDetailsFragment != null && courseDetailsFragment.isInLayout())
-                courseDetailsFragment.setValuesFromCourse(course);
-        }
+        if(examDetailsFragment != null && examDetailsFragment.isInLayout())
+            examDetailsFragment.setValuesFromExam(exam, course);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

@@ -54,6 +54,7 @@
         <activity android:name=".ui.AddCourseActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize" />
         <activity android:name=".ui.CourseDetailsActivity"/>
+        <activity android:name=".ui.ExamDetailsActivity"/>
 
         <activity android:name=".ManualTestingActivity"
                   android:label="exam-reminderdebug">

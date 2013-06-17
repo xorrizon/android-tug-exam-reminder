@@ -17,6 +17,7 @@ import at.tugraz.examreminder.adapter.ExamsAdapter;
 import at.tugraz.examreminder.core.Course;
 import at.tugraz.examreminder.core.CourseContainer;
 import at.tugraz.examreminder.core.Exam;
+import at.tugraz.examreminder.service.CourseListSerializer;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
@@ -52,9 +53,13 @@ public class ExamsFragment extends SherlockListFragment implements ExamsAdapter.
         if(ExamReminderApplication.useTabletMode(getActivity())) {
             updateExamDetailFragment(position);
         } else {
-//            Intent intent = new Intent(getActivity(), ExamDetailsActivity.class);
-//            intent.putExtra(CourseDetailsActivity.INTENT_COURSE_ID, position);
-//            startActivity(intent);
+            Exam exam = adapter.getItem(position);
+            String exam_dump = CourseListSerializer.examToJson(exam);
+            String course_dump = CourseListSerializer.courseToJson((Course)exam.course.clone());
+            Intent intent = new Intent(getActivity(), ExamDetailsActivity.class);
+            intent.putExtra(ExamDetailsActivity.INTENT_EXAM_DUMP, exam_dump);
+            intent.putExtra(ExamDetailsActivity.INTENT_COURSE_DUMP, course_dump);
+            startActivity(intent);
         }
     }
 
@@ -62,7 +67,7 @@ public class ExamsFragment extends SherlockListFragment implements ExamsAdapter.
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Exam exam = adapter.getItem(position);
         ExamDetailsFragment newFragment = new ExamDetailsFragment();
-        newFragment.setValuesFromExam(exam);
+        newFragment.setValuesFromExam(exam, exam.course);
         ft.replace(R.id.details_fragment_container, newFragment);
         ft.commit();
     }

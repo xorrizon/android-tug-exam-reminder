@@ -28,4 +28,16 @@ public class Course implements Comparable<Course> {
         return this.name.compareTo(course.name);
 
     }
+
+    @Override
+    public Object clone(){
+        Course course = new Course();
+        course.id = id;
+        course.name = name;
+        course.number = number;
+        course.term = term;
+        course.type = type;
+        course.lecturer = lecturer;
+        return course;
+    }
 }

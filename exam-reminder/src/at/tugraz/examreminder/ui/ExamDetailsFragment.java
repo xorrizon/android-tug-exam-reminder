@@ -35,6 +35,7 @@ public class ExamDetailsFragment extends SherlockFragment {
     //ExamsAdapter adapter;
 
     Exam exam = null;
+    Course course = null;
     private Uri courseExamInfoURL;
 
     @Override
@@ -45,16 +46,16 @@ public class ExamDetailsFragment extends SherlockFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(exam != null && exam.course.name != null) {
-            exam_course_name.setText(exam.course.name);
+        if(exam != null && course != null) {
+            exam_course_name.setText(course.name);
             exam_place.setText(exam.place);
 
             exam_date.setText(exam.getDateFormated());
             exam_time.setText(exam.getTimespanFormated());
 
-            exam_id.setText(exam.course.number);
-            exam_type.setText(exam.course.type);
-            exam_term.setText(exam.course.term);
+            exam_id.setText(course.number);
+            exam_type.setText(course.type);
+            exam_term.setText(course.term);
             exam_lecturer.setText(exam.lecturer);
             exam_register_deadline.setText(exam.getRegisterDeadline());
             exam_cancel_deadline.setText(exam.getCancelDeadline());
@@ -62,9 +63,10 @@ public class ExamDetailsFragment extends SherlockFragment {
         }
     }
 
-    public void setValuesFromExam(Exam exam) {
+    public void setValuesFromExam(Exam exam, Course course) {
         this.exam = exam;
-        this.courseExamInfoURL = Uri.parse("https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cheader=J&cstp_sp_nr=" + exam.course.id);
+        this.course = course;
+        this.courseExamInfoURL = Uri.parse("https://online.tugraz.at/tug_online/wbregisterexam.lv_termine?cheader=J&cstp_sp_nr=" + course.id);
     }
 
 
