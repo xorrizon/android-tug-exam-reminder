@@ -203,7 +203,10 @@ public class TuGrazSearchCrawler implements Crawler {
                                 currentExam = new Exam(course);
                                  try {
                                     if(currentModuleMap.containsKey("examStart")) {
-                                        currentExam.place = currentModuleMap.get("examLocation");
+                                        if(currentModuleMap.containsKey("examLocation")) {
+                                            currentExam.place = currentModuleMap.get("examLocation").replaceAll("&quot;","\"");
+                                        }
+                                        else currentExam.place = "";
                                         currentExam.term = currentModuleMap.get("teachingTerm");
                                         currentExam.lecturer = currentModuleMap.get("lecturer");
                                         currentExam.examinar = currentModuleMap.get("examinerName");
@@ -294,7 +297,10 @@ public class TuGrazSearchCrawler implements Crawler {
 
                                  try {
                                     if(currentModuleMap.containsKey("examStart")) {
-                                        currentExam.place = currentModuleMap.get("examLocation");
+                                        if(currentModuleMap.containsKey("examLocation")) {
+                                            currentExam.place = currentModuleMap.get("examLocation").replaceAll("&quot;","\"");
+                                        }
+                                        else currentExam.place = "";
                                         currentExam.term = currentModuleMap.get("teachingTerm");
                                         currentExam.lecturer = currentModuleMap.get("lecturer");
                                         currentExam.examinar = currentModuleMap.get("examinerName");
