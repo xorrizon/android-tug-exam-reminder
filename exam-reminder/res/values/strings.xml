@@ -58,7 +58,7 @@
     <string name="vpi_with_link"><a href="http://viewpagerindicator.com/">ViewpagerIndicator</a></string>
     <string name="search_homepage_with_link">Searchprovider: <a href="http://search.tugraz.at">search.tugraz.at</a></string>
     <string name="special_thanks">Special Thanks</string>
-    <string name="thanks_text">to Petra, Delonghi and all the other coffee machines\nwhich kept us alive while making this app!</string>
+    <string name="thanks_text">To Petra, Delonghi, Saeco,  and all the other coffee machines\nwhich kept us alive while making this app!</string>
     <string name="homepage_with_link"><a href="https://github.com/xorrizon/android-tug-exam-reminder">Homepage</a></string>
     <string name="pref_android_calendar_to_use">Calendar to use</string>
 
