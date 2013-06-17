@@ -1,5 +1,6 @@
 package at.tugraz.examreminder.ui;
 
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import at.tugraz.examreminder.R;
@@ -52,6 +53,9 @@ public class SettingsActivityTest extends ActivityInstrumentationTestCase2<Setti
 	}
 
     public void testCalendarPreferences() {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            return;
+        }
         assertFalse("Android Calendar should not be used per default", PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("pref_use_android_calendar", false));
         solo.clickOnCheckBox(1);
         CalendarHelper calendarHelper = new CalendarHelper(getActivity());

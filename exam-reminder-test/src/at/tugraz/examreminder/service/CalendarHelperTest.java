@@ -3,6 +3,7 @@ package at.tugraz.examreminder.service;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.CalendarContract;
 import android.test.InstrumentationTestCase;
 import at.tugraz.examreminder.core.Course;
@@ -27,6 +28,9 @@ public class CalendarHelperTest extends InstrumentationTestCase {
     }
 
     public void testAddAndDeleteEvent() {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            return;
+        }
         Course course = new Course();
         course.name = "UnitTest Course #1";
         Exam exam = new Exam(course);

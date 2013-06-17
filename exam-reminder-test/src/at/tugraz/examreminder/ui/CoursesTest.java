@@ -1,5 +1,6 @@
 package at.tugraz.examreminder.ui;
 
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
@@ -66,13 +67,16 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
     }
 
     public void testAddCourse() {
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
-                .putBoolean("pref_use_android_calendar", true)
-                .putString("pref_android_calendar_to_use", "1")
-                .commit();
-
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
+                    .putBoolean("pref_use_android_calendar", true)
+                    .putString("pref_android_calendar_to_use", "1")
+                    .commit();
+        }
+        UpdateService.setCrawlerToUse(SimpleMockCrawler.class);
         solo.clickOnView(getActivity().findViewById(R.id.add));
         int oldsize = CourseContainer.instance().size();
+        solo.clickOnEditText(0);
         solo.enterText(0, "Course");
         solo.clickOnEditText(0);
         solo.sendKey(Solo.ENTER);
@@ -82,7 +86,9 @@ public class CoursesTest extends ActivityInstrumentationTestCase2<MainActivity> 
         assertEquals(oldsize+1, CourseContainer.instance().size());
         assertTrue(solo.searchText("THE COURSE #2", 1, true));
         Exam exam = CourseContainer.instance().get(CourseContainer.instance().size()-1).exams.first();
-        assertFalse("Exam of added course should have a created event", exam.event_id == -1);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            assertFalse("Exam of added course should have a created event", exam.event_id == -1);
+        }
 
         oldsize = CourseContainer.instance().size();
         solo.clickOnView(getActivity().findViewById(R.id.add));
