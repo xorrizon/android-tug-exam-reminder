@@ -49,9 +49,8 @@ public class ExamDetailsFragment extends SherlockFragment {
             exam_course_name.setText(exam.course.name);
             exam_place.setText(exam.place);
 
-            // TODO: slip and format From/To
-            exam_date.setText("");
-            exam_time.setText("");
+            exam_date.setText(exam.getDateFormated());
+            exam_time.setText(exam.getTimespanFormated());
 
             exam_id.setText(exam.course.number);
             exam_type.setText(exam.course.type);
@@ -89,6 +88,7 @@ public class ExamDetailsFragment extends SherlockFragment {
         exam_lecturer = (TextView) layout.findViewById(R.id.exam_lecturer);
         exam_register_deadline = (TextView) layout.findViewById(R.id.exam_register_deadline);
         exam_cancel_deadline = (TextView) layout.findViewById(R.id.exam_cancel_deadline);
+        exam_participants = (TextView) layout.findViewById(R.id.exam_participants);
         btn_open_in_browser = (Button) layout.findViewById(R.id.btn_open_in_browser);
         btn_open_in_browser.setOnClickListener(new View.OnClickListener() {
             @Override
