@@ -68,6 +68,7 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
         solo.sleep(100);
         assertEquals("Mr. Professor", ((TextView)solo.getView(R.id.exam_lecturer)).getText());
         assertEquals("Der Höhrsaal", ((TextView)solo.getView(R.id.exam_place)).getText());
+        solo.goBack();
             }
 
     protected void init() {
