@@ -2,6 +2,8 @@ package at.tugraz.examreminder.ui;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import at.tugraz.examreminder.R;
 import at.tugraz.examreminder.core.Course;
@@ -56,6 +58,19 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     }
 
+    public void testExamDetailList() {
+        solo.clickInList(1);
+        solo.goBack();
+        solo.clickOnText("Exams");
+        solo.sleep(100);
+        //solo.clickInList(1);
+        solo.clickOnText("Course #1", 2);
+        solo.sleep(100);
+        assertEquals("Mr. Professor", ((TextView)solo.getView(R.id.exam_lecturer)).getText());
+        assertEquals("Der Höhrsaal", ((TextView)solo.getView(R.id.exam_place)).getText());
+        solo.goBack();
+            }
+
     protected void init() {
         CourseContainer.instance().clear();
         Course course = new Course();
@@ -64,6 +79,13 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
         course.number = "course.101";
         course.term = "SS";
         course.type = "VO";
+
+        Course course2 = new Course();
+        course2.name = "Course #2";
+        course2.lecturer = "Our leader";
+        course2.number = "course.102";
+        course2.term = "SS";
+        course2.type = "VO";
 
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR);
@@ -96,6 +118,8 @@ public class ExamsTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
         course.exams = exams;
 
+        course2.exams = new TreeSet<Exam>();
         CourseContainer.instance().add(course);
+        CourseContainer.instance().add(course2);
     }
 }
