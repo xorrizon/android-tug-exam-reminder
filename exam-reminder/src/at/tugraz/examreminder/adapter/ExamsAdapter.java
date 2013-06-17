@@ -18,6 +18,7 @@ public class ExamsAdapter extends BaseAdapter{
     private Context context;
     private Course course;
     private List<Exam> exams = new ArrayList<Exam>();
+    private OnItemClickListener onItemClickListener;
 
     /**
      * Use this Constructor if you want to use the CourseContainer instead of a single Course
@@ -26,6 +27,7 @@ public class ExamsAdapter extends BaseAdapter{
     public ExamsAdapter(Context context) {
         this.context = context;
         this.course = null;
+        onItemClickListener = null;
         loadExams();
     }
 
@@ -37,7 +39,12 @@ public class ExamsAdapter extends BaseAdapter{
     public ExamsAdapter(Context context, Course course) {
         this.context = context;
         this.course = course;
+        onItemClickListener = null;
         loadExams();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
     protected void loadExams() {
@@ -74,7 +81,7 @@ public class ExamsAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             int layout = R.layout.exam_item;
             LayoutInflater inflater = LayoutInflater.from(context);
@@ -96,6 +103,19 @@ public class ExamsAdapter extends BaseAdapter{
         long days = (exam.getFrom().getTime().getTime() - now.getTime().getTime()) / 1000 / 60 / 60 / 24;
         ((TextView)group.findViewById(R.id.days_text)).setText(String.valueOf(days));
 
+        group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onItemClickListener != null) {
+                    onItemClickListener.onItemClick(position);
+                }
+            }
+        });
+
         return group;
     }
+
+    public interface OnItemClickListener {
+        public void onItemClick(int position);
+    };
 }
