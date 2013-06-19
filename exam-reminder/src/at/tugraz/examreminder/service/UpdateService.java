@@ -92,7 +92,8 @@ public class UpdateService extends WakefulIntentService {
         }
         CourseContainer.instance().setChanged();
         CourseContainer.instance().notifyObservers();
-        if(new_exams) {
+        boolean show_notifications = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_show_exam_notifications", true);
+        if(new_exams && show_notifications) {
             NotificationFactory notificationFactory = new NotificationFactory(this);
             Notification notification = notificationFactory.createNewOrChangedExamsNotification();
             notificationFactory.sendNotification(notification);
